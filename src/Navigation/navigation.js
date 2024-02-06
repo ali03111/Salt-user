@@ -6,12 +6,15 @@ import MybottomTabs from './bottomNavigation';
 import useReduxStore from '../Hooks/UseReduxStore';
 import NavigationService from '../Services/NavigationService';
 import {Colors} from '../Theme/Variables';
+import {Platform} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 const StackNavigatior = () => {
   const {getState} = useReduxStore();
   const {onboarding} = getState('onboarding');
   const {isLogin, userData} = getState('Auth');
+  const statusBarColor =
+    Platform.OS == 'android' ? {statusBarColor: Colors.themeRed} : {};
   return (
     <NavigationContainer
       ref={ref => {
@@ -23,8 +26,8 @@ const StackNavigatior = () => {
           headerTitle: null,
           headerShown: false,
           statusBarAnimation: 'slide',
-          statusBarColor: Colors.themeRed,
           statusBarStyle: 'light',
+          ...statusBarColor,
         }}>
         {!onboarding && (
           <Stack.Screen

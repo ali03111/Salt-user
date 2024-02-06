@@ -69,14 +69,22 @@ def enableProguardInReleaseBuilds = false
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
 
+// plugins {
+//   id("com.android.application")
+
+//   // Add the Google services Gradle plugin
+//   id("com.google.gms.google-services")
+
+// }
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.salt"
+    namespace "com.codment.salt.customer"
     defaultConfig {
-        applicationId "com.salt"
+        applicationId "com.codment.salt.customer"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -108,6 +116,8 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 implementation project(':react-native-vector-icons')
+implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+implementation("com.google.firebase:firebase-analytics")
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.squareup.okhttp3', module:'okhttp'

@@ -1,4 +1,4 @@
-package com.salt;
+package com.codment.salt.customer;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

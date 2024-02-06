@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "1005053076444",
-    "project_id": "track-pal-e4e07",
-    "storage_bucket": "track-pal-e4e07.appspot.com"
+    "project_number": "841728114130",
+    "project_id": "salt-1ea5a",
+    "storage_bucket": "salt-1ea5a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1005053076444:android:ef95b47ece7d62eb4be519",
+        "mobilesdk_app_id": "1:841728114130:android:ee5bf3f5741911a4e05c0b",
         "android_client_info": {
-          "package_name": "com.salt"
+          "package_name": "com.codment.salt.customer"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "1005053076444-mgrhj94e5bcv1a937pc07914jmevu2gv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCAcz82vHbvvAhs8ik8UkI6cNNXv86INNM"
+          "current_key": "AIzaSyCSyGR6K-XUCplkzgw_RQlV4Gec2dVjg3A"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1005053076444-mgrhj94e5bcv1a937pc07914jmevu2gv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

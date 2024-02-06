@@ -56,7 +56,7 @@ const OnboardScreen = ({navigation}) => {
   const Images = () => {
     return (
       <Image
-        source={arrowRightIcon}
+        source={arrowRight}
         resizeMode="contain"
         style={{height: hp('2')}}
       />
@@ -111,7 +111,7 @@ const OnboardScreen = ({navigation}) => {
         <Animatable.View animation={!isFirst ? animationValue : 0}>
           <ThemeButton
             title={'Start Now'}
-            image={arrowRightIcon}
+            image={arrowRight}
             style={styles.nextButton}
             onPress={getStart}
           />

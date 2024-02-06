@@ -9,7 +9,7 @@ const Colors = {
   themeColorDark: '#92278F',
   themeColorLight: '#EE2A7B',
   themeRed: 'rgba(215, 48, 0, 1)',
-  themeBlack: '#2D2D2D',
+  themeBlack: 'rgba(24, 24, 24, 1)',
   faceBookColor: '#1877F2',
   gray: 'rgba(45, 45, 45, 0.5)',
   grayBorder: '#D9D9D9',

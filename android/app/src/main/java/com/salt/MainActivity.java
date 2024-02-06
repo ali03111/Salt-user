@@ -1,4 +1,4 @@
-package com.salt;
+package com.codment.salt.customer;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

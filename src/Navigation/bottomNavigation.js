@@ -95,7 +95,7 @@ function MybottomTabs() {
   return (
     <Tab.Navigator
       sceneContainerStyle={{
-        backgroundColor: 'black',
+        backgroundColor: Colors.themeBlack,
       }}
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'white',

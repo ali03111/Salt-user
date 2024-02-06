@@ -8,10 +8,11 @@ export {default as appleImage} from './Images/apple.png';
 export {default as googleImage} from './Images/google.png';
 export {default as facebookImage} from './Images/facebook.png';
 export {default as activeBar} from './Images/activeBar.png';
+export {default as handShake} from './Images/handShake.png';
+export {default as divider} from './Images/divider.png';
 
 export {default as splashOne} from './Images/splash-one.png';
 export {default as splashTwo} from './Images/splash-two.png';
-export {default as arrowRight} from './Images/arrowRight.png';
 export {default as syncPhone} from './Images/syncphone.png';
 export {default as profleImg} from './Images/profleImg.png';
 export {default as editProfileBg} from './Images/editProfileBg.png';
@@ -52,7 +53,15 @@ export {default as homeFill} from './Icons/homeFill.png';
 export {default as calenderFill} from './Icons/calendarFill.png';
 export {default as messagesFill} from './Icons/messages-1.png';
 export {default as heartFill} from './Icons/heartFill.png';
-export {default as settingFill} from './Icons/setting-2-1.png';
+export {default as settingFill} from './Icons/profile-1.png';
+
+export {default as settingWhite} from './Icons/settingWhite.png';
+export {default as notificationWhite} from './Icons/notificationWhite.png';
+export {default as calendarWhite} from './Icons/calendarWhite.png';
+export {default as clockWhite} from './Icons/clockWhite.png';
+export {default as star} from './Icons/star.png';
+export {default as arrowRight} from './Icons/arrowRight.png';
+export {default as arrowBack} from './Icons/arrow-right.png';
 
 export {default as google} from './Icons/google.png';
 export {default as apple} from './Icons/apple.png';
@@ -65,7 +74,6 @@ export {default as rememberEmpty} from './Icons/remember-empty.png';
 export {default as rememberImg} from './Icons/remember.png';
 export {default as userIcon} from './Icons/user.png';
 export {default as phone} from './Icons/phone.png';
-export {default as arrowBack} from './Icons/back.png';
 export {default as userProfileIcon} from './Icons/userIcon.png';
 export {default as aboutTrackpal} from './Icons/aboutTrackpal.png';
 export {default as privacyPolicy} from './Icons/privacy-policy.png';
@@ -100,6 +108,8 @@ export {default as verify} from './Icons/verify.png';
 export {default as arrowRightIcon} from './Icons/arrow-right.png';
 
 // Lotties files
+
+export {default as handShakeLottie} from './Lotties/Hand.json';
 
 export {default as currentUserLottie} from './Lotties/currentUser1.json';
 export {default as destinationLottie} from './Lotties/destination1.json';

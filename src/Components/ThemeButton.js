@@ -5,7 +5,7 @@ import {Touchable} from './Touchable';
 import {share} from '@/Assets/Images';
 import {hp, wp} from '../Config/responsive';
 
-const ThemeButton = ({title, onPress, image, style, textStyle}) => {
+const ThemeButton = ({title, onPress, image, style, textStyle, imageStyle}) => {
   return (
     // <ShadowButton>
     <Touchable
@@ -13,7 +13,9 @@ const ThemeButton = ({title, onPress, image, style, textStyle}) => {
       onPress={onPress}
       style={[styles.button, {justifyContent: 'center', ...style}]}>
       <Text style={[styles.text, {...textStyle}]}>{title}</Text>
-      {image && <Image source={image} style={styles.image} />}
+      {image && (
+        <Image source={image} style={{...styles.image, ...imageStyle}} />
+      )}
     </Touchable>
     // </ShadowButton>
   );
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
     // fontSize: heightPercentageToDP('2'),
     color: Colors.white,
     textAlign: 'center',
-    marginRight: wp('3'),
+    // marginRight: wp('3'),
     // fontFamily: FontFamily.regular,
   },
 });
