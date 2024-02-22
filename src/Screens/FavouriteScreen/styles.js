@@ -25,7 +25,8 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.themeBlack,
     elevation: 50,
     marginBottom: hp('2'),
-    paddingBottom: hp('2'),
+    padding: 10,
+    justifyContent: 'center',
   },
   innerFav: {
     flexDirection: 'row',
@@ -33,6 +34,7 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontSize: FontSize.scale20,
+    fontWeight: '600',
   },
   rating: {
     fontSize: FontSize.scale12,
@@ -47,15 +49,32 @@ export const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
   hearticon: {
-    aspectRatio: 1,
-    // height:hp('2'),
+    // aspectRatio: 1,
     width: wp('6'),
-    // alignSelf: 'center',
+    resizeMode: 'contain',
+    height: hp('4'),
     marginTop: hp('1'),
     marginRight: wp('2'),
+  },
+  viewProfile: {
+    alignSelf: 'center',
+    width: wp('90'),
+    height: hp('5'),
+    borderRadius: 5,
+    backgroundColor: Colors.grayFadedBtn,
+    marginTop: hp('2'),
+  },
+  viewProfile1: {
+    alignSelf: 'center',
+    width: wp('40'),
+    height: hp('4.5'),
+    borderRadius: 5,
+    backgroundColor: Colors.grayFadedBtn,
+    marginTop: hp('2'),
   },
   circleImage: {
     width: Dimensions.get('window').width * 0.13,
     height: Dimensions.get('window').width * 0.13,
   },
+  divider: {width: wp('90'), marginTop: hp('2'), marginBottom: hp('6')},
 });

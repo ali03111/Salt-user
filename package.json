@@ -58,6 +58,7 @@
     "react-native-flash-message": "^0.4.2",
     "react-native-gesture-handler": "^2.14.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
+    "react-native-modal": "^13.0.1",
     "react-native-pager-view": "^6.2.3",
     "react-native-paper": "^5.11.4",
     "react-native-permissions": "^4.0.0",
