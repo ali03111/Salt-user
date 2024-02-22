@@ -21,6 +21,7 @@ const Colors = {
   fadeGreen: 'rgba(37, 204, 44, 1)',
   iconColor: 'rgba(238, 42, 123, 1)',
   grayFaded: 'rgba(255, 255, 255, 0.5)',
+  grayFadedBtn: 'rgba(255, 255, 255, 0.2)',
   textGray: 'rgba(154, 154, 154, 1)',
 };
 

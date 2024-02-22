@@ -42,7 +42,15 @@ export {default as greenCircle} from './Images/greenCircle.png';
 // export {default as DemoProfileImage7} from './Images/profile7.png';
 
 //  Icons
-
+export {default as arrowLeftOld} from './Icons/arrowLeftOld.png';
+export {default as dollarCircle} from './Icons/dollarCircle.png';
+export {default as lockWhite} from './Icons/lockWhite.png';
+export {default as receiptWhite} from './Icons/receiptWhite.png';
+export {default as information} from './Icons/information.png';
+export {default as termsWhite} from './Icons/termsWhite.png';
+export {default as starWhite} from './Icons/starWhite.png';
+export {default as logOutWhite} from './Icons/logOutWhite.png';
+export {default as trashRed} from './Icons/trashRed.png';
 export {default as home} from './Icons/home-1.png';
 export {default as messages} from './Icons/messages.png';
 export {default as calender} from './Icons/calendar.png';

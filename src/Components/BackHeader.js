@@ -37,7 +37,7 @@ const BackHeader = ({
       </View>
       <View style={styles.HeaderCenter}>
         <TextComponent
-          text={'headerTitle'}
+          text={headerTitle}
           //   text={headerTitle}
           numberOfLines={numberOfLines ?? 1}
           styles={{...styles.HeaderTitle, ...titleStyle}}
