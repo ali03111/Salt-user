@@ -30,7 +30,7 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
   },
   {
@@ -39,7 +39,7 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
   },
   {
@@ -48,7 +48,7 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
   },
   {
@@ -57,7 +57,7 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
   },
   {
@@ -66,7 +66,7 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
   },
   {
@@ -75,7 +75,7 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: '27 , Nov 2023',
     time: '4:32 PM',
   },
 ];

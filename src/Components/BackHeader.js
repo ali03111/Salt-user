@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     width: wp('7'),
+    
   },
   HeaderCenter: {
     flex: 1,
