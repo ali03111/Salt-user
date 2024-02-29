@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     height: 20,
     // marginBottom: 5,
     resizeMode: 'contain',
+    marginLeft: wp('3'),
   },
   text: {
     // fontSize: heightPercentageToDP('2'),

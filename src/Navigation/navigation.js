@@ -38,10 +38,10 @@ const StackNavigatior = () => {
         {!isLogin && (
           <>
             {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
-            <Stack.Screen
+            {/* <Stack.Screen
               name="AppTestNew"
               component={Screens.AppTestN}
-            />
+            /> */}
 
             <Stack.Screen name="LoginScreen" component={Screens.LoginScreen} />
             <Stack.Screen
@@ -58,9 +58,8 @@ const StackNavigatior = () => {
                 component={Screens.EditPhoneNumberScreen}
               />
             )} */}
-            
-            <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
 
+            <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
 
             {/* <Stack.Screen
               name="EditPhoneNumberScreen"

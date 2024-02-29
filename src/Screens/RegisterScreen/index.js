@@ -68,7 +68,6 @@ const RegisterScreen = ({navigation}) => {
             getValues,
             placeholder: 'Name',
             isImage: userIcon,
-            defaultValue: __DEV__ ? 'userHund' : '',
             tintColor: Colors.themeRed,
           }}
         />
@@ -99,7 +98,6 @@ const RegisterScreen = ({navigation}) => {
             defaultValue: '',
             isSecure: true,
             inputIconStyle: styles.lockstyle,
-            defaultValue: __DEV__ ? 'Test@123' : '',
             tintColor: Colors.themeRed,
           }}
         />
@@ -117,12 +115,12 @@ const RegisterScreen = ({navigation}) => {
             isSecure: true,
             inputIconStyle: styles.lockstyle,
             tintColor: Colors.themeRed,
-            defaultValue: __DEV__ ? 'Test@123' : '',
           }}
         />
         <ThemeButton
-          title={'Log In'}
+          title={'Sign Up'}
           style={{marginTop: hp('3'), marginBottom: hp('2')}}
+          onPress={handleSubmit(signUpButton)}
         />
       </View>
       <DashText text={'Sign Up'} styles={{marginTop: hp('2')}} />

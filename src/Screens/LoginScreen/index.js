@@ -93,7 +93,11 @@ const LoginScreen = ({navigation}) => {
             tintColor: Colors.themeRed,
           }}
         />
-        <ThemeButton title={'Log In'} style={{marginTop: hp('3')}} />
+        <ThemeButton
+          title={'Log In'}
+          style={{marginTop: hp('3')}}
+          onPress={handleSubmit(loginUser)}
+        />
         <TextComponent
           text={'Forgot Password?'}
           fade={true}
