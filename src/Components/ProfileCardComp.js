@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     backgroundColor: Colors.themeBlack,
     elevation: 24,
-    marginRight: wp('2'),
+    marginRight: wp('3'),
   },
   circleImage: {
     width: Dimensions.get('window').width * 0.25,

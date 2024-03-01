@@ -32,7 +32,7 @@ const HomeHeader = () => {
           loop
           autoPlay
         />
-        <Touchable style={{marginLeft: wp('32')}}>
+        <Touchable style={{marginLeft: wp('33')}}>
           <Image
             source={notificationWhite}
             resizeMode="contain"
