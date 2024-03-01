@@ -48,11 +48,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: wp('90'),
     alignSelf: 'center',
-    marginTop: hp('0'),
+    marginTop: hp('9'),
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    bottom: hp('4'),
+    // position: 'absolute',
+    // bottom: hp('4'),
     // backgroundColor:'green',
     // flex: 1
   },
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'center',
   },
-  
+
   imageStyle: {width: wp('30'), height: hp('15')},
   lockstyle: {
     flex: 0.3,
