@@ -10,14 +10,19 @@ import {PersistGate} from 'redux-persist/integration/react';
 import FlashMessage from 'react-native-flash-message';
 import {persistor, store} from './src/Redux/Reducer';
 import 'react-native-gesture-handler';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const Salt = () => (
-  <Provider store={store}>
-    <PersistGate persistor={persistor} loading={null}>
-      <FlashMessage position="top" />
-      <App />
-    </PersistGate>
-  </Provider>
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <FlashMessage position="top" />
+        <App />
+      </PersistGate>
+    </Provider>
+  </QueryClientProvider>
 );
 
 AppRegistry.registerComponent(appName, () => Salt);

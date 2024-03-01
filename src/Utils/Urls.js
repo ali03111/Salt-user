@@ -1,13 +1,13 @@
 const getCredentials = () => {
   if (__DEV__)
     return {
-      baseURL: 'https://2c34-175-107-236-153.ngrok-free.app/api/',
+      baseURL: 'https://c88c-175-107-236-153.ngrok-free.app/api/',
       imageURL: 'https://virtualrealitycreators.com/trackpal/public/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'https://2c34-175-107-236-153.ngrok-free.app/api/',
+      baseURL: 'https://c88c-175-107-236-153.ngrok-free.app/api/',
       imageURL: 'https://virtualrealitycreators.com/trackpal/public/',
     };
   }
@@ -25,3 +25,4 @@ export const imageUrl = url => {
 
 export const registerUrl = 'register-user';
 export const loginUrl = 'login';
+export const homeContentUrl = 'home-content';
