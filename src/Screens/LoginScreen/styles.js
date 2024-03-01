@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
   logInMain: {
     flex: 1,
     // paddingHorizontal: wp('3.5'),
+    position: 'relative',
+    // backgroundColor: 'red',
   },
   topImage: isIOS => ({
     position: 'absolute',
@@ -23,6 +25,7 @@ export const styles = StyleSheet.create({
     zIndex: 1,
     borderRadius: 20,
     paddingHorizontal: wp('3'),
+    paddingVertical: wp('2'),
     // height: hp('100'),
     overflow: 'visible',
     shadowColor: '#011111',
@@ -45,16 +48,20 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: wp('90'),
     alignSelf: 'center',
-    marginTop: hp('2'),
+    marginTop: hp('0'),
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute',
+    bottom: hp('4'),
+    // backgroundColor:'green',
+    // flex: 1
   },
   socialView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center',
-
   },
+  
   imageStyle: {width: wp('30'), height: hp('15')},
   lockstyle: {
     flex: 0.3,

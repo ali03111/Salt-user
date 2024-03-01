@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     // paddingHorizontal: wp('3'),
     // paddingTop: hp('3'),
     // paddingBottom: hp('6'),
+    position: 'relative',
   },
   topImage: isIOS => ({
     position: 'absolute',
@@ -25,6 +26,7 @@ export const styles = StyleSheet.create({
     zIndex: 1,
     borderRadius: 20,
     paddingHorizontal: wp('3'),
+    paddingVertical: wp('2'),
     // height: hp('100'),
     overflow: 'visible',
     shadowColor: '#011111',

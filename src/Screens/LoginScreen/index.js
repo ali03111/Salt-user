@@ -52,7 +52,7 @@ const LoginScreen = ({navigation}) => {
   const isIOS = Boolean(Platform.OS == 'ios');
 
   return (
-    <ScrollView style={styles.logInMain}>
+    <View style={styles.logInMain}>
       <StatusBar barStyle={isIOS ? 'light-content' : 'dark-content'} />
       <Image
         source={loginBgBlack}
@@ -111,7 +111,7 @@ const LoginScreen = ({navigation}) => {
         ButtonText={'Sign Up'}
         onPress={() => navigation.navigate('RegisterScreen')}
       />
-    </ScrollView>
+    </View>
   );
 };
 export default memo(LoginScreen);
