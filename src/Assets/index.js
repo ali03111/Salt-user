@@ -115,6 +115,7 @@ export {default as profileDelete} from './Icons/profileDelete.png';
 export {default as verify} from './Icons/verify.png';
 export {default as arrowRightIcon} from './Icons/arrow-right.png';
 export {default as addCircle} from './Icons/add-circle.png';
+export {default as sort} from './Icons/sort.png';
 
 // Lotties files
 

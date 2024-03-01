@@ -7,3 +7,4 @@ export {default as AppointmentScreen} from './AppointmentScreen';
 export {default as FavouriteScreen} from './FavouriteScreen';
 export {default as SettingScreen} from './SettingScreen';
 export {default as AppTestN} from './Test';
+export {default as BookAnAppointment} from './BookAnAppointment';

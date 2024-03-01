@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   TopHeader: {
     flexDirection: 'row',
     // marginTop: Platform.OS == 'ios' ? hp('6') : hp('3'),
-    paddingHorizontal: wp('5'),
+    paddingHorizontal: wp('3.5'),
     paddingBottom: hp('3'),
     backgroundColor: Colors.themeRed,
     paddingTop: Platform.OS == 'ios' ? hp('6') : hp('2'),
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   backBtn: {
-    marginLeft: wp('3'),
+    marginLeft: wp('1.5'),
     color: Colors.gray,
     fontSize: hp('2'),
   },
@@ -105,8 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     alignSelf: 'center',
-    width: wp('7'),
-    
+    width: wp('7'),    
   },
   HeaderCenter: {
     flex: 1,
