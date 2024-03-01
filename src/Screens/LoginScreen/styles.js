@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   topImage: isIOS => ({
     position: 'absolute',
     fontSize: hp('4'),
-    marginTop: isIOS ? hp('11') : hp('13'),
+    marginTop: isIOS ? hp('7') : hp('9'),
     alignSelf: 'center',
     marginLeft: wp('7'),
   }),
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     backgroundColor: 'white',
     alignSelf: 'center',
-    marginTop: hp('-26'),
+    marginTop: hp('-34'),
     // position: 'absolute',
     zIndex: 1,
     borderRadius: 20,
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     elevation: 10,
   },
   forgotText: {
-    marginBottom: hp('3'),
+    marginBottom: hp('2'),
     color: Colors.textGray,
     textAlign: 'right',
     marginTop: hp('2'),
@@ -53,6 +53,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center',
+
   },
   imageStyle: {width: wp('30'), height: hp('15')},
   lockstyle: {

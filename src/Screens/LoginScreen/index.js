@@ -58,7 +58,7 @@ const LoginScreen = ({navigation}) => {
         source={loginBgBlack}
         style={{
           width: wp('100'),
-          top: hp('-5'),
+          top: hp('-12'),
         }}
       />
       <TextComponent text={'Log In'} styles={styles.topImage(isIOS)} />
@@ -95,7 +95,7 @@ const LoginScreen = ({navigation}) => {
         />
         <ThemeButton
           title={'Log In'}
-          style={{marginTop: hp('3')}}
+          style={{marginTop: hp('4')}}
           onPress={handleSubmit(loginUser)}
         />
         <TextComponent

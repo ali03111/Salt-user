@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   topImage: isIOS => ({
     position: 'absolute',
     fontSize: hp('4'),
-    marginTop: isIOS ? hp('11') : hp('13'),
+    marginTop: isIOS ? hp('7') : hp('9'),
     alignSelf: 'center',
     marginLeft: wp('7'),
   }),
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     backgroundColor: 'white',
     alignSelf: 'center',
-    marginTop: hp('-26'),
+    marginTop: hp('-34'),
     // position: 'absolute',
     zIndex: 1,
     borderRadius: 20,

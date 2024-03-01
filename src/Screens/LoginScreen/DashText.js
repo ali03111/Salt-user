@@ -1,18 +1,35 @@
-import {hp} from '../../Config/responsive';
+import { StyleSheet, View } from 'react-native';
+import {hp ,wp} from '../../Config/responsive';
+import { Colors } from '../../Theme/Variables';
 
 const {TextComponent} = require('../../Components/TextComponent');
 
-const DashText = ({text, styles}) => {
+const DashText = ({text, localStyle}) => {
   return (
-    <TextComponent
-      text={`------------- Or ${text} With -------------`}
-      styles={{
-        color: 'black',
-        textAlign: 'center',
-        marginTop: hp('15'),
-        ...styles,
-      }}
-    />
+    <View style={{...styles.barMain, ...localStyle}}>
+      <View style={styles.barLine}></View>
+      <TextComponent text={'Or Sign Up with'} styles={styles.barText} />
+      <View style={styles.barLine}></View>
+    </View>
   );
 };
+const styles = StyleSheet.create({
+  barMain: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: hp('10'),
+  },
+  barLine: {
+    width: wp('28'),
+    borderBottomWidth: 1,
+    height: hp('.5'),
+  },
+  barText: {
+    paddingHorizontal: wp('4'),
+    color: Colors.black,
+  },
+})
 export default DashText;
+
+
