@@ -60,6 +60,10 @@ const StackNavigatior = () => {
             )} */}
 
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
+            <Stack.Screen
+              name="EditProfileScreen"
+              component={Screens.EditProfileScreen}
+            />
 
             {/* <Stack.Screen
               name="EditPhoneNumberScreen"

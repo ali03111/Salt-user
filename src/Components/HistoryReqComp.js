@@ -2,7 +2,7 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 import {hp, wp} from '../Config/responsive';
 import {TextComponent} from './TextComponent';
-import {CircleImage} from './CircleImageComponent';
+import {CircleImage} from './CircleImage';
 import {downArrow, information} from '../Assets';
 import ThemeButton from './ThemeButton';
 import {Colors} from '../Theme/Variables';
@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('2.5'),
     marginTop: hp('1'),
     alignItems: 'center',
-    
   },
   nameView: {marginLeft: wp('2'), justifyContent: 'space-between'},
   infIcon: {

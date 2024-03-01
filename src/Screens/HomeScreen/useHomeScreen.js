@@ -9,7 +9,7 @@ export default function useHomeScreen() {
     queryKey: ['homeData'],
     queryFn: () => API.get(homeContentUrl),
   });
-  console.log('first', data?.data);
+  //   console.log('first', data?.data);
 
-  return {data};
+  return {homeContent: data?.data};
 }

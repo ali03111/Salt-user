@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {hp, wp} from '../Config/responsive';
 import {TextComponent} from './TextComponent';
-import {CircleImage} from './CircleImageComponent';
+import {CircleImage} from './CircleImage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   arrowLeftOld,

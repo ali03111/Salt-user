@@ -25,4 +25,5 @@ export const imageUrl = url => {
 
 export const registerUrl = 'register-user';
 export const loginUrl = 'login';
-export const homeContentUrl = 'home-content';
+export const homeContentUrl = 'customer/home-content';
+export const updateProfileUrl = 'customer/update-user';

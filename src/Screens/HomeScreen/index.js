@@ -14,7 +14,7 @@ import {ProfileCardComp} from '../../Components/ProfileCardComp';
 import useHomeScreen from './useHomeScreen';
 
 const HomeScreen = ({navigation}) => {
-  const {} = useHomeScreen();
+  const {homeContent} = useHomeScreen();
   const renderItem = useCallback(
     ({item, index}) => {
       return <UpComingAppCards data={item} />;
@@ -23,6 +23,7 @@ const HomeScreen = ({navigation}) => {
   );
   const topRatedrenderItem = useCallback(
     ({item, index}) => {
+      console.log('item', item);
       return <ProfileCardComp data={item} />;
     },
     [UpcomingData],
@@ -54,7 +55,7 @@ const HomeScreen = ({navigation}) => {
         />
         <HeadingView title={'Top-rated professionals '} />
         <FlatList
-          data={UpcomingData}
+          data={homeContent?.top_rated}
           renderItem={topRatedrenderItem}
           scrollEnabled
           refreshing={false}

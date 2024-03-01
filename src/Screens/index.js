@@ -6,4 +6,5 @@ export {default as MessageScreen} from './MessageScreen';
 export {default as AppointmentScreen} from './AppointmentScreen';
 export {default as FavouriteScreen} from './FavouriteScreen';
 export {default as SettingScreen} from './SettingScreen';
+export {default as EditProfileScreen} from './EditProfileScreen';
 export {default as AppTestN} from './Test';
