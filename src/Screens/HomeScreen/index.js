@@ -11,8 +11,10 @@ import {styles} from './styles';
 import ThemeButton from '../../Components/ThemeButton';
 import {arrowRightIcon} from '../../Assets';
 import {ProfileCardComp} from '../../Components/ProfileCardComp';
+import useHomeScreen from './useHomeScreen';
 
 const HomeScreen = ({navigation}) => {
+  const {} = useHomeScreen();
   const renderItem = useCallback(
     ({item, index}) => {
       return <UpComingAppCards data={item} />;
