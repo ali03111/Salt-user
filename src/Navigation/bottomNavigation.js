@@ -96,6 +96,7 @@ function MybottomTabs() {
     <Tab.Navigator
       sceneContainerStyle={{
         backgroundColor: Colors.themeBlack,
+        paddingBottom: hp('1')
       }}
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'white',
@@ -127,10 +128,11 @@ function MybottomTabs() {
           // overflow: 'hidden',
           height: hp('8'),
           paddingBottom: hp('0'),
-          bottom: Platform.OS == 'ios' ? hp('1.7') : hp('1.5'),
+          bottom: Platform.OS == 'ios' ? hp('0') : hp('0'),
           width: wp('100'),
           alignSelf: 'center',
           overflow: 'hidden',
+          marginTop: hp('-2')          
         },
       })}>
       <Tab.Screen
