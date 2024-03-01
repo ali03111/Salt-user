@@ -53,7 +53,7 @@ const RegisterScreen = ({navigation}) => {
         source={loginBgBlack}
         style={{
           width: wp('100'),
-          top: hp('-5'),
+          top: hp('-12'),
         }}
       />
       <TextComponent text={'Sign Up'} styles={styles.topImage(isIOS)} />
@@ -119,11 +119,11 @@ const RegisterScreen = ({navigation}) => {
         />
         <ThemeButton
           title={'Sign Up'}
-          style={{marginTop: hp('3'), marginBottom: hp('2')}}
+          style={{marginTop: hp('4'), marginBottom: hp('2')}}
           onPress={handleSubmit(signUpButton)}
         />
       </View>
-      <DashText text={'Sign Up'} styles={{marginTop: hp('2')}} />
+      <DashText text={'Sign Up'} localStyle={{marginTop: hp('5')}} />
       <SocialBottomView />
       <BottomText
         text={'Already have an account?'}

@@ -52,13 +52,13 @@ const LoginScreen = ({navigation}) => {
   const isIOS = Boolean(Platform.OS == 'ios');
 
   return (
-    <ScrollView style={styles.logInMain}>
+    <View style={styles.logInMain}>
       <StatusBar barStyle={isIOS ? 'light-content' : 'dark-content'} />
       <Image
         source={loginBgBlack}
         style={{
           width: wp('100'),
-          top: hp('-5'),
+          top: hp('-12'),
         }}
       />
       <TextComponent text={'Log In'} styles={styles.topImage(isIOS)} />
@@ -95,7 +95,7 @@ const LoginScreen = ({navigation}) => {
         />
         <ThemeButton
           title={'Log In'}
-          style={{marginTop: hp('3')}}
+          style={{marginTop: hp('4')}}
           onPress={handleSubmit(loginUser)}
         />
         <TextComponent
@@ -111,7 +111,7 @@ const LoginScreen = ({navigation}) => {
         ButtonText={'Sign Up'}
         onPress={() => navigation.navigate('RegisterScreen')}
       />
-    </ScrollView>
+    </View>
   );
 };
 export default memo(LoginScreen);
