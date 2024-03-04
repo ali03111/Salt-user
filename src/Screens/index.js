@@ -8,3 +8,4 @@ export {default as FavouriteScreen} from './FavouriteScreen';
 export {default as SettingScreen} from './SettingScreen';
 export {default as AppTestN} from './Test';
 export {default as BookAnAppointment} from './BookAnAppointment';
+export {default as ProfessionalList} from './ProfessionalList';

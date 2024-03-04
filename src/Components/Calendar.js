@@ -6,6 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 
  const UseCalendar = () => {
+ 
   const [selected, setSelected] = useState('');
 
   return (
@@ -30,14 +31,26 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
       markedDates={{
         [selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}
       }}
-    style={{
-        
-        height: 'auto',
-        shadowColor: '#000',
-    
+    style={{        
+        height: 'auto',  
+        width: wp('92'),
+        marginLeft: wp('-1') ,
+        paddingBottom: wp('1'),
+        paddingTop: 0,
+        paddingVertical: hp('2'),          
+        borderWidth: wp('0.1'),
+        borderColor: Colors.white,
+        borderRadius: 10,    
+        shadowColor: '#181818',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
       }}
       theme={{
-        backgroundColor: Colors.themeBlack,
         calendarBackground: Colors.themeBlack,
         textSectionTitleColor: Colors.white,
         selectedDayBackgroundColor: Colors.themeRed,
@@ -47,20 +60,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
         textDisabledColor: Colors.grayFaded,
         monthTextColor: Colors.white,
         arrowColor: Colors.white,
-        textDayFontSize: hp('1.6'),
-        borderWidth: 0.1,
-        borderColor: 'white',
-        borderRadius: 5,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-          },
-          shadowOpacity: 0.58,
-          shadowRadius: 5,
-          backgroundColor: Colors.themeBlack,
-          elevation: 24,
+        textDayFontSize: hp('1.5'),  
+        textMonthFontSize: hp('2'),        
+        textDayStyle:{
+          alignItems: 'center',
+          alignSelf: 'center',
+          lineHeight: hp('2.6'),          
+        },
+      
+        
           'stylesheet.calendar.main': {
-           
+            
           },
         'stylesheet.calendar.header': {
             headerContainer: {

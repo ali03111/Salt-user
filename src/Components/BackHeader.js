@@ -52,10 +52,18 @@ const BackHeader = ({
               style: styles.arrowback,
             }}
           />
-          <TextComponent
+           <Image
+            source={saveReset}
+            style={{
+              resizeMode: 'contain',
+              style: styles.arrowback,
+            }}
+          />
+          
+          {/* <TextComponent
             text={saveReset}
             styles={{...styles.backBtn, ...saveResetStyle}}
-          />
+          /> */}
         </Touchable>
       </View>
     </View>

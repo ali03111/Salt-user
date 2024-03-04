@@ -38,6 +38,7 @@ export {default as profile} from './Images/profile.png';
 export {default as dataNotFound1} from './Images/dataNotFound-1.png';
 export {default as dataNotFound2} from './Images/dataNotFound-2.png';
 export {default as greenCircle} from './Images/greenCircle.png';
+export {default as gps} from './Images/gps.png';
 
 // export {default as DemoProfileImage7} from './Images/profile7.png';
 

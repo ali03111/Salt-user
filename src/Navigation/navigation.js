@@ -59,7 +59,8 @@ const StackNavigatior = () => {
               />
             )} */}
 
-            <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} />
+            {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
+            <Stack.Screen name="ProfessionalList" component={Screens.ProfessionalList} />
             {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
 
             {/* <Stack.Screen
