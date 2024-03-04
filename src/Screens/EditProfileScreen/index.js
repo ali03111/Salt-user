@@ -86,7 +86,9 @@ const EditProfileScreen = ({navigation}) => {
             styles={styles.disableText}
           />
         </Pressable>
-        <Pressable style={styles.inputDisable}>
+        <Pressable
+          style={styles.inputDisable}
+          onPress={() => navigation.navigate('ChangePasswordScreen')}>
           <Image source={lock} style={styles.DisableIcon} />
           <TextComponent text={'***************'} styles={styles.passText} />
         </Pressable>
@@ -98,7 +100,7 @@ const EditProfileScreen = ({navigation}) => {
             onPress={() => navigation.navigate('SettingScreen')}
           />
           <ThemeButton
-            title={'Log In'}
+            title={'Save'}
             style={styles.loginBtn}
             textStyle={styles.loginBtnText}
             onPress={handleSubmit(onSave)}

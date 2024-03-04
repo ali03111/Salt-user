@@ -68,6 +68,12 @@ const StackNavigatior = () => {
               name="ChangePasswordScreen"
               component={Screens.ChangePasswordScreen}
             />
+            {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
+            <Stack.Screen
+              name="ProfessionalList"
+              component={Screens.ProfessionalList}
+            />
+            {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
 
             {/* <Stack.Screen
               name="EditPhoneNumberScreen"

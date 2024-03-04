@@ -23,7 +23,7 @@ const HomeScreen = ({navigation}) => {
   );
   const topRatedrenderItem = useCallback(
     ({item, index}) => {
-      console.log('item', item);
+      // console.log('item', item);
       return <ProfileCardComp data={item} />;
     },
     [UpcomingData],

@@ -9,3 +9,5 @@ export {default as SettingScreen} from './SettingScreen';
 export {default as EditProfileScreen} from './EditProfileScreen';
 export {default as ChangePasswordScreen} from './ChangePasswordScreen';
 export {default as AppTestN} from './Test';
+export {default as BookAnAppointment} from './BookAnAppointment';
+export {default as ProfessionalList} from './ProfessionalList';
