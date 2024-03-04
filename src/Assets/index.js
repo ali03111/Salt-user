@@ -116,6 +116,8 @@ export {default as verify} from './Icons/verify.png';
 export {default as arrowRightIcon} from './Icons/arrow-right.png';
 export {default as addCircle} from './Icons/add-circle.png';
 export {default as circleWhite} from './Icons/circleWhite.png';
+export {default as filter} from './Icons/filter.png';
+export {default as filterSet} from './Icons/filterSet.png';
 
 // Lotties files
 

@@ -6,6 +6,8 @@ const {Colors} = require('../../Theme/Variables');
 export const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: Colors.themeBlack
+        backgroundColor: Colors.themeBlack,
+        paddingHorizontal: wp('4'),
+        paddingTop: hp('2.5')
     }
 });

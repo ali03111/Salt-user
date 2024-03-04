@@ -13,9 +13,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: Platform.OS == 'ios' ? hp('2') : hp('-2'),
-    width: wp('92'),
+    width: wp('100'),
     alignSelf: 'center',
     paddingBottom: hp('2'),
+    justifyContent: 'space-between',
+    paddingHorizontal: wp('4')
   },
   nameText: {
     fontSize: hp('3'),
