@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 0.3,
     borderColor: Colors.grayFaded,
+
     // marginBottom: hp('2.5'),
     shadowColor: '#000000',
     shadowOffset: {

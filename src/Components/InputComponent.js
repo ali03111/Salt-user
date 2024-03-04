@@ -148,5 +148,7 @@ const styles = StyleSheet.create({
   inputIcon: {
     // marginLeft: hp('2'),
     flex: 0.5,
+    width: wp('1'),
+    resizeMode: 'contain',
   },
 });

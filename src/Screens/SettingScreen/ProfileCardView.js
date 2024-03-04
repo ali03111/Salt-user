@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height: hp('15'),
     borderColor: Colors.grayFaded,
     borderRadius: 10,
-    borderWidth: 0.3,
+    borderWidth: 0.5,
     alignSelf: 'center',
     marginTop: hp('2'),
     alignItems: 'center',

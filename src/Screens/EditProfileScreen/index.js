@@ -1,6 +1,12 @@
 import React from 'react';
 import {memo} from 'react';
-import {Image, ImageBackground, ScrollView, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Pressable,
+  ScrollView,
+  View,
+} from 'react-native';
 import BackHeader from '../../Components/BackHeader';
 import {styles} from './styles';
 import {CircleImage} from '../../Components/CircleImage';
@@ -8,10 +14,17 @@ import {imageUrl} from '../../Utils/Urls';
 import useEditProfileScreen from './useEditProfileScreen';
 import {Touchable} from '../../Components/Touchable';
 import {hp} from '../../Config/responsive';
-import {addProfileImage, circleWhite, userIcon} from '../../Assets';
+import {
+  addProfileImage,
+  circleWhite,
+  email,
+  lock,
+  userIcon,
+} from '../../Assets';
 import ThemeButton from '../../Components/ThemeButton';
 import {InputComponent} from '../../Components/InputComponent';
 import {Colors} from '../../Theme/Variables';
+import {TextComponent} from '../../Components/TextComponent';
 
 const EditProfileScreen = ({navigation}) => {
   const {
@@ -27,7 +40,11 @@ const EditProfileScreen = ({navigation}) => {
   } = useEditProfileScreen();
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
-      <BackHeader headerTitle={'Edit Profile'} />
+      <BackHeader
+        headerTitle={'Edit Profile'}
+        goBack={() => navigation.goBack()}
+        isBack={true}
+      />
       <View style={styles.editProfileMain}>
         <ImageBackground
           source={circleWhite}
@@ -62,12 +79,31 @@ const EditProfileScreen = ({navigation}) => {
             tintColor: Colors.themeRed,
           }}
         />
-
-        <ThemeButton
-          title={'Log In'}
-          style={{marginTop: hp('4')}}
-          onPress={handleSubmit(onSave)}
-        />
+        <Pressable style={styles.inputDisable}>
+          <Image source={email} style={styles.DisableIcon} />
+          <TextComponent
+            text={'dinojames@supportsnap.com'}
+            styles={styles.disableText}
+          />
+        </Pressable>
+        <Pressable style={styles.inputDisable}>
+          <Image source={lock} style={styles.DisableIcon} />
+          <TextComponent text={'***************'} styles={styles.passText} />
+        </Pressable>
+        <View style={styles.btns}>
+          <ThemeButton
+            title={'Cancel'}
+            style={styles.cancelBtn}
+            textStyle={styles.cancelBtnText}
+            onPress={() => navigation.navigate('SettingScreen')}
+          />
+          <ThemeButton
+            title={'Log In'}
+            style={styles.loginBtn}
+            textStyle={styles.loginBtnText}
+            onPress={handleSubmit(onSave)}
+          />
+        </View>
       </View>
     </View>
   );

@@ -17,18 +17,23 @@ const BackHeader = ({
   backTextStyle,
   titleStyle,
   numberOfLines,
+  isBack,
+  rightIconStyle,
+  onRightPress,
 }) => {
   return (
     <View style={[styles.TopHeader, {...style}]}>
       <View style={styles.HeaderLeft}>
-        <Touchable onPress={goBack} style={styles.backMain}>
-          <Image
-            source={arrowBack}
-            style={{
-              resizeMode: 'contain',
-              ...styles.arrowback,
-            }}
-          />
+        <Touchable onPress={goBack} style={styles.backMain} disabled={!isBack}>
+          {isBack && (
+            <Image
+              source={arrowBack}
+              style={{
+                resizeMode: 'contain',
+                ...styles.arrowback,
+              }}
+            />
+          )}
           <TextComponent
             text={backText}
             styles={{...styles.backBtn, ...backTextStyle}}
@@ -38,23 +43,16 @@ const BackHeader = ({
       <View style={styles.HeaderCenter}>
         <TextComponent
           text={headerTitle}
-          //   text={headerTitle}
           numberOfLines={numberOfLines ?? 1}
           styles={{...styles.HeaderTitle, ...titleStyle}}
         />
       </View>
       <View style={styles.HeaderRight}>
-        <Touchable style={styles.backMain}>
+        <Touchable style={styles.backMain} onPress={onRightPress}>
           <Image
             source={icon}
-            style={{
-              resizeMode: 'contain',
-              style: styles.arrowback,
-            }}
-          />
-          <TextComponent
-            text={saveReset}
-            styles={{...styles.backBtn, ...saveResetStyle}}
+            resizeMode={'contain'}
+            style={{...styles.rightIcon, ...rightIconStyle}}
           />
         </Touchable>
       </View>
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: hp('2'),
   },
   HeaderTitle: {
-    fontSize: hp('2'),
+    fontSize: hp('2.5'),
     color: Colors.white,
     fontWeight: '500',
     textAlignVertical: 'center',
@@ -106,7 +104,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     width: wp('7'),
-    
+  },
+  rightIcon: {
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // textAlign: 'center',
+    // alignSelf: 'center',
+    width: wp('6'),
+    // backgroundColor: 'yellow',
+    height: hp('3'),
   },
   HeaderCenter: {
     flex: 1,
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'blue',
     height: hp('5'),
     textAlignVertical: 'center',
-    marginTop: hp('3'),
+    marginTop: hp('1'),
   },
   HeaderRight: {
     flex: 0.5,

@@ -10,7 +10,6 @@ export {default as facebookImage} from './Images/facebook.png';
 export {default as activeBar} from './Images/activeBar.png';
 export {default as handShake} from './Images/handShake.png';
 export {default as divider} from './Images/divider.png';
-
 export {default as splashOne} from './Images/splash-one.png';
 export {default as splashTwo} from './Images/splash-two.png';
 export {default as syncPhone} from './Images/syncphone.png';

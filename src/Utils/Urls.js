@@ -1,13 +1,13 @@
 const getCredentials = () => {
   if (__DEV__)
     return {
-      baseURL: 'https://c88c-175-107-236-153.ngrok-free.app/api/',
+      baseURL: 'https://c4aa-175-107-236-153.ngrok-free.app/api/',
       imageURL: 'https://virtualrealitycreators.com/trackpal/public/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'https://c88c-175-107-236-153.ngrok-free.app/api/',
+      baseURL: 'https://c4aa-175-107-236-153.ngrok-free.app/api/',
       imageURL: 'https://virtualrealitycreators.com/trackpal/public/',
     };
   }

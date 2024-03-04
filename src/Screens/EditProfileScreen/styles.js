@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {hp, wp} from '../../Config/responsive';
+import {Colors} from '../../Theme/Variables';
 
 export const styles = StyleSheet.create({
   editProfileMain: {
@@ -44,5 +45,57 @@ export const styles = StyleSheet.create({
     shadowOpacity: 3,
     shadowRadius: 7.68,
     elevation: 10,
+  },
+  inputDisable: {
+    width: '100%',
+    borderWidth: 1,
+    height: hp('7'),
+    marginVertical: hp('0'),
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderColor: 'rgb(118, 118, 118)',
+    marginTop: hp('2'),
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    paddingHorizontal: wp('2'),
+  },
+  DisableIcon: {
+    flex: 0.5,
+    resizeMode: 'contain',
+  },
+  disableText: {
+    width: '86%',
+    color: Colors.black,
+    paddingHorizontal: wp('2'),
+    paddingLeft: wp('3'),
+    fontWeight: '500',
+  },
+  passText: {
+    width: '86%',
+    color: Colors.black,
+    paddingHorizontal: wp('2'),
+    paddingLeft: wp('3'),
+    fontWeight: '500',
+    lineHeight: hp('7.5'),
+  },
+  btns: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: hp('2'),
+    paddingTop: hp('4'),
+  },
+  cancelBtn: {
+    backgroundColor: 'rgba(215, 48, 0, 0.1)',
+    width: wp('40'),
+  },
+  cancelBtnText: {
+    color: Colors.themeRed,
+  },
+  loginBtn: {
+    backgroundColor: Colors.themeRed,
+    width: wp('40'),
+  },
+  loginBtnText: {
+    color: Colors.white,
   },
 });

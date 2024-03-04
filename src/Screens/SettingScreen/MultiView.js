@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   mainView: {
     alignItems: 'center',
     // flexDirection: 'row',
-    borderWidth: 0.3,
+    borderWidth: 0.5,
     borderColor: Colors.grayFaded,
     marginBottom: hp('2.5'),
     shadowColor: '#000000',
