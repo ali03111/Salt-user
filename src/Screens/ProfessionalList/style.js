@@ -9,5 +9,9 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.themeBlack,
         paddingHorizontal: wp('4'),
         paddingTop: hp('2.5')
-    }
+    },
+    upComingFlatlistView: {
+        alignItems: 'center',
+        paddingVertical: hp('2'),
+      },
 });

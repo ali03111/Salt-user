@@ -11,3 +11,4 @@ export {default as ChangePasswordScreen} from './ChangePasswordScreen';
 export {default as AppTestN} from './Test';
 export {default as BookAnAppointment} from './BookAnAppointment';
 export {default as ProfessionalList} from './ProfessionalList';
+export {default as ProfessionalProfile} from './ProfessionalProfile';
