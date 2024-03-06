@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     backgroundColor: 'white',
     alignSelf: 'center',
-    marginTop: hp('-30'),
+    marginTop: hp('-32'),
     // position: 'absolute',
     zIndex: 1,
     borderRadius: 20,

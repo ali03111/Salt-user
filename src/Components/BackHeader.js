@@ -49,23 +49,10 @@ const BackHeader = ({
       </View>
       <View style={styles.HeaderRight}>
         <Touchable style={styles.styleCheck} onPress={onRightPress}>
-          <Image
-            source={icon}
-            style={{
-              resizeMode: 'contain',
-              style: styles.arrowback,
-             
-            }}
-          />
-           </Touchable>
-           <Touchable style={styles.backMain} onPress={onRightPress}>
-          <Image
-            source={saveReset}
-            style={{
-              resizeMode: 'contain',
-              style: styles.arrowback,
-            }}
-          />
+          <Image source={icon} style={styles.filterIcon} />
+        </Touchable>
+        <Touchable style={styles.backMain} onPress={onRightPress}>
+          <Image source={saveReset} style={styles.filterIcon} />
 
           {/* <TextComponent
             text={saveReset}
@@ -121,14 +108,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     alignSelf: 'center',
-    width: wp('7'), 
+    width: wp('7'),
   },
-  styleCheck:{
+  filterIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
     alignSelf: 'center',
-    width: wp('7'), 
+    width: wp('7'),
+    resizeMode: 'contain',
+    height: hp('3'),
+    marginLeft: wp('2'),
+  },
+  styleCheck: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignSelf: 'center',
+    width: wp('7'),
     marginRight: wp('1'),
     // backgroundColor: 'green'
   },
@@ -139,13 +136,13 @@ const styles = StyleSheet.create({
     height: hp('5'),
     textAlign: 'center',
     marginTop: hp('1'),
-    // width: wp('100'),   
+    // width: wp('100'),
   },
   HeaderRight: {
     flex: 0.5,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
 });
 export default BackHeader;

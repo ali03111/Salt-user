@@ -1,14 +1,14 @@
 const getCredentials = () => {
   if (__DEV__)
     return {
-      baseURL: 'https://c4aa-175-107-236-153.ngrok-free.app/api/',
-      imageURL: 'https://virtualrealitycreators.com/trackpal/public/',
+      baseURL: 'http://3.20.179.123/salt/api/',
+      imageURL: 'http://3.20.179.123/salt/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'https://c4aa-175-107-236-153.ngrok-free.app/api/',
-      imageURL: 'https://virtualrealitycreators.com/trackpal/public/',
+      baseURL: 'http://3.20.179.123/salt/api/',
+      imageURL: 'http://3.20.179.123/salt/',
     };
   }
 };

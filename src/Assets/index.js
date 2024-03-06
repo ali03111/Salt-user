@@ -118,6 +118,10 @@ export {default as addCircle} from './Icons/add-circle.png';
 export {default as circleWhite} from './Icons/circleWhite.png';
 export {default as filter} from './Icons/filter.png';
 export {default as filterSet} from './Icons/filterSet.png';
+export {default as fav} from './Icons/fav.png';
+export {default as exp} from './Icons/exp.png';
+export {default as rating} from './Icons/rating.png';
+export {default as review} from './Icons/review.png';
 
 // Lotties files
 
