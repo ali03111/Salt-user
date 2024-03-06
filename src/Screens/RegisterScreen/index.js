@@ -53,7 +53,7 @@ const RegisterScreen = ({navigation}) => {
         source={loginBgBlack}
         style={{
           width: wp('100'),
-          top: hp('-5'),
+          top: hp('-12'),
         }}
       />
       <TextComponent text={'Sign Up'} styles={styles.topImage(isIOS)} />
@@ -68,8 +68,8 @@ const RegisterScreen = ({navigation}) => {
             getValues,
             placeholder: 'Name',
             isImage: userIcon,
-            defaultValue: __DEV__ ? 'userHund' : '',
             tintColor: Colors.themeRed,
+            defaultValue: __DEV__ ? 'userHund' : '',
           }}
         />
         <InputComponent
@@ -99,8 +99,8 @@ const RegisterScreen = ({navigation}) => {
             defaultValue: '',
             isSecure: true,
             inputIconStyle: styles.lockstyle,
-            defaultValue: __DEV__ ? 'Test@123' : '',
             tintColor: Colors.themeRed,
+            defaultValue: __DEV__ ? 'Test@123' : '',
           }}
         />
         <InputComponent
@@ -121,11 +121,12 @@ const RegisterScreen = ({navigation}) => {
           }}
         />
         <ThemeButton
-          title={'Log In'}
-          style={{marginTop: hp('3'), marginBottom: hp('2')}}
+          title={'Sign Up'}
+          style={{marginTop: hp('4'), marginBottom: hp('2')}}
+          onPress={handleSubmit(signUpButton)}
         />
       </View>
-      <DashText text={'Sign Up'} styles={{marginTop: hp('2')}} />
+      <DashText text={'Sign Up'} localStyle={{marginTop: hp('5')}} />
       <SocialBottomView />
       <BottomText
         text={'Already have an account?'}

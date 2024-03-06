@@ -37,7 +37,11 @@ const StackNavigatior = () => {
         )}
         {!isLogin && (
           <>
-            <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
+            {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
+            {/* <Stack.Screen
+              name="AppTestNew"
+              component={Screens.AppTestN}
+            /> */}
 
             <Stack.Screen name="LoginScreen" component={Screens.LoginScreen} />
             <Stack.Screen
@@ -54,7 +58,28 @@ const StackNavigatior = () => {
                 component={Screens.EditPhoneNumberScreen}
               />
             )} */}
+            {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
+
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
+            <Stack.Screen
+              name="ProfessionalList"
+              component={Screens.ProfessionalList}
+            />
+            <Stack.Screen
+              name="EditProfileScreen"
+              component={Screens.EditProfileScreen}
+            />
+            <Stack.Screen
+              name="ChangePasswordScreen"
+              component={Screens.ChangePasswordScreen}
+            />
+            <Stack.Screen
+              name="BookAnAppointment"
+              component={Screens.BookAnAppointment}
+            />
+
+            {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
+
             {/* <Stack.Screen
               name="EditPhoneNumberScreen"
               component={Screens.EditPhoneNumberScreen}

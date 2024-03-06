@@ -1,7 +1,7 @@
 import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import {hp, wp} from '../../Config/responsive';
 import {Colors} from '../../Theme/Variables';
-import {CircleImage} from '../../Components/CircleImageComponent';
+import {CircleImage} from '../../Components/CircleImage';
 import {TextComponent} from '../../Components/TextComponent';
 import {arrowLeftOld, arrowRightOld} from '../../Assets';
 import {Touchable} from '../../Components/Touchable';
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height: hp('15'),
     borderColor: Colors.grayFaded,
     borderRadius: 10,
-    borderWidth: 0.3,
+    borderWidth: 0.5,
     alignSelf: 'center',
     marginTop: hp('2'),
     alignItems: 'center',

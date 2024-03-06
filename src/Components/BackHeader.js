@@ -17,18 +17,23 @@ const BackHeader = ({
   backTextStyle,
   titleStyle,
   numberOfLines,
+  isBack,
+  rightIconStyle,
+  onRightPress,
 }) => {
   return (
     <View style={[styles.TopHeader, {...style}]}>
       <View style={styles.HeaderLeft}>
-        <Touchable onPress={goBack} style={styles.backMain}>
-          <Image
-            source={arrowBack}
-            style={{
-              resizeMode: 'contain',
-              ...styles.arrowback,
-            }}
-          />
+        <Touchable onPress={goBack} style={styles.backMain} disabled={!isBack}>
+          {isBack && (
+            <Image
+              source={arrowBack}
+              style={{
+                resizeMode: 'contain',
+                ...styles.arrowback,
+              }}
+            />
+          )}
           <TextComponent
             text={backText}
             styles={{...styles.backBtn, ...backTextStyle}}
@@ -38,24 +43,34 @@ const BackHeader = ({
       <View style={styles.HeaderCenter}>
         <TextComponent
           text={headerTitle}
-          //   text={headerTitle}
           numberOfLines={numberOfLines ?? 1}
           styles={{...styles.HeaderTitle, ...titleStyle}}
         />
       </View>
       <View style={styles.HeaderRight}>
-        <Touchable style={styles.backMain}>
+        <Touchable style={styles.styleCheck} onPress={onRightPress}>
           <Image
             source={icon}
             style={{
               resizeMode: 'contain',
               style: styles.arrowback,
+             
             }}
           />
-          <TextComponent
+           </Touchable>
+           <Touchable style={styles.backMain} onPress={onRightPress}>
+          <Image
+            source={saveReset}
+            style={{
+              resizeMode: 'contain',
+              style: styles.arrowback,
+            }}
+          />
+
+          {/* <TextComponent
             text={saveReset}
             styles={{...styles.backBtn, ...saveResetStyle}}
-          />
+          /> */}
         </Touchable>
       </View>
     </View>
@@ -65,10 +80,10 @@ const styles = StyleSheet.create({
   TopHeader: {
     flexDirection: 'row',
     // marginTop: Platform.OS == 'ios' ? hp('6') : hp('3'),
-    paddingHorizontal: wp('5'),
+    paddingHorizontal: wp('3.5'),
     paddingBottom: hp('3'),
     backgroundColor: Colors.themeRed,
-    paddingTop: Platform.OS == 'ios' ? hp('6') : hp('2'),
+    paddingTop: Platform.OS == 'ios' ? hp('6') : hp('3'),
     height: Platform.OS == 'ios' ? hp('12') : hp('8'),
     alignItems: 'center',
   },
@@ -82,14 +97,15 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   backBtn: {
-    marginLeft: wp('3'),
+    marginLeft: wp('1.5'),
     color: Colors.gray,
     fontSize: hp('2'),
   },
   HeaderTitle: {
-    fontSize: hp('2'),
+    fontSize: hp('2.5'),
     color: Colors.white,
     fontWeight: '500',
+    // width: wp('60'),
     textAlignVertical: 'center',
     // justifyContent: 'center',
   },
@@ -105,20 +121,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     alignSelf: 'center',
-    width: wp('7'),
+    width: wp('7'), 
+  },
+  styleCheck:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignSelf: 'center',
+    width: wp('7'), 
+    marginRight: wp('1'),
+    // backgroundColor: 'green'
   },
   HeaderCenter: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     // backgroundColor: 'blue',
     height: hp('5'),
-    textAlignVertical: 'center',
-    marginTop: hp('3'),
+    textAlign: 'center',
+    marginTop: hp('1'),
+    // width: wp('100'),   
   },
   HeaderRight: {
     flex: 0.5,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'flex-end',
+    flexDirection: 'row'
   },
 });
 export default BackHeader;

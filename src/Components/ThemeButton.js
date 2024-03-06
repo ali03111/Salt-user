@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   button: {
     height: hp('6.5'),
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 7,
     // marginVertical: 20,
     alignItems: 'center',
     flexDirection: 'row',
@@ -40,8 +40,11 @@ const styles = StyleSheet.create({
     height: 20,
     // marginBottom: 5,
     resizeMode: 'contain',
+    marginLeft: wp('3'),
   },
   text: {
+    fontSize: hp('1.8'),
+    fontWeight: '600',
     // fontSize: heightPercentageToDP('2'),
     color: Colors.white,
     textAlign: 'center',

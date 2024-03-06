@@ -11,8 +11,10 @@ import {styles} from './styles';
 import ThemeButton from '../../Components/ThemeButton';
 import {arrowRightIcon} from '../../Assets';
 import {ProfileCardComp} from '../../Components/ProfileCardComp';
+import useHomeScreen from './useHomeScreen';
 
 const HomeScreen = ({navigation}) => {
+  const {homeContent} = useHomeScreen();
   const renderItem = useCallback(
     ({item, index}) => {
       return <UpComingAppCards data={item} />;
@@ -21,6 +23,7 @@ const HomeScreen = ({navigation}) => {
   );
   const topRatedrenderItem = useCallback(
     ({item, index}) => {
+      // console.log('item', item);
       return <ProfileCardComp data={item} />;
     },
     [UpcomingData],
@@ -49,10 +52,11 @@ const HomeScreen = ({navigation}) => {
           textStyle={styles.btnText}
           image={arrowRightIcon}
           imageStyle={styles.btnImage}
+          onPress={() => navigation.navigate('BookAnAppointment')}
         />
         <HeadingView title={'Top-rated professionals '} />
         <FlatList
-          data={UpcomingData}
+          data={homeContent?.top_rated}
           renderItem={topRatedrenderItem}
           scrollEnabled
           refreshing={false}

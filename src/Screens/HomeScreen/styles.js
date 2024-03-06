@@ -13,9 +13,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: Platform.OS == 'ios' ? hp('2') : hp('-2'),
-    width: wp('95'),
+    width: wp('100'),
     alignSelf: 'center',
     paddingBottom: hp('2'),
+    justifyContent: 'space-between',
+    paddingHorizontal: wp('4')
   },
   nameText: {
     fontSize: hp('3'),
@@ -27,7 +29,7 @@ export const styles = StyleSheet.create({
   headingView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: wp('94'),
+    width: wp('92'),
     alignSelf: 'center',
     alignItems: 'center',
     alignContent: 'center',
@@ -84,10 +86,11 @@ export const styles = StyleSheet.create({
     height: hp('25'),
     alignItems: 'center',
     paddingRight: wp('4'),
+    marginLeft: wp('1'),
   },
   bookBtnView: {
     backgroundColor: 'white',
-    width: wp('90'),
+    width: wp('92'),
     alignSelf: 'center',
     justifyContent: 'space-between',
   },
@@ -96,11 +99,14 @@ export const styles = StyleSheet.create({
     width: wp('20'),
     height: hp('3'),
     marginRight: wp('-2'),
+    transform: [{ rotate: '180deg'}]
   },
   btnText: {color: 'black', fontWeight: 'bold', marginLeft: wp('4')},
   topRatedView: {
     paddingRight: wp('3'),
     paddingLeft: wp('3'),
     marginTop: hp('2'),
+    marginLeft: wp('1'),
+
   },
 });

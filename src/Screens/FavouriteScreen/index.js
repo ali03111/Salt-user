@@ -4,7 +4,7 @@ import {FlatList, Image, Pressable, TouchableOpacity, View} from 'react-native';
 import BackHeader from '../../Components/BackHeader';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
-import {CircleImage} from '../../Components/CircleImageComponent';
+import {CircleImage} from '../../Components/CircleImage';
 import {hp, wp} from '../../Config/responsive';
 import ThemeButton from '../../Components/ThemeButton';
 import {heartFill} from '../../Assets';

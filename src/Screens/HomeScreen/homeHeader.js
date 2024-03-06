@@ -17,13 +17,17 @@ const HomeHeader = () => {
   return (
     <View style={styles.headerView}>
       <View style={styles.firstView}>
+        <View style={{flexDirection: 'row', alignItems: 'center', width: wp('70') }}>
+
+        
         <View>
           <TextComponent
             omponent
             text={'Hello Melaa'}
             styles={styles.nameText}
           />
-          <TextComponent text={'Welcome to Salt!'} styles={{top: hp('1')}} />
+          <TextComponent text={'Welcome to Salt!'} styles={{top: hp('0')}} />
+          
         </View>
         <Lottie
           source={handShakeLottie}
@@ -32,14 +36,15 @@ const HomeHeader = () => {
           loop
           autoPlay
         />
-        <Touchable style={{marginLeft: wp('32')}}>
+        </View>
+        <Touchable >
           <Image
             source={notificationWhite}
             resizeMode="contain"
             style={styles.notiIcon}
           />
         </Touchable>
-        <Touchable style={{marginLeft: wp('4')}}>
+        <Touchable >
           <Image
             source={settingWhite}
             resizeMode="contain"

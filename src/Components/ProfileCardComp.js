@@ -10,22 +10,25 @@ import {
 } from 'react-native';
 import {Colors} from '../Theme/Variables';
 import {hp, wp} from '../Config/responsive';
-import {CircleImage} from './CircleImageComponent';
+import {CircleImage} from './CircleImage';
 import {TextComponent} from './TextComponent';
 import {divider, star} from '../Assets';
 import ThemeButton from './ThemeButton';
 
-export const ProfileCardComp = () => {
+export const ProfileCardComp = ({data}) => {
   const url =
     'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg';
   return (
     <View style={styles.viewStyle}>
       <CircleImage uri={true} image={url} styles={styles.circleImage} />
-      <TextComponent text={'Ricky Jonathan'} styles={styles.name} />
+      <TextComponent
+        text={`${data?.name} ${data?.last_name}`}
+        styles={styles.name}
+      />
       <View style={styles.reviewView}>
         <Image source={star} resizeMode="contain" style={styles.starImage} />
         <TextComponent
-          text={'24 Reviews'}
+          text={`${data?.ratings_received_count} Reviews`}
           fade={true}
           styles={{fontSize: hp('1.8')}}
         />
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     backgroundColor: Colors.themeBlack,
     elevation: 24,
-    marginRight: wp('2'),
+    marginRight: wp('3'),
   },
   circleImage: {
     width: Dimensions.get('window').width * 0.25,

@@ -4,7 +4,7 @@ import {hp, wp} from '../../Config/responsive';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import {Colors} from '../../Theme/Variables';
-import {CircleImage} from '../../Components/CircleImageComponent';
+import {CircleImage} from '../../Components/CircleImage';
 import Entypo from 'react-native-vector-icons/Entypo';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

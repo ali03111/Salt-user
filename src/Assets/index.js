@@ -10,7 +10,6 @@ export {default as facebookImage} from './Images/facebook.png';
 export {default as activeBar} from './Images/activeBar.png';
 export {default as handShake} from './Images/handShake.png';
 export {default as divider} from './Images/divider.png';
-
 export {default as splashOne} from './Images/splash-one.png';
 export {default as splashTwo} from './Images/splash-two.png';
 export {default as syncPhone} from './Images/syncphone.png';
@@ -38,6 +37,7 @@ export {default as profile} from './Images/profile.png';
 export {default as dataNotFound1} from './Images/dataNotFound-1.png';
 export {default as dataNotFound2} from './Images/dataNotFound-2.png';
 export {default as greenCircle} from './Images/greenCircle.png';
+export {default as gps} from './Images/gps.png';
 
 // export {default as DemoProfileImage7} from './Images/profile7.png';
 
@@ -114,10 +114,16 @@ export {default as userMinus} from './Icons/userMinus.png';
 export {default as profileDelete} from './Icons/profileDelete.png';
 export {default as verify} from './Icons/verify.png';
 export {default as arrowRightIcon} from './Icons/arrow-right.png';
+export {default as addCircle} from './Icons/add-circle.png';
+export {default as circleWhite} from './Icons/circleWhite.png';
+export {default as filter} from './Icons/filter.png';
+export {default as filterSet} from './Icons/filterSet.png';
 
 // Lotties files
 
 export {default as handShakeLottie} from './Lotties/Hand.json';
+export {default as saltBlack} from './Lotties/SaltBlack.json';
+export {default as saltWhite} from './Lotties/SaltWhite.json';
 
 export {default as currentUserLottie} from './Lotties/currentUser1.json';
 export {default as destinationLottie} from './Lotties/destination1.json';

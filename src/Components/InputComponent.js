@@ -115,11 +115,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: hp('7'),
     // borderRadius: 15,
-    marginVertical: hp('1'),
+    marginVertical: hp('0'),
     alignItems: 'center',
     flexDirection: 'row',
     borderColor: 'rgb(118, 118, 118)',
-    marginTop: hp('2.5'),
+    marginTop: hp('2'),
     backgroundColor: 'transparent',
     borderRadius: 10,
     paddingHorizontal: wp('2'),
@@ -148,5 +148,7 @@ const styles = StyleSheet.create({
   inputIcon: {
     // marginLeft: hp('2'),
     flex: 0.5,
+    width: wp('1'),
+    resizeMode: 'contain',
   },
 });

@@ -30,8 +30,10 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
+    price: 30,
+    rateCount: 45,
   },
   {
     id: 1,
@@ -39,8 +41,10 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
+    price: 30,
+    rateCount: 45,
   },
   {
     id: 2,
@@ -48,8 +52,10 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
+    price: 30,
+    rateCount: 45,
   },
   {
     id: 3,
@@ -57,8 +63,10 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
+    price: 30,
+    rateCount: 45,
   },
   {
     id: 4,
@@ -66,8 +74,10 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: 'Nov 27, 2023',
     time: '4:32 PM',
+    price: 30,
+    rateCount: 45,
   },
   {
     id: 5,
@@ -75,8 +85,10 @@ export const UpcomingData = [
     location: 'Gregory added you to the  ',
     image:
       'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
-    date: '27 - Nov - 2023',
+    date: '27 , Nov 2023',
     time: '4:32 PM',
+    price: 30,
+    rateCount: 45,
   },
 ];
 
@@ -375,6 +387,21 @@ export const tripsTypes = [
     title: 'Share Location',
     details:
       'Easily connect with your loved ones. As the host, you can share your real-time location with friends and family, allowing them to track you throughout your journey.',
+  },
+];
+
+export const locationType = [
+  {
+    locId: 'houseCall',
+    label: 'House Call',
+  },
+  {
+    locId: 'onSite',
+    label: 'On Site',
+  },
+  {
+    locId: 'both',
+    label: 'Both',
   },
 ];
 

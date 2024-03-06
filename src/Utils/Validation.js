@@ -120,10 +120,10 @@ const editProfileScheme = yup.object().shape({
     .min(2, 'Name must be atleast 2 characters')
     .max(50, 'Name must be of 50 characters'),
   // phone: yup.string().required('Please enter your number'),
-  email: yup
-    .string()
-    .email('Email must be valid')
-    .required('Please Enter your email'),
+  // email: yup
+  //   .string()
+  //   .email('Email must be valid')
+  //   .required('Please Enter your email'),
 });
 const addPostScheme = yup.object().shape({
   name: yup
