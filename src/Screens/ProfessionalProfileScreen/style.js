@@ -7,8 +7,10 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.themeBlack,
-    paddingHorizontal: wp('4'),
     paddingTop: hp('2.5'),
+  },
+  innerContainer:{
+    
   },
   profileView: {
     width: Dimensions.get('window').width * 0.31,
@@ -68,8 +70,9 @@ export const styles = StyleSheet.create({
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
     borderColor: Colors.grayFadedBtn,
-    paddingVertical: hp('3.5'),
-    marginVertical: hp('3.5'),
+    paddingVertical: hp('2.5'),
+    marginVertical: hp('2.5'),
+    marginHorizontal: wp('4'),
   },
   expNumber: {
     fontSize: hp('1.8'),
@@ -81,5 +84,27 @@ export const styles = StyleSheet.create({
     color: Colors.grayFaded,
     textAlign: 'center',
     marginTop: hp('.5'),
+  },
+  tabBarIndicatorStyle: {
+    backgroundColor: Colors.themeRed,
+    height: hp('0.5'),
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    width: wp('33'),
+    alignSelf: 'center',
+    marginLeft: wp('0.5'),
+    
+  },
+  tabBarStyle: {
+    paddingTop: hp('0'),
+    backgroundColor: Colors.themeBlack,
+    width: wp('100'),
+    alignSelf: 'center',
+    borderBottomColor: Colors.grayFaded,
+    borderBottomWidth: 0.5,
+  },
+  upComingFlatlistView: {
+    alignItems: 'center',
+    paddingVertical: hp('2'),
   },
 });

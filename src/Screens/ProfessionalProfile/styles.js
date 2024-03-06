@@ -1,0 +1,19 @@
+import {hp, wp} from '../../Config/responsive';
+
+const {StyleSheet, Platform} = require('react-native');
+const {Colors} = require('../../Theme/Variables');
+
+export const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor: Colors.themeBlack,
+        paddingHorizontal: wp('4'),
+        paddingTop: hp('2.5')
+    },
+    titleSytle:{
+        textAlign: 'center',
+        fontSize: hp('2.2'),
+        fontWeight: '500',
+    }
+  
+});

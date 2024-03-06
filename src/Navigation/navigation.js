@@ -59,7 +59,10 @@ const StackNavigatior = () => {
               />
             )} */}
             {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
-
+            {/* <Stack.Screen
+              name="ProfessionalProfile"
+              component={Screens.ProfessionalProfile}
+            /> */}
             <Stack.Screen
               name="ProfessionalProfileScreen"
               component={Screens.ProfessionalProfileScreen}
