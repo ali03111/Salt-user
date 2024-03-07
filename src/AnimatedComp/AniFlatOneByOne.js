@@ -18,7 +18,12 @@ import * as Animatable from 'react-native-animatable';
 const url =
   'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg';
 
-export const AniFlatOneByOne = ({data, InnerCompnonet, flatViewStyle}) => {
+export const AniFlatOneByOne = ({
+  data,
+  InnerCompnonet,
+  flatViewStyle,
+  flatListProps,
+}) => {
   const {width, height} = Dimensions.get('screen');
 
   const handlePress = () => {
@@ -37,11 +42,15 @@ export const AniFlatOneByOne = ({data, InnerCompnonet, flatViewStyle}) => {
 
   return (
     <FlatList
-      data={data}
-      renderItem={renderItem}
-      scrollEnabled
-      contentContainerStyle={{
-        ...flatViewStyle,
+      {...{
+        data: data,
+        renderItem: renderItem,
+        contentContainerStyle: {...flatViewStyle},
+        scrollEnabled: true,
+        showsVerticalScrollIndicator: false,
+        showsHorizontalScrollIndicator: false,
+        ...flatListProps,     
+        
       }}
     />
   );
@@ -155,48 +164,3 @@ const styles = StyleSheet.create({
     marginLeft: hp('1'),
   },
 });
-//   <View
-//   style={{
-//     ...styles.subContainer,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     paddingTop: Platform.OS == 'ios' ? 80 : 10,
-//     flex: 1,
-//   }}>
-//   <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>
-//     Cards Manager
-//   </Text>
-//   {/* CARD 1 */}
-//   <Animated.View style={{marginTop: 25, opacity: firstOpacity}}>
-//     <View style={{...backCardStyle, backgroundColor: '#e3224f'}}></View>
-//     <View
-//       style={{
-//         ...cardStyles,
-//         backgroundColor: '#e3224f',
-//       }}>
-//       {/* <Cardstxt logo="blue" /> */}
-//     </View>
-//   </Animated.View>
-//   {/* CARD 2 */}
-//   <Animated.View style={{marginTop: 25, opacity: secondOpacity}}>
-//     <View style={{...backCardStyle, backgroundColor: '#22c3e3'}}></View>
-//     <View
-//       style={{
-//         ...cardStyles,
-//         backgroundColor: '#22c3e3',
-//       }}>
-//       {/* <Cardstxt logo="pink" /> */}
-//     </View>
-//   </Animated.View>
-//   {/* CARD 3 */}
-//   <Animated.View style={{marginTop: 25, opacity: thirdOpacity}}>
-//     <View style={{...backCardStyle, backgroundColor: '#e89715'}}></View>
-//     <View
-//       style={{
-//         ...cardStyles,
-//         backgroundColor: '#e89715',
-//       }}>
-//       {/* <Cardstxt logo="blue" /> */}
-//     </View>
-//   </Animated.View>
-// </View>

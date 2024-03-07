@@ -33,6 +33,11 @@ const ProfessionalList = ({navigation, route}) => {
               onReq={() => {
                 onBook(appData?.id, item?.user?.id);
               }}
+              onProView={() =>
+                navigation.navigate('ProfessionalProfileScreen', {
+                  item: {user: item, appData},
+                })
+              }
             />
           )}
         />

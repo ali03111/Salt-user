@@ -405,6 +405,115 @@ export const locationType = [
   },
 ];
 
+export const ProfesReviews = [
+  {
+    id: 0,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 4.5,
+  },
+  {
+    id: 1,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 5,
+  },
+  {
+    id: 1,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 5,
+  },
+  {
+    id: 1,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 5,
+  },
+  {
+    id: 1,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 5,
+  },
+  {
+    id: 1,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 5,
+  },
+  {
+    id: 1,
+    name: 'Gregory Hayes',
+    reviewText:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.',
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+    rateCount: 5,
+  },
+];
+
+export const portfolioImages = [
+  {
+    id: 0,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+  {
+    id: 1,
+    image:
+      'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg',
+  },
+];
+
 export const tripProfileColors = [
   '#FFD700',
   '#DAA520',

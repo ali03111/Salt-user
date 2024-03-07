@@ -52,7 +52,7 @@ const LoginScreen = ({navigation}) => {
   const isIOS = Boolean(Platform.OS == 'ios');
 
   return (
-    <View style={styles.logInMain}>
+    <KeyBoardWrapper style={styles.logInMain}>
       <StatusBar barStyle={isIOS ? 'light-content' : 'dark-content'} />
       <Image
         source={loginBgBlack}
@@ -111,7 +111,7 @@ const LoginScreen = ({navigation}) => {
         ButtonText={'Sign Up'}
         onPress={() => navigation.navigate('RegisterScreen')}
       />
-    </View>
+    </KeyBoardWrapper>
   );
 };
 export default memo(LoginScreen);

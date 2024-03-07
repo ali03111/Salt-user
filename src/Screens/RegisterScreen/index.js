@@ -126,12 +126,12 @@ const RegisterScreen = ({navigation}) => {
           onPress={handleSubmit(signUpButton)}
         />
       </View>
-      <DashText text={'Sign Up'} localStyle={{marginTop: hp('5')}} />
+      <DashText text={'Sign Up'} localStyle={{marginTop: hp('4')}} />
       <SocialBottomView />
       <BottomText
         text={'Already have an account?'}
         ButtonText={'Log In'}
-        viewStyle={{marginTop: hp('0')}}
+        viewStyle={{marginTop: hp('-2')}}
         onPress={() => navigation.navigate('LoginScreen')}
       />
     </KeyBoardWrapper>
