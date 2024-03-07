@@ -6,11 +6,16 @@ const {Colors} = require('../../Theme/Variables');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // flexGrow: 1,
     backgroundColor: Colors.themeBlack,
     paddingTop: hp('2.5'),
   },
-  innerContainer:{
-    
+  imageView: {
+    marginVertical: hp('2'),
+    marginHorizontal: wp('2'),
+    width: wp('45'),
+    height: hp('20'),
+    borderRadius: 10,
   },
   profileView: {
     width: Dimensions.get('window').width * 0.31,
@@ -80,7 +85,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('1.5'),
   },
   expText: {
-    fontSize: hp('1.8'),
+    fontSize: hp('1.5'),
     color: Colors.grayFaded,
     textAlign: 'center',
     marginTop: hp('.5'),
@@ -93,7 +98,6 @@ export const styles = StyleSheet.create({
     width: wp('33'),
     alignSelf: 'center',
     marginLeft: wp('0.5'),
-    
   },
   tabBarStyle: {
     paddingTop: hp('0'),
@@ -106,5 +110,17 @@ export const styles = StyleSheet.create({
   upComingFlatlistView: {
     alignItems: 'center',
     paddingVertical: hp('2'),
+    
+  },
+  aboutTitle: {
+    fontSize: hp('2.5'),
+    fontWeight: '500',
+    paddingHorizontal: wp('3'),
+    paddingTop: hp('2'),
+  },
+  aboutText: {
+    fontSize: hp('1.6'),
+    paddingHorizontal: wp('3'),
+    paddingTop: hp('1'),
   },
 });
