@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React, {memo} from 'react';
 import BackHeader from '../../Components/BackHeader';
 import {styles} from './style';
 import {arrowBack, exp, fav} from '../../Assets';
 import {TextComponent} from '../../Components/TextComponent';
-import {ScrollView} from 'react-native-gesture-handler';
+// import {ScrollView} from 'react-native-gesture-handler';
 import {CircleImage} from '../../Components/CircleImage';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {imageUrl} from '../../Utils/Urls';
@@ -19,8 +19,7 @@ import ThemeButton from '../../Components/ThemeButton';
 
 const ProfessionalProfileScreen = () => {
   return (
-    <View style={{flex: 1}}>
-    {/* <> */}
+    <>    
       <BackHeader
         isBack={true}
         headerTitle={'Professional List'}
@@ -75,7 +74,7 @@ const ProfessionalProfileScreen = () => {
           </View>     
 
       </ScrollView>
-      </View>
+      </>
 
   );
 };
