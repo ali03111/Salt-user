@@ -4,9 +4,7 @@ import {Colors, FontSize} from '../Theme/Variables';
 import {hp, wp} from '../Config/responsive';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const UseCalendar = () => {
-  const [selected, setSelected] = useState('');
-
+const UseCalendar = ({onSelectVal, selectedVal}) => {
   return (
     <Calendar
       firstDay={1}
@@ -30,10 +28,10 @@ const UseCalendar = () => {
         )
       }
       onDayPress={day => {
-        setSelected(day.dateString);
+        onSelectVal(day.dateString);
       }}
       markedDates={{
-        [selected]: {
+        [selectedVal]: {
           selected: true,
           disableTouchEvent: true,
           selectedDotColor: 'orange',
@@ -46,7 +44,7 @@ const UseCalendar = () => {
         paddingBottom: wp('1'),
         paddingTop: 0,
         paddingVertical: hp('2'),
-        borderWidth: wp('0.1'),
+        borderWidth: 0.3,
         borderColor: Colors.grayFaded,
         borderRadius: 10,
         shadowColor: '#181818',

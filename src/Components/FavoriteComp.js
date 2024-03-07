@@ -7,48 +7,52 @@ import {downArrow, information} from '../Assets';
 import ThemeButton from './ThemeButton';
 import {Colors} from '../Theme/Variables';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {imageUrl} from '../Utils/Urls';
 
-export const FavoriteComp = ({data, viewStyle}) => {
+export const FavoriteComp = ({data, viewStyle, onReq, onProView}) => {
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.userView}>
-
         <View style={{flexDirection: 'row'}}>
-        <CircleImage image={data?.image} uri={true} styles={styles.bigImg} />
-        <View style={styles.nameView}>
-          <TextComponent
-            text={`${data?.name}`}
-            styles={{fontSize: hp('2.5'), fontWeight: '500'}}
+          <CircleImage
+            image={imageUrl(data?.image)}
+            uri={true}
+            styles={styles.bigImg}
           />
-          <View style={styles.locationStyle}>
-            <MaterialCommunityIcons
-              name="star"
-              color="#FFCB4B"
-              size={hp('2')}
-            />
+          <View style={styles.nameView}>
             <TextComponent
-              text={`( ${data?.rateCount} Reviews )`}
-              fade={true}
-              styles={{
-                fontSize: hp('1.6'),
-                marginLeft: wp('1'),
-               
-              }}
-              numberOfLines={1}
+              text={`${data?.user?.email}`}
+              styles={{fontSize: hp('2.5'), fontWeight: '500'}}
             />
+            <View style={styles.locationStyle}>
+              <MaterialCommunityIcons
+                name="star"
+                color="#FFCB4B"
+                size={hp('2')}
+              />
+              <TextComponent
+                text={`( ${data?.rateCount} Reviews )`}
+                fade={true}
+                styles={{
+                  fontSize: hp('1.6'),
+                  marginLeft: wp('1'),
+                }}
+                numberOfLines={1}
+              />
+            </View>
           </View>
         </View>
-        
 
-        </View>
-
-       <View>
-       <TextComponent
-            text={`$${data?.price}`}
-            styles={{fontSize: hp('2.5'), fontWeight: '500', marginRight: wp('1')}}
+        <View>
+          <TextComponent
+            text={`$${data?.price ?? '80'}`}
+            styles={{
+              fontSize: hp('2.5'),
+              fontWeight: '500',
+              marginRight: wp('1'),
+            }}
           />
-       </View>
-
+        </View>
       </View>
 
       <View style={styles.viewBtnView}>
@@ -62,11 +66,13 @@ export const FavoriteComp = ({data, viewStyle}) => {
             marginLeft: wp('2'),
           }}
           textStyle={{fontSize: hp('1.5')}}
+          onPress={onProView}
         />
         <ThemeButton
           title={'Send Request'}
           style={{...styles.viewAppBtn, backgroundColor: 'red'}}
           textStyle={{fontSize: hp('1.5')}}
+          onPress={onReq}
         />
       </View>
     </View>
@@ -74,11 +80,11 @@ export const FavoriteComp = ({data, viewStyle}) => {
 };
 
 const styles = StyleSheet.create({
-    bigImg:{
-        width: Dimensions.get('window').width * 0.13,
-        height: Dimensions.get('window').width * 0.13,
-    },
- 
+  bigImg: {
+    width: Dimensions.get('window').width * 0.13,
+    height: Dimensions.get('window').width * 0.13,
+  },
+
   comingView: {
     paddingVertical: hp('2'),
     width: wp('90'),
@@ -90,13 +96,13 @@ const styles = StyleSheet.create({
     // paddingHorizontal: wp('3'),
     overflow: 'hidden',
     shadowColor: '#181818',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     backgroundColor: Colors.themeBlack,
     // height: hp('22'),
     // backgroundColor: 'white',
@@ -155,7 +161,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: hp('1.5'),
   },
-  
 
   locationStyle: {
     marginTop: hp('0.5'),

@@ -1,9 +1,12 @@
-import {useQuery} from '@tanstack/react-query';
+import {useMutation, useQuery} from '@tanstack/react-query';
 import API from '../../Utils/helperFunc';
-import {braidDataUrl} from '../../Utils/Urls';
+import {braidDataUrl, findProfessUrl} from '../../Utils/Urls';
 import {useState} from 'react';
+import {errorMessage} from '../../Config/NotificationMessage';
+import {locationType} from '../../Utils/localDB';
+import {getProperLocation} from '../../Utils/globalFunctions';
 
-const useBookAnAppointment = () => {
+const useBookAnAppointment = ({navigate}) => {
   const {data} = useQuery({
     queryKey: ['braidData'],
     queryFn: () => API.get(braidDataUrl),
@@ -14,22 +17,65 @@ const useBookAnAppointment = () => {
     size: null,
     length: null,
     locationId: null,
-    data: null,
+    date: null,
     time: null,
     locationDes: {coords: {}, des: null},
     radius: 10,
   });
 
-  const {length, locationDes, size, time, type, locationId, radius} = details;
+  const {length, locationDes, size, time, type, locationId, radius, date} =
+    details;
 
   const updateState = data => setDetails(prev => ({...prev, ...data}));
 
-  const onSelectValue = (key, val) => {
-    console.log('kjsgdvjkgsdkvkjsdvjksdbkjvbsdkbvkjsdbkvbsdkjvbksdbvksd', val);
-    updateState({[key]: val});
+  const {mutate} = useMutation({
+    mutationFn: body => {
+      console.log(
+        'bodybodybodybodybodybodybodybodybodybodybody',
+        body?.currentLocation?.coords,
+      );
+      return API.post(findProfessUrl, body);
+    },
+    onSuccess: ({ok, data}) => {
+      console.log('dbhvjklsdbjkvbdsjkbvkdsbvsbdjkvbsdkjbvsdbkvsdbvsdjk', data);
+      if (ok) {
+        navigate('ProfessionalList', {data: data});
+        // successMessage('Your profile sucessfully updated!');
+        // // dispatch({type: types.UpdateProfile, payload: data.data});
+      }
+    },
+    onError: ({message}) => {
+      console.log('lksjdbvjklsbkljvbsdklvblsdkbvlksdbvlksdbvklsdbv', message);
+      errorMessage(message);
+    },
+  });
+
+  const findProfessFun = async () => {
+    if (
+      type != null &&
+      size != null &&
+      length != null &&
+      date != null &&
+      locationId != null
+    ) {
+      const loc = await getProperLocation();
+      console.log('sdlkbcklsdbvlkdbklsd', {...loc, range: radius});
+      updateState({locationDes: {...loc, range: radius}});
+      mutate({
+        consumer_location: {currentLocation: {...loc, range: radius}},
+        braid_type_id: type,
+        braid_length_id: length,
+        braid_size_id: size,
+        location_id: locationId,
+        date: date,
+        time: time,
+      });
+    } else errorMessage('Please select all options!');
   };
 
-  console.log('kjsdbvkjsbdkjvbsdkjvbksjdbkjsdbvkjsdb', data?.data);
+  const onSelectValue = (key, val) => {
+    updateState({[key]: val});
+  };
 
   return {
     data: data?.data,
@@ -39,6 +85,8 @@ const useBookAnAppointment = () => {
     length,
     locationId,
     radius,
+    date,
+    findProfessFun,
   };
 };
 

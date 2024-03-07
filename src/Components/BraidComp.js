@@ -13,12 +13,6 @@ export default function BraidComp({
   data,
   selectedVal,
 }) {
-  console.log(
-    ' data?.find(res => res?.id == selectedAge) data?.find(res => res?.id == selectedAge) data?.find(res => res?.id == selectedAge) data?.find(res => res?.id == selectedAge)',
-    data?.filter(res => res?.id == selectedVal),
-    selectedVal,
-  );
-
   return (
     <>
       <View style={{...braidContainerStyles, paddingBottom: hp('1')}}>

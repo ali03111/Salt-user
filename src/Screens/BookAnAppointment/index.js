@@ -22,9 +22,18 @@ import {styles} from './styles';
 import {locationType} from '../../Utils/localDB';
 import Slider from '@react-native-community/slider';
 
-export default function BookAnAppoint() {
-  const {data, onSelectValue, length, size, type, locationId, radius} =
-    useBookAnAppointment();
+export default function BookAnAppoint({navigation}) {
+  const {
+    data,
+    onSelectValue,
+    length,
+    size,
+    type,
+    locationId,
+    radius,
+    date,
+    findProfessFun,
+  } = useBookAnAppointment(navigation);
 
   const [selectedButton, setSelectedButton] = useState(null);
 
@@ -51,7 +60,10 @@ export default function BookAnAppoint() {
       <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
       <ScrollView style={styles.container}>
         <View style={styles.innerContainer}>
-          <UseCalendar />
+          <UseCalendar
+            onSelectVal={data => onSelectValue('date', data)}
+            selectedVal={date}
+          />
           <View
             style={{
               borderBottomWidth: wp('0.1'),
@@ -138,7 +150,7 @@ export default function BookAnAppoint() {
 
           <Slider
             style={styles.rangeSld}
-            minimumValue={radius}
+            minimumValue={10}
             maximumValue={100}
             minimumTrackTintColor="#FFFFFF"
             maximumTrackTintColor={Colors.grayFaded}
@@ -154,19 +166,9 @@ export default function BookAnAppoint() {
               title={'Find Professionals'}
               style={styles.profesStyle}
               textStyle={{fontSize: hp('2')}}
+              onPress={findProfessFun}
             />
           )}
-          {/* <View style={styles.locationMarkStyle}>
-            <TextComponent
-              text={truncateText(exampleText, maxLength)}
-              styles={styles.markerTitle}
-            />
-            <Image
-              source={gps}
-              resizeMode="contain"
-              style={styles.markerIconStyle}
-            />
-          </View> */}
         </View>
       </ScrollView>
     </>

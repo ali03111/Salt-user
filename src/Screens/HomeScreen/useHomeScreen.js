@@ -6,7 +6,7 @@ import {useQuery} from '@tanstack/react-query';
 
 export default function useHomeScreen() {
   const {data} = useQuery({
-    queryKey: ['homeData'],
+    queryKey: ['homeDataCous'],
     queryFn: () => API.get(homeContentUrl),
   });
   //   console.log('first', data?.data);
