@@ -40,14 +40,7 @@ export const styles = StyleSheet.create({
     fontSize: FontSize.scale12,
     marginLeft: wp('2'),
   },
-  viewProfile: {
-    alignSelf: 'center',
-    width: wp('90'),
-    height: hp('5'),
-    borderRadius: 5,
-    backgroundColor: Colors.grayFadedBtn,
-    marginTop: hp('2'),
-  },
+  
   hearticon: {
     // aspectRatio: 1,
     width: wp('6'),
@@ -56,13 +49,16 @@ export const styles = StyleSheet.create({
     marginTop: hp('1'),
     marginRight: wp('2'),
   },
+  viewProfileWrapper:{
+    paddingHorizontal: wp('2')
+  },
   viewProfile: {
     alignSelf: 'center',
-    width: wp('90'),
+    // width: wp('90'),
     height: hp('5'),
     borderRadius: 5,
     backgroundColor: Colors.grayFadedBtn,
-    marginTop: hp('2'),
+    marginVertical: hp('1'),
   },
   viewProfile1: {
     alignSelf: 'center',

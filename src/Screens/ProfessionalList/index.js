@@ -31,7 +31,8 @@ const ProfessionalList = ({navigation, route}) => {
               }}
               data={item}
               onReq={() => {
-                onBook(appData?.id, item?.user?.id);
+                console.log("kjsbdjvbsdjkvbkjdsbvjdsbvbds")
+                // onBook(appData?.id, item?.user?.id);
               }}
               onProView={() =>
                 navigation.navigate('ProfessionalProfileScreen', {

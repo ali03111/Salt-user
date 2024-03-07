@@ -62,7 +62,10 @@ const FavouriteScreen = () => {
             <Image source={heartFill} style={styles.hearticon} />
           </TouchableOpacity>
         </View>
-        <ThemeButton title={'View Profile'} style={styles.viewProfile} />
+        <View style={styles.viewProfileWrapper}>
+
+        <ThemeButton title={'View Profile'} style={styles.viewProfile}  />
+        </View>
       </View>
     );
   };

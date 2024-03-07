@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React, {memo} from 'react';
 import BackHeader from '../../Components/BackHeader';
 import {styles} from './style';
-import {arrowBack, exp, fav} from '../../Assets';
+import {arrowBack, exp, fav, rating, review} from '../../Assets';
 import {TextComponent} from '../../Components/TextComponent';
 // import {ScrollView} from 'react-native-gesture-handler';
 import {CircleImage} from '../../Components/CircleImage';
@@ -24,6 +24,7 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
     navigation,
     route,
   );
+  console.log( 'userdata' , user?.user?.name);
   return (
     <View style={{flexGrow: 1, backgroundColor: Colors.themeBlack}}>
       <BackHeader
@@ -42,7 +43,7 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             uri={true}
           />
         </View>
-        <TextComponent text={'James Dean'} styles={styles.userName} />
+        <TextComponent text={user?.user?.name} styles={styles.userName} />
         <TextComponent
           text={'House Call service provider'}
           styles={styles.userDesignation}
@@ -57,14 +58,14 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
           </View>
           <View style={styles.userInfo}>
             <View style={styles.expIconMain}>
-              <Image source={exp} style={styles.expIcon} />
+              <Image source={rating} style={styles.expIcon} />
             </View>
             <TextComponent text={'4.8'} styles={styles.expNumber} />
             <TextComponent text={'Rating'} styles={styles.expText} />
           </View>
           <View style={styles.userInfo}>
             <View style={styles.expIconMain}>
-              <Image source={exp} style={styles.expIcon} />
+              <Image source={review} style={styles.expIcon} />
             </View>
             <TextComponent text={'37+'} styles={styles.expNumber} />
             <TextComponent text={'Reviews'} styles={styles.expText} />
@@ -79,9 +80,9 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
           style={{
             borderTopWidth: 0.5,
             borderColor: Colors.grayFaded,
-            paddingTop: hp('4'),
-            marginTop: hp('3'),
-            paddingBottom: hp('3'),
+            paddingTop: hp('3'),
+            marginTop: hp('2'),
+            paddingBottom: hp('2'),
             marginHorizontal: wp('4'),
           }}>
           <ThemeButton
