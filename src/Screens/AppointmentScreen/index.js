@@ -73,12 +73,16 @@ function MyTabBar({state, descriptors, navigation, msgCount}) {
   );
 }
 
-const AppointmentScreen = () => {
+const AppointmentScreen = ({navigation}) => {
   const Tab = createMaterialTopTabNavigator();
 
   return (
     <View style={{flex: 1}}>
-      <BackHeader icon={addCircle} headerTitle={'Appointments'}  />
+      <BackHeader
+        saveReset={addCircle}
+        headerTitle={'Appointments'}
+        onRightPress={() => navigation.navigate('BookAnAppointment')}
+      />
       <Tab.Navigator
         initialRouteName={'Upcoming'}
         screenOptions={{
@@ -90,8 +94,7 @@ const AppointmentScreen = () => {
         }}
         sceneContainerStyle={{
           backgroundColor: Colors.themeBlack,
-        }}> 
-        
+        }}>
         <Tab.Screen
           name={`Upcoming`}
           options={{
@@ -120,7 +123,6 @@ const AppointmentScreen = () => {
         />
       </Tab.Navigator>
     </View>
-   
   );
 };
 

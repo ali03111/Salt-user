@@ -15,7 +15,8 @@ import useAbout from './about';
 import {Colors} from '../../Theme/Variables';
 import {hp} from '../../Config/responsive';
 
-export default function CustomTabs() {
+export default function CustomTabs({gallery}) {
+  console.log('gallerygallery', gallery);
   const Tab = createMaterialTopTabNavigator();
 
   return (
@@ -61,6 +62,7 @@ export default function CustomTabs() {
           },
         }}
         component={useGallery}
+        initialParams={gallery}
       />
       <Tab.Screen
         name={`useReviews`}

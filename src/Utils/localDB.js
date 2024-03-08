@@ -514,6 +514,33 @@ export const portfolioImages = [
   },
 ];
 
+export const timeSlots = [
+  {
+    id: 0,
+    label: '10:00 Am to 12:00PM',
+  },
+  {
+    id: 1,
+    label: '10:00 Am to 12:00PM',
+  },
+  {
+    id: 2,
+    label: '10:00 Am to 12:00PM',
+  },
+  {
+    id: 3,
+    label: '10:00 Am to 12:00PM',
+  },
+  {
+    id: 4,
+    label: '10:00 Am to 12:00PM',
+  },
+  {
+    id: 5,
+    label: '10:00 Am to 12:00PM',
+  },
+];
+
 export const tripProfileColors = [
   '#FFD700',
   '#DAA520',

@@ -1,6 +1,6 @@
 import {useMutation, useQuery} from '@tanstack/react-query';
 import API from '../../Utils/helperFunc';
-import {braidDataUrl, findProfessUrl} from '../../Utils/Urls';
+import {braidDataUrl, findProfessUrl, getAppProUrl} from '../../Utils/Urls';
 import {useState} from 'react';
 import {errorMessage} from '../../Config/NotificationMessage';
 import {locationType} from '../../Utils/localDB';
@@ -30,23 +30,19 @@ const useBookAnAppointment = ({navigate}) => {
 
   const {mutate} = useMutation({
     mutationFn: body => {
-      console.log(
-        'bodybodybodybodybodybodybodybodybodybodybody',
-        body?.currentLocation?.coords,
-      );
+      console.log('bodybodybodybodybodybodybodybodybodybodybody', body);
       return API.post(findProfessUrl, body);
     },
     onSuccess: ({ok, data}) => {
       console.log('dbhvjklsdbjkvbdsjkbvkdsbvsbdjkvbsdkjbvsdbkvsdbvsdjk', data);
       if (ok) {
-        navigate('ProfessionalList', {data: data});
+        navigate('ProfessionalList', {
+          createdObj: data?.appointmentCreated,
+          url: getAppProUrl,
+        });
         // successMessage('Your profile sucessfully updated!');
         // // dispatch({type: types.UpdateProfile, payload: data.data});
-      }
-    },
-    onError: ({message}) => {
-      console.log('lksjdbvjklsbkljvbsdklvblsdkbvlksdbvlksdbvklsdbv', message);
-      errorMessage(message);
+      } else errorMessage(data?.message);
     },
   });
 
@@ -68,7 +64,7 @@ const useBookAnAppointment = ({navigate}) => {
         braid_size_id: size,
         location_id: locationId,
         date: date,
-        time: time,
+        time: time?.label,
       });
     } else errorMessage('Please select all options!');
   };
@@ -87,6 +83,7 @@ const useBookAnAppointment = ({navigate}) => {
     radius,
     date,
     findProfessFun,
+    time,
   };
 };
 

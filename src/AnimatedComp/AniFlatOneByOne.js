@@ -23,6 +23,7 @@ export const AniFlatOneByOne = ({
   InnerCompnonet,
   flatViewStyle,
   flatListProps,
+  emptyView,
 }) => {
   const {width, height} = Dimensions.get('screen');
 
@@ -49,8 +50,8 @@ export const AniFlatOneByOne = ({
         scrollEnabled: true,
         showsVerticalScrollIndicator: false,
         showsHorizontalScrollIndicator: false,
-        ...flatListProps,     
-        
+        ListEmptyComponent: {emptyView},
+        ...flatListProps,
       }}
     />
   );

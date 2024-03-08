@@ -18,8 +18,8 @@ const Salt = () => (
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <FlashMessage position="top" />
         <App />
+        <FlashMessage position="top" />
       </PersistGate>
     </Provider>
   </QueryClientProvider>

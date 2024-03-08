@@ -21,10 +21,7 @@ export const ProfileCardComp = ({data}) => {
   return (
     <View style={styles.viewStyle}>
       <CircleImage uri={true} image={url} styles={styles.circleImage} />
-      <TextComponent
-        text={`${data?.name} ${data?.last_name}`}
-        styles={styles.name}
-      />
+      <TextComponent text={`${data?.name}`} styles={styles.name} />
       <View style={styles.reviewView}>
         <Image source={star} resizeMode="contain" style={styles.starImage} />
         <TextComponent

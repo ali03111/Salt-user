@@ -18,18 +18,23 @@ import CustomTabs from './tabs';
 import ThemeButton from '../../Components/ThemeButton';
 import KeyBoardWrapper from '../../Components/KeyboardWrapper';
 import useProfessionalProfileScreen from './useProfessionalProfileScreen';
+import {locationType} from '../../Utils/localDB';
 
 const ProfessionalProfileScreen = ({navigation, route}) => {
   const {user, appData, onBook} = useProfessionalProfileScreen(
     navigation,
     route,
   );
+
+  console.log('useruseruseruseruseruseruseruseruseruseruser', user);
+
   return (
     <View style={{flexGrow: 1, backgroundColor: Colors.themeBlack}}>
       <BackHeader
         isBack={true}
         headerTitle={'Professional List'}
         saveReset={fav}
+        goBack={() => navigation.goBack()}
       />
       <ScrollView
         contentContainerStyle={styles.container}
@@ -44,7 +49,11 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
         </View>
         <TextComponent text={'James Dean'} styles={styles.userName} />
         <TextComponent
-          text={'House Call service provider'}
+          text={`${
+            locationType.filter(
+              res => res?.locId == user?.user?.location?.loc_data,
+            )[0]?.label
+          } service provider`}
           styles={styles.userDesignation}
         />
         <View style={styles.infoMain}>
@@ -70,7 +79,10 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             <TextComponent text={'Reviews'} styles={styles.expText} />
           </View>
         </View>
-        <CustomTabs />
+        <CustomTabs
+          gallery={user?.user?.past_works}
+          o={'kjsdbvjksbdjkvbsdkjvb'}
+        />
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextComponent text={'Price'} styles={styles.aboutTitle} />
           <TextComponent text={`$${'10'}`} styles={styles.aboutTitle} />

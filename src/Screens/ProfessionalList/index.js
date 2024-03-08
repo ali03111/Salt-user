@@ -30,6 +30,7 @@ const ProfessionalList = ({navigation, route}) => {
                 marginBottom: hp('2'),
               }}
               data={item}
+              appData={appData}
               onReq={() => {
                 onBook(appData?.id, item?.user?.id);
               }}

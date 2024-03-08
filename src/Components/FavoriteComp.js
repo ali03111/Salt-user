@@ -9,19 +9,25 @@ import {Colors} from '../Theme/Variables';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {imageUrl} from '../Utils/Urls';
 
-export const FavoriteComp = ({data, viewStyle, onReq, onProView}) => {
+export const FavoriteComp = ({data, viewStyle, onReq, onProView, appData}) => {
+  const isRequested = Boolean(
+    data?.requested_apointments.filter(
+      res => res?.appointment_id == appData?.id,
+    )[0],
+  );
+
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.userView}>
         <View style={{flexDirection: 'row'}}>
           <CircleImage
-            image={imageUrl(data?.image)}
+            image={imageUrl(data?.user?.image)}
             uri={true}
             styles={styles.bigImg}
           />
           <View style={styles.nameView}>
             <TextComponent
-              text={`${data?.user?.email}`}
+              text={`${data?.user?.name}`}
               styles={{fontSize: hp('2.5'), fontWeight: '500'}}
             />
             <View style={styles.locationStyle}>
@@ -33,10 +39,7 @@ export const FavoriteComp = ({data, viewStyle, onReq, onProView}) => {
               <TextComponent
                 text={`( ${data?.rateCount} Reviews )`}
                 fade={true}
-                styles={{
-                  fontSize: hp('1.6'),
-                  marginLeft: wp('1'),
-                }}
+                styles={styles.reviewText}
                 numberOfLines={1}
               />
             </View>
@@ -46,11 +49,7 @@ export const FavoriteComp = ({data, viewStyle, onReq, onProView}) => {
         <View>
           <TextComponent
             text={`$${data?.price ?? '80'}`}
-            styles={{
-              fontSize: hp('2.5'),
-              fontWeight: '500',
-              marginRight: wp('1'),
-            }}
+            styles={styles.priceText}
           />
         </View>
       </View>
@@ -58,22 +57,22 @@ export const FavoriteComp = ({data, viewStyle, onReq, onProView}) => {
       <View style={styles.viewBtnView}>
         <ThemeButton
           title={'View Profile'}
-          style={styles.viewAppBtn}
-          image={downArrow}
-          imageStyle={{
-            tintColor: 'white',
-            width: wp('2.5'),
-            marginLeft: wp('2'),
+          style={{
+            ...styles.viewAppBtn,
+            width: isRequested ? wp('85') : wp('40'),
           }}
+          imageStyle={styles.viewProBTN}
           textStyle={{fontSize: hp('1.5')}}
           onPress={onProView}
         />
-        <ThemeButton
-          title={'Send Request'}
-          style={{...styles.viewAppBtn, backgroundColor: 'red'}}
-          textStyle={{fontSize: hp('1.5')}}
-          onPress={onReq}
-        />
+        {!isRequested && (
+          <ThemeButton
+            title={'Book Appointment'}
+            style={{...styles.viewAppBtn, backgroundColor: 'red'}}
+            textStyle={{fontSize: hp('1.5')}}
+            onPress={onReq}
+          />
+        )}
       </View>
     </View>
   );
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
   },
   viewAppBtn: {
     backgroundColor: Colors.grayFadedBtn,
-    width: wp('38'),
+    width: wp('40'),
     height: hp('5'),
     alignItems: 'center',
     fontSize: hp('1.5'),
@@ -166,5 +165,19 @@ const styles = StyleSheet.create({
     marginTop: hp('0.5'),
     flexDirection: 'row',
     alignItems: 'flex-start',
+  },
+  reviewText: {
+    fontSize: hp('1.6'),
+    marginLeft: wp('1'),
+  },
+  priceText: {
+    fontSize: hp('2.5'),
+    fontWeight: '500',
+    marginRight: wp('1'),
+  },
+  viewProBTN: {
+    tintColor: 'white',
+    width: wp('2.5'),
+    marginLeft: wp('2'),
   },
 });

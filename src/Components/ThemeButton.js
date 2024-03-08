@@ -5,12 +5,21 @@ import {Touchable} from './Touchable';
 import {share} from '@/Assets/Images';
 import {hp, wp} from '../Config/responsive';
 
-const ThemeButton = ({title, onPress, image, style, textStyle, imageStyle}) => {
+const ThemeButton = ({
+  title,
+  onPress,
+  image,
+  style,
+  textStyle,
+  imageStyle,
+  disable,
+}) => {
   return (
     // <ShadowButton>
     <Touchable
       Opacity={0.7}
       onPress={onPress}
+      disabled={disable}
       style={[styles.button, {justifyContent: 'center', ...style}]}>
       <Text style={[styles.text, {...textStyle}]}>{title}</Text>
       {image && (

@@ -39,7 +39,7 @@ const getProperLocation = () => {
                 latitude: info.coords.latitude,
                 longitude: info.coords.longitude,
               },
-              description: 'locationName',
+              description: 'Street338 Catherine St, Columbia.',
             });
           },
           error => {
@@ -59,7 +59,7 @@ const getProperLocation = () => {
                 latitude: info.coords.latitude,
                 longitude: info.coords.longitude,
               },
-              description: 'locationName',
+              description: 'Street338 Catherine St, Columbia.',
             });
           },
           error => {

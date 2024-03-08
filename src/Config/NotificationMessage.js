@@ -20,7 +20,7 @@ export const successMessage = (description, continerStyle) => {
     message: 'Success',
     description: description,
     floating: true,
-    backgroundColor: Colors.primaryColor,
+    backgroundColor: Colors.themeRed,
     style: {alignItems: 'center', ...continerStyle},
   });
 };

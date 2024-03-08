@@ -1,11 +1,22 @@
-import {useMutation, useQueryClient} from '@tanstack/react-query';
+import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import API from '../../Utils/helperFunc';
 import {sendReqUrl} from '../../Utils/Urls';
 import {errorMessage, successMessage} from '../../Config/NotificationMessage';
 
 const useProfessionalList = ({navigate}, {params}) => {
-  const {data} = params;
+  const {createdObj, url} = params;
+
+  // Get QueryClient from the context
   const queryClient = useQueryClient();
+
+  const {data} = useQuery({
+    queryKey: ['profList'],
+    queryFn: () => API.get(`${url}/${createdObj.id}`),
+  });
+  console.log(
+    'datadatadatadatadatadatadatadata',
+    data?.data?.professionals[0]?.requested_apointments,
+  );
 
   const {mutate} = useMutation({
     mutationFn: ({appId, proId}) => {
@@ -17,7 +28,7 @@ const useProfessionalList = ({navigate}, {params}) => {
     },
     onSuccess: ({ok, data}) => {
       if (ok) {
-        queryClient.invalidateQueries({queryKey: ['homeData']});
+        queryClient.invalidateQueries({queryKey: ['profList']});
         successMessage(data?.message);
       } else errorMessage(data?.message);
     },
@@ -25,8 +36,8 @@ const useProfessionalList = ({navigate}, {params}) => {
   });
 
   return {
-    profData: data?.professionals,
-    appData: data?.appointmentCreated,
+    profData: data?.data?.professionals,
+    appData: createdObj,
     onBook: (appId, proId) => {
       mutate({appId, proId});
     },

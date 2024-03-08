@@ -5,7 +5,7 @@ import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
 import {Touchable} from './Touchable';
 
-export default function TimeSlot({startTime, endTime}) {
+export default function TimeSlot({data, onSelectVal, selectedVal}) {
   return (
     <>
       <View>
@@ -17,11 +17,13 @@ export default function TimeSlot({startTime, endTime}) {
             flexWrap: 'wrap',
             marginTop: hp('1'),
           }}>
-          {[1, 2, 3, 4, 5].map(res => {
+          {data.map(res => {
             return (
-              <Touchable style={styles.innerContainer}>
+              <Touchable
+                style={styles.innerContainer}
+                onPress={() => onSelectVal(res)}>
                 <TextComponent
-                  styles={styles.slotStyle}
+                  styles={styles.slotStyle(Boolean(res?.id == selectedVal?.id))}
                   text={`10:00 AM   to  12:00 PM `}
                 />
               </Touchable>
@@ -44,14 +46,14 @@ const styles = StyleSheet.create({
     marginHorizontal: wp('1'),
     // paddingVertical: hp('2'),
   },
-  slotStyle: {
+  slotStyle: isSelected => ({
     fontSize: hp('1.6'),
     width: wp('42'),
     paddingHorizontal: wp('2'),
     paddingVertical: hp('1.5'),
     borderRadius: 10,
     borderWidth: wp('0.1'),
-    borderColor: Colors.grayFaded,
+    borderColor: isSelected ? 'transparent' : Colors.grayFaded,
     textAlign: 'center',
     shadowColor: '#181818',
     shadowOffset: {
@@ -61,8 +63,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-
-    // backgroundColor: Colors.themeBlack,
+    color: isSelected ? Colors.themeBlack : 'white',
+    backgroundColor: isSelected ? 'white' : Colors.themeBlack,
     marginBottom: hp('1.5'),
-  },
+  }),
 });

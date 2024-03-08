@@ -6,7 +6,8 @@ import {styles} from './style';
 import {TextComponent} from '../../Components/TextComponent';
 import {hp, wp} from '../../Config/responsive';
 
-const useGallery = () => {
+const useGallery = ({gallary}) => {
+  console.log('gallarygallarygallarygallarygallarygallarygallary', gallary);
   const photoCount = 10;
   return (
     <>
@@ -17,6 +18,7 @@ const useGallery = () => {
       <AniFlatOneByOne
         flatListProps={{numColumns: 2, nestedScrollEnabled: true}}
         data={portfolioImages}
+        // emptyView={}
         InnerCompnonet={res => (
           <Image
             // source={{uri: res?.uri ?? res?.work_image}}

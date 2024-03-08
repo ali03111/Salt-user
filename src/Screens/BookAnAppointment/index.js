@@ -19,7 +19,7 @@ import ThemeButton from '../../Components/ThemeButton';
 import {TextComponent} from '../../Components/TextComponent';
 import useBookAnAppointment from './useBookAnAppointment';
 import {styles} from './styles';
-import {locationType} from '../../Utils/localDB';
+import {locationType, timeSlots} from '../../Utils/localDB';
 import Slider from '@react-native-community/slider';
 
 export default function BookAnAppoint({navigation}) {
@@ -33,6 +33,7 @@ export default function BookAnAppoint({navigation}) {
     radius,
     date,
     findProfessFun,
+    time,
   } = useBookAnAppointment(navigation);
 
   const [selectedButton, setSelectedButton] = useState(null);
@@ -56,7 +57,12 @@ export default function BookAnAppoint({navigation}) {
 
   return (
     <>
-      <BackHeader headerTitle={'Book an Appointment'} icon={sort} />
+      <BackHeader
+        headerTitle={'Book an Appointment'}
+        icon={sort}
+        isBack={true}
+        goBack={() => navigation.goBack()}
+      />
       <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
       <ScrollView style={styles.container}>
         <View style={styles.innerContainer}>
@@ -70,7 +76,11 @@ export default function BookAnAppoint({navigation}) {
               borderColor: Colors.grayFaded,
               marginVertical: hp('3.5'),
             }}></View>
-          <TimeSlot />
+          <TimeSlot
+            data={timeSlots}
+            selectedVal={time}
+            onSelectVal={res => onSelectValue('time', res)}
+          />
           <View
             style={{
               borderBottomWidth: 0.4,

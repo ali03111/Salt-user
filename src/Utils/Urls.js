@@ -30,3 +30,4 @@ export const updateProfileUrl = 'customer/update-user';
 export const braidDataUrl = 'braid-data';
 export const findProfessUrl = 'customer/set-appointment';
 export const sendReqUrl = 'customer/send-request';
+export const getAppProUrl = 'customer/appointment-professionals';
