@@ -8,6 +8,7 @@ import {styles} from './styles';
 import {hp} from '../../Config/responsive';
 import {AniFlatOneByOne} from '../../AnimatedComp/AniFlatOneByOne';
 import AniLeftScroll from '../../AnimatedComp/AniLeftScroll';
+import useAppointmentScreen from './useAppointmentScreen';
 
 const UpcomingApp = () => {
   // const renderItem = useCallback(({item, index}) => {
@@ -19,15 +20,15 @@ const UpcomingApp = () => {
   //     />
   //   );
   // }, []);
-
+  const {dataHistoryUpcoming} = useAppointmentScreen();
+  console.log('up', dataHistoryUpcoming?.upcoming);
   return (
-    
-        <View style={{flex: 1}}>
+    <View style={{flex: 1}}>
       <AniFlatOneByOne
-        data={UpcomingData}
+        data={dataHistoryUpcoming?.upcoming}
         flatViewStyle={styles.upComingFlatlistView}
         InnerCompnonet={item => (
-            <UpComingAppView
+          <UpComingAppView
             viewStyle={{
               marginBottom: hp('2'),
             }}

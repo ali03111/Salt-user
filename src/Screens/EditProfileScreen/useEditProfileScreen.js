@@ -14,7 +14,7 @@ export default function useEditProfileScreen() {
   const {dispatch, getState} = useReduxStore();
   const {userData} = getState('Auth');
   const [profileData, setProfileData] = useState(null);
-
+  console.log('userdata', userData);
   const {handleSubmit, errors, reset, control, getValues} = useFormHook(
     Schemas.editProfile,
   );

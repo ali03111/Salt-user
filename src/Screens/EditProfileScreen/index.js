@@ -38,6 +38,8 @@ const EditProfileScreen = ({navigation}) => {
     control,
     getValues,
   } = useEditProfileScreen();
+
+  console.log('usre', userData?.name);
   return (
     <View style={{flex: 1, backgroundColor: Colors.themeBlack}}>
       <BackHeader
