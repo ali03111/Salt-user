@@ -77,8 +77,8 @@ const AppointmentDetailScreen = ({route, navigation}) => {
         <View style={styles.cardInner}>
           <TextComponent text={'Braid Type'} styles={styles.braidTitle} />
           <TextComponent
-            text={'gel twist'}
-            // text={data?.braid_type?.item}
+            // text={'gel twist'}
+            text={data?.braid_type?.item}
             fade={true}
             styles={styles.braidTitle}
           />
@@ -86,8 +86,8 @@ const AppointmentDetailScreen = ({route, navigation}) => {
         <View style={styles.cardInner}>
           <TextComponent text={'Braid Size'} styles={styles.braidTitle} />
           <TextComponent
-            text={'extra small'}
-            // text={data?.braid_size?.item}
+            // text={'extra small'}
+            text={data?.braid_size?.item}
             fade={true}
             styles={styles.braidTitle}
           />
@@ -95,8 +95,8 @@ const AppointmentDetailScreen = ({route, navigation}) => {
         <View style={styles.cardInner}>
           <TextComponent text={'Braid Lengths'} styles={styles.braidTitle} />
           <TextComponent
-            text={'thigh length'}
-            // text={data?.braid_length?.item}
+            // text={'thigh length'}
+            text={data?.braid_length?.item}
             fade={true}
             styles={styles.braidTitle}
           />
