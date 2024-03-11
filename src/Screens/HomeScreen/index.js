@@ -14,30 +14,50 @@ import {ProfileCardComp} from '../../Components/ProfileCardComp';
 import useHomeScreen from './useHomeScreen';
 
 const HomeScreen = ({navigation}) => {
-  const {homeContent} = useHomeScreen();
+  const {homeContent, userData} = useHomeScreen();
   const renderItem = useCallback(
     ({item, index}) => {
-      return <UpComingAppCards data={item} />;
+      return (
+        <UpComingAppCards
+          onPress={() => {
+            navigation.navigate('AppointmentDetailScreen', item);
+          }}
+          data={item}
+        />
+      );
     },
-    [UpcomingData],
+    [homeContent],
   );
+  console.log(JSON.stringify(homeContent), 'kladjs');
   const topRatedrenderItem = useCallback(
     ({item, index}) => {
       // console.log('item', item);
-      return <ProfileCardComp data={item} />;
+      return (
+        <ProfileCardComp
+          data={item}
+          onPress={() =>
+            navigation.navigate('ProfessionalProfileScreen', {
+              item: {user: item},
+            })
+          }
+        />
+      );
     },
     [UpcomingData],
   );
 
   return (
     <View style={{flex: 1}}>
-      <HomeHeader />
+      <HomeHeader text={userData.name} />
       <ScrollView
         contentContainerStyle={{paddingBottom: hp('5')}}
         showsVerticalScrollIndicator={false}>
-        <HeadingView title={'Upcoming Appointments'} />
+        <HeadingView
+          title={'Upcoming Appointments'}
+          onPress={() => navigation.navigate('AppointmentScreen')}
+        />
         <FlatList
-          data={UpcomingData}
+          data={homeContent?.upcoming}
           renderItem={renderItem}
           scrollEnabled
           refreshing={false}

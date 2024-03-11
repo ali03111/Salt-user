@@ -9,6 +9,7 @@ import Schemas from '../../Utils/Validation';
 import {types} from '../../Redux/types';
 import {errorMessage, successMessage} from '../../Config/NotificationMessage';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {loadingFalse} from '../../Redux/Action/isloadingAction';
 
 export default function useEditProfileScreen() {
   const {dispatch, getState} = useReduxStore();
@@ -30,10 +31,14 @@ export default function useEditProfileScreen() {
           type: types.UpdateProfile,
           payload: data.user,
         });
+        dispatch(loadingFalse());
         successMessage('Your profile updated sucessfully!');
       }
     },
-    onError: ({message}) => errorMessage(message),
+    onError: ({message}) => {
+      dispatch(loadingFalse());
+      errorMessage(message);
+    },
   });
 
   const onSave = ({name}) => {
@@ -70,5 +75,6 @@ export default function useEditProfileScreen() {
     reset,
     control,
     getValues,
+    userData,
   };
 }

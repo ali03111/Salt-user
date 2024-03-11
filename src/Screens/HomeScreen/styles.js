@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingBottom: hp('2'),
     justifyContent: 'space-between',
-    paddingHorizontal: wp('4')
+    paddingHorizontal: wp('4'),
   },
   nameText: {
     fontSize: hp('3'),
@@ -63,6 +63,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: hp('1.5'),
     marginLeft: wp('1.5'),
+    justifyContent: 'center',
   },
   locationIcon: {width: wp('75'), fontSize: hp('1.7'), marginLeft: wp('1')},
   divider: {width: wp('70'), marginTop: hp('1'), marginLeft: wp('1')},
@@ -99,7 +100,7 @@ export const styles = StyleSheet.create({
     width: wp('20'),
     height: hp('3'),
     marginRight: wp('-2'),
-    transform: [{ rotate: '180deg'}]
+    transform: [{rotate: '180deg'}],
   },
   btnText: {color: 'black', fontWeight: 'bold', marginLeft: wp('4')},
   topRatedView: {
@@ -107,6 +108,5 @@ export const styles = StyleSheet.create({
     paddingLeft: wp('3'),
     marginTop: hp('2'),
     marginLeft: wp('1'),
-
   },
 });

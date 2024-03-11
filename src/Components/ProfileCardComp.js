@@ -15,7 +15,7 @@ import {TextComponent} from './TextComponent';
 import {divider, star} from '../Assets';
 import ThemeButton from './ThemeButton';
 
-export const ProfileCardComp = ({data}) => {
+export const ProfileCardComp = ({data, onPress}) => {
   const url =
     'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg';
   return (
@@ -30,7 +30,11 @@ export const ProfileCardComp = ({data}) => {
           styles={{fontSize: hp('1.8')}}
         />
       </View>
-      <ThemeButton title={'View Profile'} style={styles.viewBtn} />
+      <ThemeButton
+        onPress={onPress}
+        title={'View Profile'}
+        style={styles.viewBtn}
+      />
     </View>
   );
 };

@@ -85,6 +85,10 @@ const StackNavigatior = () => {
               name="BookAnAppointment"
               component={Screens.BookAnAppointment}
             />
+            <Stack.Screen
+              name="AppointmentDetailScreen"
+              component={Screens.AppointmentDetailScreen}
+            />
             {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
 
             {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}

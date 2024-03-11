@@ -41,7 +41,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
 
   // const renderHeader = (item, index) => {
   //   const i = [index].toString() == accordionItem.toString();
-  // const address = JSON.parse(data?.users?.location?.location);
+  const address = JSON.parse(data?.users?.location?.location);
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>

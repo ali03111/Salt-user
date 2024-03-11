@@ -9,6 +9,7 @@ const useFavouriteScreen = () => {
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
+
   return {setRating, rating, isModalVisible, setIsModalVisible, toggleModal};
 };
 

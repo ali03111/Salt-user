@@ -6,19 +6,15 @@ import {TextComponent} from '../../Components/TextComponent';
 import {arrowLeftOld, arrowRightOld} from '../../Assets';
 import {Touchable} from '../../Components/Touchable';
 
-export const ProfileCardView = ({onpress}) => {
+export const ProfileCardView = ({text, email, image, onpress}) => {
   return (
     <Touchable onPress={onpress} style={styles.mainView}>
       <View>
-        <CircleImage
-          image={'userData?.image'}
-          uri={true}
-          styles={styles.imageView}
-        />
+        <CircleImage image={image} uri={true} styles={styles.imageView} />
       </View>
       <View style={styles.centerView}>
         <TextComponent
-          text={'Jason Miller'}
+          text={text}
           numberOfLines={1}
           styles={{fontSize: hp('3'), fontWeight: 'bold'}}
         />

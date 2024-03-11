@@ -7,7 +7,6 @@ import {errorMessage, successMessage} from '../../Config/NotificationMessage';
 
 const useProfessionalProfileScreen = ({navigate}, {params}) => {
   const {item} = params;
-
   const {mutate} = useMutation({
     mutationFn: ({appId, proId}) => {
       console.log('idididid', proId, appId);

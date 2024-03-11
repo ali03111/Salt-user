@@ -79,14 +79,12 @@ const EditProfileScreen = ({navigation}) => {
             placeholder: 'Name',
             isImage: userIcon,
             tintColor: Colors.themeRed,
+            defaultValue: userData?.name,
           }}
         />
         <Pressable style={styles.inputDisable}>
           <Image source={email} style={styles.DisableIcon} />
-          <TextComponent
-            text={'dinojames@supportsnap.com'}
-            styles={styles.disableText}
-          />
+          <TextComponent text={userData?.email} styles={styles.disableText} />
         </Pressable>
         <Pressable
           style={styles.inputDisable}
