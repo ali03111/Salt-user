@@ -50,7 +50,7 @@ export const AniFlatOneByOne = ({
         scrollEnabled: true,
         showsVerticalScrollIndicator: false,
         showsHorizontalScrollIndicator: false,
-        ListEmptyComponent: {emptyView},
+        // ListEmptyComponent: {emptyView},
         ...flatListProps,
       }}
     />
