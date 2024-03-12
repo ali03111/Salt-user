@@ -16,33 +16,53 @@ import NoDataFoundVer from '../../Components/NoDataFoundVer';
 import {RefreshControl} from 'react-native-gesture-handler';
 
 const HomeScreen = ({navigation}) => {
-  const {homeContent, onRefresh, refresh} = useHomeScreen();
+  const {homeContent, onRefresh, refresh, userData} = useHomeScreen();
   const renderItem = useCallback(
     ({item, index}) => {
-      return <UpComingAppCards data={item} />;
+      return (
+        <UpComingAppCards
+          onPress={() => {
+            navigation.navigate('AppointmentDetailScreen', item);
+          }}
+          data={item}
+        />
+      );
     },
-    [UpcomingData],
+    [homeContent],
   );
+  console.log(JSON.stringify(homeContent), 'kladjs');
   const topRatedrenderItem = useCallback(
     ({item, index}) => {
       // console.log('item', item);
-      return <ProfileCardComp data={item} />;
+      return (
+        <ProfileCardComp
+          data={item}
+          onPress={() =>
+            navigation.navigate('ProfessionalProfileScreen', {
+              item: {user: {...item, isProfile: true}},
+            })
+          }
+        />
+      );
     },
     [UpcomingData],
   );
 
   return (
     <View style={{flex: 1}}>
-      <HomeHeader />
+      <HomeHeader text={userData.name} />
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
         }
         contentContainerStyle={{paddingBottom: hp('5')}}
         showsVerticalScrollIndicator={false}>
-        <HeadingView title={'Upcoming Appointments'} />
+        <HeadingView
+          title={'Upcoming Appointments'}
+          onPress={() => navigation.navigate('AppointmentScreen')}
+        />
         <FlatList
-          data={UpcomingData}
+          data={homeContent?.upcoming}
           renderItem={renderItem}
           scrollEnabled
           refreshing={false}

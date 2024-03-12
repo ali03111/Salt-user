@@ -3,7 +3,9 @@ import useReduxStore from '../../Hooks/UseReduxStore';
 import {logOutAuth} from '../../Redux/Action/AuthAction';
 
 const useSettingScreen = ({navigate}) => {
-  const {dispatch} = useReduxStore();
+  const {dispatch, getState} = useReduxStore();
+  const {userData} = getState('Auth');
+  const {isloading} = getState('isloading');
 
   const [alertState, setAlertState] = useState({
     logoutAlert: false,
@@ -39,6 +41,8 @@ const useSettingScreen = ({navigate}) => {
     deleteAlert,
     onConfirm,
     dynamicRoute,
+    isloading,
+    userData,
   };
 };
 export default useSettingScreen;

@@ -102,6 +102,7 @@ API.get = async (url, params, axiosConfig) => {
 // export {formDataFunc};
 const formDataFunc = (url, body, imageKey, isArray) => {
   const {Auth} = store.getState();
+  store.dispatch(loadingTrue());
 
   var myHeaders = new Headers();
   myHeaders.append('Accept', 'application/json');

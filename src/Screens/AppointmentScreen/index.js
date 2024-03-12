@@ -9,6 +9,7 @@ import HistoryApp from './HistoryApp';
 import {styles} from './styles';
 import {Colors} from '../../Theme/Variables';
 import {hp, wp} from '../../Config/responsive';
+import useAppointmentScreen from './useAppointmentScreen';
 
 function MyTabBar({state, descriptors, navigation, msgCount}) {
   return (
@@ -75,6 +76,9 @@ function MyTabBar({state, descriptors, navigation, msgCount}) {
 
 const AppointmentScreen = ({navigation}) => {
   const Tab = createMaterialTopTabNavigator();
+  const {dataHistoryUpcoming} = useAppointmentScreen();
+
+  console.log('uphome', dataHistoryUpcoming?.upcoming);
 
   return (
     <View style={{flex: 1}}>

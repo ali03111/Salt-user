@@ -31,6 +31,8 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import Accordion from 'react-native-collapsible/Accordion';
 
 import {UpcomingData} from '../Utils/localDB';
+import {imageUrl} from '../Utils/Urls';
+import {extractTimeFromString} from '../Utils/globalFunctions';
 
 export const UpComingAppView = ({data, viewStyle}) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -39,6 +41,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
 
   // const renderHeader = (item, index) => {
   //   const i = [index].toString() == accordionItem.toString();
+  const address = JSON.parse(data?.users?.location?.location);
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>
@@ -55,7 +58,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
               styles={styles.dateText}
             />
             <TextComponent
-              text={data?.time}
+              text={extractTimeFromString(data?.time)}
               fade={true}
               styles={styles.timeText}
             />
@@ -85,10 +88,10 @@ export const UpComingAppView = ({data, viewStyle}) => {
         </View>
       </View>
       <View style={styles.userView}>
-        <CircleImage image={data?.image} uri={true} />
+        {/* <CircleImage image={imageUrl(data?.users?.image)} uri={true} /> */}
         <View style={styles.nameView}>
           <TextComponent
-            text={`With - ${data?.name}`}
+            text={`With - ${data?.users?.name}`}
             styles={{fontSize: hp('2.5'), fontWeight: '500'}}
           />
         </View>
@@ -105,7 +108,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
           size={hp('2.8')}
         />
         <TextComponent
-          text={`${data?.location}testhjsahd sajd hjsad jsa djhsajd jsahdjsajhd`}
+          text={address?.currentLocation?.description}
           fade={true}
           styles={{
             fontSize: hp('1.8'),

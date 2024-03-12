@@ -19,6 +19,7 @@ import {
 import {MultiView} from './MultiView';
 import useSettingScreen from './useSettingScreen';
 import {AlertDesign} from '../../Components/AlertDesign';
+import {imageUrl} from '../../Utils/Urls';
 
 const centerView = [
   {
@@ -67,15 +68,22 @@ const bottomView = [
 ];
 
 const SettingScreen = ({navigation}) => {
-  const {toggleAlert, onConfirm, dynamicRoute, deleteAlert, logoutAlert} =
-    useSettingScreen(navigation);
+  const {
+    toggleAlert,
+    onConfirm,
+    dynamicRoute,
+    deleteAlert,
+    logoutAlert,
+    isloading,
+    userData,
+  } = useSettingScreen(navigation);
 
   // Update onPress functions dynamically
   bottomView[0].onPress = () => toggleAlert('logoutAlert');
   bottomView[1].onPress = () => toggleAlert('deleteAlert');
 
   centerView[0].onPress = () => dynamicRoute('ChangePasswordScreen');
-
+  console.log(userData, isloading, 'saldfkklsadjflkajsd');
   return (
     <View>
       <BackHeader headerTitle={'Setting'} />
@@ -84,6 +92,9 @@ const SettingScreen = ({navigation}) => {
         scrollEnabled
         contentContainerStyle={{flexGrow: 1, paddingBottom: hp('20')}}>
         <ProfileCardView
+          image={imageUrl(userData?.image)}
+          text={userData?.name}
+          email={userData?.email}
           onpress={() => navigation.navigate('EditProfileScreen')}
         />
         {/* <IconBtnView

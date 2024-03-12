@@ -102,7 +102,7 @@ export default function BookAnAppoint({navigation}) {
           />
           <BraidComp
             onSelectValue={value => onSelectValue('length', value)}
-            braidTitle={'Braid Lengths'}
+            braidTitle={'Braid Length'}
             data={data?.braid_length}
             selectedVal={length}
           />

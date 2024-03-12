@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React, {memo} from 'react';
 import BackHeader from '../../Components/BackHeader';
 import {styles} from './style';
-import {arrowBack, exp, fav} from '../../Assets';
+import {arrowBack, exp, fav, messagefill, starfill} from '../../Assets';
 import {TextComponent} from '../../Components/TextComponent';
 // import {ScrollView} from 'react-native-gesture-handler';
 import {CircleImage} from '../../Components/CircleImage';
@@ -26,13 +26,13 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
     route,
   );
 
-  console.log('useruseruseruseruseruseruseruseruseruseruser', user);
+  console.log('12361267387isajdhakjshdk', user);
 
   return (
     <View style={{flexGrow: 1, backgroundColor: Colors.themeBlack}}>
       <BackHeader
         isBack={true}
-        headerTitle={'Professional List'}
+        headerTitle={'Professional Detail'}
         saveReset={fav}
         goBack={() => navigation.goBack()}
       />
@@ -47,7 +47,7 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             uri={true}
           />
         </View>
-        <TextComponent text={'James Dean'} styles={styles.userName} />
+        <TextComponent text={user?.name} styles={styles.userName} />
         <TextComponent
           text={`${
             locationType.filter(
@@ -61,19 +61,25 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             <View style={styles.expIconMain}>
               <Image source={exp} style={styles.expIcon} />
             </View>
-            <TextComponent text={'10+'} styles={styles.expNumber} />
+            <TextComponent
+              text={user?.experience ?? 0}
+              styles={styles.expNumber}
+            />
             <TextComponent text={'Years Experience'} styles={styles.expText} />
           </View>
           <View style={styles.userInfo}>
             <View style={styles.expIconMain}>
-              <Image source={exp} style={styles.expIcon} />
+              <Image source={starfill} style={styles.expIcon} />
             </View>
-            <TextComponent text={'4.8'} styles={styles.expNumber} />
+            <TextComponent
+              text={user?.ratings_received_count}
+              styles={styles.expNumber}
+            />
             <TextComponent text={'Rating'} styles={styles.expText} />
           </View>
           <View style={styles.userInfo}>
             <View style={styles.expIconMain}>
-              <Image source={exp} style={styles.expIcon} />
+              <Image source={messagefill} style={styles.expIcon} />
             </View>
             <TextComponent text={'37+'} styles={styles.expNumber} />
             <TextComponent text={'Reviews'} styles={styles.expText} />
@@ -87,19 +93,13 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
           <TextComponent text={'Price'} styles={styles.aboutTitle} />
           <TextComponent text={`$${'10'}`} styles={styles.aboutTitle} />
         </View>
-        <View
-          style={{
-            borderTopWidth: 0.5,
-            borderColor: Colors.grayFaded,
-            paddingTop: hp('4'),
-            marginTop: hp('3'),
-            paddingBottom: hp('3'),
-            marginHorizontal: wp('4'),
-          }}>
-          <ThemeButton
-            title={'Book An Appointment'}
-            onPress={() => onBook(appData?.id, user?.user?.id)}
-          />
+        <View style={styles.btnView}>
+          {user?.isPorfile && (
+            <ThemeButton
+              title={'Book An Appointment'}
+              onPress={() => onBook(appData?.id, user?.user?.id)}
+            />
+          )}
         </View>
       </ScrollView>
     </View>

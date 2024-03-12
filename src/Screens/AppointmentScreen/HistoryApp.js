@@ -5,6 +5,7 @@ import {UpcomingData} from '../../Utils/localDB';
 import {styles} from './styles';
 import {HistoryReqComp} from '../../Components/HistoryReqComp';
 import {hp} from '../../Config/responsive';
+import {useAppointmentScreen} from './useAppointmentScreen';
 
 const HistoryApp = () => {
   return (

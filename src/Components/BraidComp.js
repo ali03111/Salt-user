@@ -12,6 +12,7 @@ export default function BraidComp({
   onSelectValue,
   data,
   selectedVal,
+  pickerTextStyle,
 }) {
   return (
     <>
@@ -19,14 +20,14 @@ export default function BraidComp({
         <View style={styles.topTier}>
           <TextComponent
             //   numberOfLines={1}
-            text={`Braid ${braidTitle}`}
+            text={`${braidTitle}`}
             styles={styles.titleStyle}
           />
         </View>
         <View style={styles.cardContainer}>
           <View style={styles.cardInner}>
             <View style={styles.innerWrapper}>
-              <TextComponent text={'Braid Type'} styles={styles.braidTitle} />
+              <TextComponent text={braidTitle} styles={styles.braidTitle} />
               <View style={styles.agePicker}>
                 <Picker
                   style={styles.pickerStyle}
@@ -50,7 +51,10 @@ export default function BraidComp({
                       ? data?.filter(res => res?.id == selectedVal)[0]?.item
                       : 'Select braid'
                   }
-                  styles={styles.pickerText(selectedVal)}
+                  styles={{
+                    ...styles.pickerText(selectedVal),
+                    ...pickerTextStyle,
+                  }}
                 />
               </View>
             </View>
@@ -72,6 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    width: wp('85'),
   },
   titleStyle: {
     paddingBottom: hp('1'),
@@ -122,11 +127,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'center',
     marginBottom: hp('-1.5'),
+    // backgroundColor: 'red',
+    width: wp('65'),
+    alignSelf: 'flex-end',
   },
 
   pickerText: pickerText => ({
     color: pickerText ? 'white' : 'white',
-    paddingRight: wp('10'),
+    paddingRight: wp('5'),
     paddingVertical: hp('0.5'),
     position: 'absolute',
     // width: wp('25'),

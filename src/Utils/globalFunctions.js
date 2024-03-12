@@ -94,4 +94,52 @@ const getLocationName = async (latitude, longitude) => {
   }
 };
 
-export {getSingleCharacter, getProperLocation};
+function extractTimeFromString(str) {
+  const timeRegex = /(\d{1,2}:\d{2}\s*[AP]M)/i; // Regular expression to match time in format "hh:mm AM/PM"
+  const match = str.match(timeRegex);
+
+  if (match) {
+    return match[1]; // Extracting the matched time
+  } else {
+    return '';
+  }
+}
+
+function getDateMonthYear(dateString) {
+  const dateParts = dateString.split('-'); // Splitting the date string by '-'
+  const year = dateParts[0];
+  const monthNumber = parseInt(dateParts[1], 10); // Parsing month number to integer
+  const day = dateParts[2];
+
+  // Array of English month names
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  // Getting English month name using the month number
+  const monthName = monthNames[monthNumber - 1];
+
+  return {
+    day,
+    monthName,
+    year,
+  };
+}
+
+export {
+  getSingleCharacter,
+  getProperLocation,
+  getDateMonthYear,
+  extractTimeFromString,
+};

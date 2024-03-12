@@ -11,10 +11,16 @@ import {imageUrl} from '../Utils/Urls';
 
 export const FavoriteComp = ({data, viewStyle, onReq, onProView, appData}) => {
   const isRequested = Boolean(
-    data?.requested_apointments.filter(
+    data?.requested_apointments?.filter(
       res => res?.appointment_id == appData?.id,
     )[0],
   );
+
+  console.log(
+    'isRequestedisRequestedisRequestedisRequestedisRequested',
+    isRequested,
+  );
+  console.log(data, 'asjkdfkljasdklfjaklsdfjaklsdjfpRo');
 
   return (
     <View style={{...styles.comingView, ...viewStyle}}>

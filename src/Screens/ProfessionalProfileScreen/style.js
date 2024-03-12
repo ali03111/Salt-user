@@ -122,4 +122,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: wp('3'),
     paddingTop: hp('1'),
   },
+  btnView: {
+    borderTopWidth: 0.5,
+    borderColor: Colors.grayFaded,
+    paddingTop: hp('4'),
+    marginTop: hp('3'),
+    paddingBottom: hp('3'),
+    marginHorizontal: wp('4'),
+  },
 });

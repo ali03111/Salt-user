@@ -56,12 +56,14 @@ export {default as messages} from './Icons/messages.png';
 export {default as calender} from './Icons/calendar.png';
 export {default as heart} from './Icons/heart.png';
 export {default as setting} from './Icons/profile.png';
-
+export {default as textureBg} from './Images/textureBg.png';
 export {default as homeFill} from './Icons/homeFill.png';
 export {default as calenderFill} from './Icons/calendarFill.png';
 export {default as messagesFill} from './Icons/messages-1.png';
 export {default as heartFill} from './Icons/heartFill.png';
 export {default as settingFill} from './Icons/profile-1.png';
+export {default as messagefill} from './Icons/messagefill.png';
+export {default as starfill} from './Icons/starfill.png';
 
 export {default as settingWhite} from './Icons/settingWhite.png';
 export {default as notificationWhite} from './Icons/notificationWhite.png';

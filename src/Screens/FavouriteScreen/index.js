@@ -14,7 +14,7 @@ import BottomModal from '../../Components/BottomModal';
 import {Colors} from '../../Theme/Variables';
 import {divider} from '../../Assets';
 
-const FavouriteScreen = () => {
+const FavouriteScreen = ({onPress}) => {
   const {setIsModalVisible, isModalVisible, rating, setRating, toggleModal} =
     useFavouriteScreen();
   const ratingCompleted = rating => {
@@ -62,7 +62,11 @@ const FavouriteScreen = () => {
             <Image source={heartFill} style={styles.hearticon} />
           </TouchableOpacity>
         </View>
-        <ThemeButton title={'View Profile'} style={styles.viewProfile} />
+        <ThemeButton
+          onPress={onPress}
+          title={'View Profile'}
+          style={styles.viewProfile}
+        />
       </View>
     );
   };

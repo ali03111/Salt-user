@@ -14,13 +14,18 @@ import {CircleImage} from './CircleImage';
 import {TextComponent} from './TextComponent';
 import {divider, star} from '../Assets';
 import ThemeButton from './ThemeButton';
+import {imageUrl} from '../Utils/Urls';
 
-export const ProfileCardComp = ({data}) => {
+export const ProfileCardComp = ({data, onPress}) => {
   const url =
     'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg';
   return (
     <View style={styles.viewStyle}>
-      <CircleImage uri={true} image={url} styles={styles.circleImage} />
+      <CircleImage
+        uri={true}
+        image={imageUrl(data?.image)}
+        styles={styles.circleImage}
+      />
       <TextComponent text={`${data?.name}`} styles={styles.name} />
       <View style={styles.reviewView}>
         <Image source={star} resizeMode="contain" style={styles.starImage} />
@@ -30,7 +35,11 @@ export const ProfileCardComp = ({data}) => {
           styles={{fontSize: hp('1.8')}}
         />
       </View>
-      <ThemeButton title={'View Profile'} style={styles.viewBtn} />
+      <ThemeButton
+        onPress={onPress}
+        title={'View Profile'}
+        style={styles.viewBtn}
+      />
     </View>
   );
 };
