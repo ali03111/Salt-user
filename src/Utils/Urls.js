@@ -1,14 +1,18 @@
 const getCredentials = () => {
   if (__DEV__)
     return {
-      baseURL: 'http://3.20.179.123/salt/api/',
-      imageURL: 'http://3.20.179.123/salt/',
+      // baseURL: 'http://3.20.179.123/salt/api/',
+      // imageURL: 'http://3.20.179.123/salt/',
+      baseURL: 'https://virtualrealitycreators.com/salt/api/',
+      imageURL: 'https://virtualrealitycreators.com/salt/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'http://3.20.179.123/salt/api/',
-      imageURL: 'http://3.20.179.123/salt/',
+      baseURL: 'https://virtualrealitycreators.com/salt/api/',
+      imageURL: 'https://virtualrealitycreators.com/salt/',
+      // baseURL: 'http://3.20.179.123/salt/api/',
+      // imageURL: 'http://3.20.179.123/salt/',
     };
   }
 };

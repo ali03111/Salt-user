@@ -12,9 +12,11 @@ import ThemeButton from '../../Components/ThemeButton';
 import {arrowRightIcon} from '../../Assets';
 import {ProfileCardComp} from '../../Components/ProfileCardComp';
 import useHomeScreen from './useHomeScreen';
+import NoDataFoundVer from '../../Components/NoDataFoundVer';
+import {RefreshControl} from 'react-native-gesture-handler';
 
 const HomeScreen = ({navigation}) => {
-  const {homeContent} = useHomeScreen();
+  const {homeContent, onRefresh, refresh} = useHomeScreen();
   const renderItem = useCallback(
     ({item, index}) => {
       return <UpComingAppCards data={item} />;
@@ -33,6 +35,9 @@ const HomeScreen = ({navigation}) => {
     <View style={{flex: 1}}>
       <HomeHeader />
       <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+        }
         contentContainerStyle={{paddingBottom: hp('5')}}
         showsVerticalScrollIndicator={false}>
         <HeadingView title={'Upcoming Appointments'} />
@@ -45,6 +50,13 @@ const HomeScreen = ({navigation}) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.upComingFlatlistView}
+          ListEmptyComponent={
+            <NoDataFoundVer
+              heading={'Oops...'}
+              subHeading={'no upcoming appointments !'}
+              text={'Accept requests to view appintments here...'}
+            />
+          }
         />
         <ThemeButton
           title={'Book an Appointment'}
@@ -64,6 +76,13 @@ const HomeScreen = ({navigation}) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.topRatedView}
+          ListEmptyComponent={
+            <NoDataFoundVer
+              heading={'Sorry...'}
+              subHeading={'appointments requests !'}
+              text={'Complete your profile to get maximum requests...'}
+            />
+          }
         />
       </ScrollView>
     </View>
