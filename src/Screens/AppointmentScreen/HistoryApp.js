@@ -18,18 +18,22 @@ import {loadingFalse} from '../../Redux/Action/isloadingAction';
 import {errorMessage} from '../../Config/NotificationMessage';
 import useReduxStore from '../../Hooks/UseReduxStore';
 
-const HistoryApp = ({data}) => {
+const HistoryApp = ({navigation, data}) => {
   console.log(JSON.stringify(data), 'HISTORYYRYRYYRRY');
   const [isModalVisible, setModalVisible] = useState(false);
   const [star, setStar] = useState(0);
   const [about, setAbout] = useState(false);
   const [professional_id, setProfessional_id] = useState(false);
+  const [isReview, setIsReview] = useState(0);
   const {dispatch, getState} = useReduxStore();
 
-  const toggleModal = id => {
+  const toggleModal = (id, isReview) => {
+    console.log(isReview);
     setModalVisible(!isModalVisible);
     setProfessional_id(id);
+    setIsReview(isReview);
   };
+  console.log(isReview, 'as;dl1111111;');
   const onFinishRating = useCallback(
     val => {
       console.log(val);
@@ -72,15 +76,22 @@ const HistoryApp = ({data}) => {
         flatViewStyle={styles.upComingFlatlistView}
         InnerCompnonet={item => (
           <HistoryReqComp
-            onPress={() => toggleModal(item.professional_id)}
+            onPress={() => {
+              toggleModal(item.professional_id);
+            }}
             viewStyle={{
               marginBottom: hp('2'),
             }}
+            onPressProfile={() =>
+              navigation.navigate('ProfessionalProfileScreen')
+            }
+            // isReview={item?.ratings[0].is_review}
             data={item}
           />
         )}
       />
-      <BottomModal isVisible={isModalVisible} onClose={toggleModal} showCenter>
+
+      <BottomModal isVisible={isModalVisible} onClose={toggleModal}>
         <View style={styles.bottom}>
           <View style={styles.topLine} />
           <TextComponent
@@ -152,6 +163,7 @@ const HistoryApp = ({data}) => {
           />
         </View>
       </BottomModal>
+
       {/* <FlatList
         data={UpcomingData}
         renderItem={renderItem}

@@ -13,8 +13,10 @@ import useFavouriteScreen from './useFavouriteScreen';
 import BottomModal from '../../Components/BottomModal';
 import {Colors} from '../../Theme/Variables';
 import {divider} from '../../Assets';
+import NoDataFoundVer from '../../Components/NoDataFoundVer';
+import {EmptyViewComp} from '../../Components/EmptyViewComp';
 
-const FavouriteScreen = ({onPress}) => {
+const FavouriteScreen = ({navigation, onPress}) => {
   const {setIsModalVisible, isModalVisible, rating, setRating, toggleModal} =
     useFavouriteScreen();
   const ratingCompleted = rating => {
@@ -63,6 +65,9 @@ const FavouriteScreen = ({onPress}) => {
           </TouchableOpacity>
         </View>
         <ThemeButton
+          onPressProfile={() =>
+            navigation.navigate('ProfessionalProfileScreen')
+          }
           onPress={onPress}
           title={'View Profile'}
           style={styles.viewProfile}
@@ -80,8 +85,9 @@ const FavouriteScreen = ({onPress}) => {
             marginTop: hp('3'),
             paddingBottom: hp('5'),
           }}
-          data={[1, 2, 3, 4, 5]}
+          data={[]}
           renderItem={renderItem}
+          ListEmptyComponent={<EmptyViewComp onRefresh={onRefresh} />}
         />
       </View>
       <BottomModal isVisible={isModalVisible} onClose={toggleModal}>

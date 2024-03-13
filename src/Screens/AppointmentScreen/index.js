@@ -125,7 +125,12 @@ const AppointmentScreen = ({navigation}) => {
           }}
           // component={HistoryApp}
         >
-          {() => <HistoryApp data={dataHistoryUpcoming?.history} />}
+          {() => (
+            <HistoryApp
+              data={dataHistoryUpcoming?.history}
+              navigation={navigation}
+            />
+          )}
         </Tab.Screen>
       </Tab.Navigator>
     </View>
