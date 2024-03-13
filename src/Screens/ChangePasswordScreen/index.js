@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import {Colors} from '../../Theme/Variables';
 import BackHeader from '../../Components/BackHeader';
 import {TextComponent} from '../../Components/TextComponent';
@@ -42,45 +42,51 @@ const ChangePasswordScreen = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.themeBlack}}>
+    <KeyBoardWrapper
+      styles={{
+        // flex: 1,
+        backgroundColor: Colors.themeBlack,
+        position: 'relative',
+      }}>
+      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
       <BackHeader
         headerTitle={'Change Password'}
         isBack={true}
         goBack={() => navigation.goBack()}
       />
-      <KeyBoardWrapper styles={{paddingBottom: hp('5')}}>
-        <TextComponent text={'Create New Password'} styles={styles.heading} />
-        <TextComponent
-          text={
-            'Your new password must be different from your previous password.'
-          }
-          styles={styles.des}
-          numberOfLines={2}
-          fade={true}
+      {/* <KeyBoardWrapper styles={{paddingBottom: hp('5')}}> */}
+      <TextComponent text={'Create New Password'} styles={styles.heading} />
+      <TextComponent
+        text={
+          'Your new password must be different from your previous password.'
+        }
+        styles={styles.des}
+        numberOfLines={2}
+        fade={true}
+      />
+      <View style={styles.centerView}>
+        <InputViewWithHeading
+          title={'Current Password'}
+          inputVal={'password'}
         />
-        <View style={styles.centerView}>
-          <InputViewWithHeading
-            title={'Current Password'}
-            inputVal={'password'}
-          />
-          <InputViewWithHeading
-            title={'New Password'}
-            inputVal={'new_password'}
-            viewStyle={{marginTop: hp('5')}}
-          />
-          <InputViewWithHeading
-            title={'Re-type New Password'}
-            inputVal={'confirm_password'}
-            viewStyle={{marginTop: hp('2')}}
-          />
-          <ThemeButton
-            title={'Change'}
-            onPress={handleSubmit(changePassword)}
-            style={styles.btn}
-          />
-        </View>
-      </KeyBoardWrapper>
-    </View>
+        <InputViewWithHeading
+          title={'New Password'}
+          inputVal={'new_password'}
+          viewStyle={{marginTop: hp('5')}}
+        />
+        <InputViewWithHeading
+          title={'Re-type New Password'}
+          inputVal={'confirm_password'}
+          viewStyle={{marginTop: hp('2')}}
+        />
+        <ThemeButton
+          title={'Change'}
+          onPress={handleSubmit(changePassword)}
+          style={styles.btn}
+        />
+      </View>
+      {/* </KeyBoardWrapper> */}
+    </KeyBoardWrapper>
   );
 };
 

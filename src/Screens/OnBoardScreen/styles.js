@@ -24,4 +24,9 @@ export const styles = StyleSheet.create({
     height: hp('6'),
   },
   nextButton: {width: wp('90'), alignSelf: 'center', marginTop: hp('8')},
+  images: {
+    width: wp('100'),
+    height: hp('60'),
+    marginTop: hp('-2'),
+  },
 });

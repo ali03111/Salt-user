@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, Image} from 'react-native';
 import {Controller} from 'react-hook-form';
-import {Colors} from '../Theme/Variables';
+import {Colors, Sizes} from '../Theme/Variables';
 import {Touchable} from './Touchable';
 import {hp, wp} from '../Config/responsive';
 import {eye, eyeOff} from '../Assets';
@@ -28,6 +28,7 @@ export const InputComponent = ({
   inputLines,
   multiline,
   tintColor,
+  errorTextStyle,
 }) => {
   const [show, setShow] = useState(!isSecure);
   const handleClick = () => setShow(!show);
@@ -95,13 +96,7 @@ export const InputComponent = ({
         }}
       />
       {errors[name]?.message && (
-        <View
-          style={
-            {
-              // width: Platform.OS == 'ios' ? width * 0.875 : Sizes.width * 0.9,
-              // width: Sizes.width * 0.9,
-            }
-          }>
+        <View style={errorTextStyle}>
           <Text style={[styles.error]}>{errors[name]?.message}</Text>
         </View>
       )}
@@ -115,11 +110,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: hp('7'),
     // borderRadius: 15,
-    marginVertical: hp('0'),
+    marginVertical: hp('1'),
     alignItems: 'center',
     flexDirection: 'row',
     borderColor: 'rgb(118, 118, 118)',
-    marginTop: hp('2'),
+    marginTop: hp('2.5'),
     backgroundColor: 'transparent',
     borderRadius: 10,
     paddingHorizontal: wp('2'),
@@ -148,7 +143,5 @@ const styles = StyleSheet.create({
   inputIcon: {
     // marginLeft: hp('2'),
     flex: 0.5,
-    width: wp('1'),
-    resizeMode: 'contain',
   },
 });

@@ -51,7 +51,10 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <View style={{flex: 1}}>
-      <HomeHeader text={userData.name} />
+      <HomeHeader
+        text={userData.name}
+        onSettingPress={() => dynamicNav('SettingScreen')}
+      />
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
@@ -75,7 +78,7 @@ const HomeScreen = ({navigation}) => {
             <NoDataFoundVer
               heading={'Oops...'}
               subHeading={'no upcoming appointments !'}
-              text={'Accept requests to view appintments here...'}
+              text={'Request professional to view appintments here...'}
             />
           }
         />
@@ -100,8 +103,8 @@ const HomeScreen = ({navigation}) => {
           ListEmptyComponent={
             <NoDataFoundVer
               heading={'Sorry...'}
-              subHeading={'appointments requests !'}
-              text={'Complete your profile to get maximum requests...'}
+              subHeading={'top rated professional !'}
+              text={'No top rated professional available yet...'}
             />
           }
         />

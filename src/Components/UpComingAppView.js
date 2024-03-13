@@ -43,7 +43,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
 
   // const renderHeader = (item, index) => {
   //   const i = [index].toString() == accordionItem.toString();
-  const address = JSON.parse(data?.users?.location?.location);
+  const address = JSON.parse(data?.locations?.location);
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>
@@ -93,7 +93,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
         {/* <CircleImage image={imageUrl(data?.users?.image)} uri={true} /> */}
         <View style={styles.nameView}>
           <TextComponent
-            text={`With - ${data?.users?.name}`}
+            text={`With - ${data?.professional?.name}`}
             styles={{fontSize: hp('2.5'), fontWeight: '500'}}
           />
         </View>

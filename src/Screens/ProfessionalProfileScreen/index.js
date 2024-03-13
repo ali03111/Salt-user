@@ -19,6 +19,7 @@ import ThemeButton from '../../Components/ThemeButton';
 import KeyBoardWrapper from '../../Components/KeyboardWrapper';
 import useProfessionalProfileScreen from './useProfessionalProfileScreen';
 import {locationType} from '../../Utils/localDB';
+import AppointmentBookView from './AppointmentBookView';
 
 const ProfessionalProfileScreen = ({navigation, route}) => {
   const {user, appData, onBook} = useProfessionalProfileScreen(
@@ -48,14 +49,6 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
           />
         </View>
         <TextComponent text={user?.name} styles={styles.userName} />
-        <TextComponent
-          text={`${
-            locationType.filter(
-              res => res?.locId == user?.user?.location?.loc_data,
-            )[0]?.label
-          } service provider`}
-          styles={styles.userDesignation}
-        />
         <View style={styles.infoMain}>
           <View style={styles.userInfo}>
             <View style={styles.expIconMain}>
@@ -85,22 +78,23 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             <TextComponent text={'Reviews'} styles={styles.expText} />
           </View>
         </View>
-        <CustomTabs
-          gallery={user?.user?.past_works}
-          o={'kjsdbvjksbdjkvbsdkjvb'}
-        />
+        <CustomTabs gallery={user?.past_works} about={user?.about} />
+
+        <AppointmentBookView user={user} />
+
+        {/* {user?.isPorfile} */}
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextComponent text={'Price'} styles={styles.aboutTitle} />
           <TextComponent text={`$${'10'}`} styles={styles.aboutTitle} />
         </View>
-        <View style={styles.btnView}>
-          {user?.isPorfile && (
+        {user?.isPorfile && (
+          <View style={styles.btnView}>
             <ThemeButton
               title={'Book An Appointment'}
               onPress={() => onBook(appData?.id, user?.user?.id)}
             />
-          )}
-        </View>
+          </View>
+        )}
       </ScrollView>
     </View>
   );

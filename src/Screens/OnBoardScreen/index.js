@@ -125,15 +125,7 @@ const OnboardScreen = ({navigation}) => {
       showsVerticalScrollIndicator={false}
       style={{backgroundColor: 'black', flex: 1}}>
       <StatusBar hidden={true} />
-      <Image
-        source={onBoardOne}
-        style={{
-          width: wp('100'),
-          height: hp('60'),
-          marginTop: hp('-2'),
-        }}
-        resizeMode="contain"
-      />
+      <Image source={onBoardOne} style={styles.images} resizeMode="contain" />
       {isFirst ? <FirstView /> : <SecondView />}
     </ScrollView>
   );

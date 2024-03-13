@@ -3,19 +3,20 @@ import {Image, View} from 'react-native';
 import {portfolioImages} from '../../Utils/localDB';
 import {styles} from './style';
 import {TextComponent} from '../../Components/TextComponent';
-import { hp, wp } from '../../Config/responsive';
+import {hp, wp} from '../../Config/responsive';
 
-const useAbout = () => {
+const UseAbout = ({about}) => {
   return (
-   
-        <View>
+    <View>
       <TextComponent text={'About'} styles={styles.aboutTitle} />
-      <TextComponent 
-      fade={true}  text={`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.`} styles={styles.aboutText}
+      <TextComponent
+        fade={true}
+        text={`${about}`}
+        // text={`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.`}
+        styles={styles.aboutText}
       />
-      </View>
-    
+    </View>
   );
 };
 
-export default memo(useAbout);
+export default memo(UseAbout);

@@ -12,15 +12,6 @@ import useAppointmentScreen from './useAppointmentScreen';
 import {EmptyViewComp} from '../../Components/EmptyViewComp';
 
 const UpcomingApp = () => {
-  // const renderItem = useCallback(({item, index}) => {
-  //   return (
-  //     <UpComingAppView
-  //       viewStyle={{
-  //         marginBottom: hp('2'),
-  //       }}
-  //     />
-  //   );
-  // }, []);
   const {dataHistoryUpcoming, onRefresh} = useAppointmentScreen();
   console.log('up', dataHistoryUpcoming?.upcoming);
   return (
@@ -40,23 +31,6 @@ const UpcomingApp = () => {
           />
         )}
       />
-      {/* <AniLeftScroll /> */}
-
-      {/* <FlatList
-        data={UpcomingData}
-        renderItem={renderItem}
-        scrollEnabled
-        refreshing={false}
-        extraData={keyExtractor}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.upComingFlatlistView}
-      /> */}
-      {/* <AppointmentReqCompSkeleton /> */}
-      {/* <SkeletonPlaceholder>
-      <AppointmentReqCompSkeleton />
-      <AppointmentReqCompSkeleton />
-      <AppointmentReqCompSkeleton />
-    </SkeletonPlaceholder> */}
     </View>
   );
 };

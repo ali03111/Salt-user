@@ -28,9 +28,11 @@ const useChangePasswordScreen = ({navigate, goBack}) => {
         return user.reauthenticateWithCredential(crd);
       };
       await reauthenticate(password); // Pass only the password
-      await user.updatePassword(confirm_password);
-      successMessage('Your password has been changed');
-      goBack();
+      if (password != new_password) {
+        await user.updatePassword(confirm_password);
+        successMessage('Your password has been changed');
+        goBack();
+      } else errorMessage('New password must be different');
     } catch (error) {
       console.log('error:', error);
       errorMessage('Current password is wrong');

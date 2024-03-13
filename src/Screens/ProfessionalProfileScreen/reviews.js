@@ -1,16 +1,27 @@
 import {memo} from 'react';
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {AniFlatOneByOne} from '../../AnimatedComp/AniFlatOneByOne';
 import {ProfesReviews} from '../../Utils/localDB';
 import {styles} from './style';
-import {hp} from '../../Config/responsive';
+import {hp, wp} from '../../Config/responsive';
 import {Review} from '../../Components/Review';
 import {TextComponent} from '../../Components/TextComponent';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const useReviews = () => {
+const UseReviews = () => {
   return (
-    <View style={{height: hp('60')}}>
-      <TextComponent text={'Reviews'} styles={styles.aboutTitle} />
+    <View
+      style={{
+        width: wp('100'),
+        justifyContent: 'center',
+      }}>
+      <View style={{flexDirection: 'row'}}>
+        <TextComponent text={'Reviews'} styles={styles.aboutTitle} />
+        <TouchableOpacity onPress={() => {}} style={styles.editReview}>
+          <AntDesign name="edit" color="white" size={hp('2.5')} />
+          <TextComponent text={'Add Review'} styles={styles.review} />
+        </TouchableOpacity>
+      </View>
       <AniFlatOneByOne
         data={ProfesReviews}
         flatViewStyle={styles.upComingFlatlistView}
@@ -28,4 +39,4 @@ const useReviews = () => {
   );
 };
 
-export default memo(useReviews);
+export default memo(UseReviews);

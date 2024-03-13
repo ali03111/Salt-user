@@ -13,7 +13,7 @@ import {styles} from './styles';
 import {Touchable} from '../../Components/Touchable';
 import Lottie from 'lottie-react-native';
 
-const HomeHeader = ({text}) => {
+const HomeHeader = ({text, onSettingPress, onNotiPress}) => {
   return (
     <View style={styles.headerView}>
       <View style={styles.firstView}>
@@ -38,14 +38,14 @@ const HomeHeader = ({text}) => {
             <TextComponent text={'Welcome to Salt!'} styles={{top: hp('0')}} />
           </View>
         </View>
-        <Touchable>
+        <Touchable onPress={onNotiPress}>
           <Image
             source={notificationWhite}
             resizeMode="contain"
             style={styles.notiIcon}
           />
         </Touchable>
-        <Touchable>
+        <Touchable onPress={onSettingPress}>
           <Image
             source={settingWhite}
             resizeMode="contain"

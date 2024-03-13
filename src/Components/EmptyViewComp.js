@@ -8,7 +8,7 @@ import {Touchable} from './Touchable';
 import ThemeButton from './ThemeButton';
 import {clipboardClose, dataNotFound1, dataNotFound2} from '../Assets';
 
-export const EmptyViewComp = ({onRefresh, refreshStyle}) => {
+export const EmptyViewComp = ({onRefresh, refreshStyle, des, heading}) => {
   return (
     <View
       style={{
@@ -28,9 +28,12 @@ export const EmptyViewComp = ({onRefresh, refreshStyle}) => {
         resizeMode="contain"
         style={styles.noDataIcon}
       />
-      <TextComponent text={'Data not found'} styles={styles.heading} />
       <TextComponent
-        text={'No data, please try again later'}
+        text={heading ?? 'Data not found'}
+        styles={styles.heading}
+      />
+      <TextComponent
+        text={des ?? 'No data, please try again later'}
         styles={styles.text}
       />
       <Image
@@ -38,7 +41,13 @@ export const EmptyViewComp = ({onRefresh, refreshStyle}) => {
         resizeMode="contain"
         style={styles.dataNotFoundTwo}
       />
-      <ThemeButton style={styles.btnSt} title={'Refresh'} onPress={onRefresh} />
+      {onRefresh && (
+        <ThemeButton
+          style={styles.btnSt}
+          title={'Refresh'}
+          onPress={onRefresh}
+        />
+      )}
     </View>
   );
 };

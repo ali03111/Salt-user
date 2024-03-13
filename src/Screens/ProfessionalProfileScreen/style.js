@@ -1,7 +1,7 @@
 import {hp, wp} from '../../Config/responsive';
 
 const {StyleSheet, Platform, Dimensions} = require('react-native');
-const {Colors} = require('../../Theme/Variables');
+const {Colors, FontSize} = require('../../Theme/Variables');
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     width: wp('45'),
     height: hp('20'),
     borderRadius: 10,
+    overflow: 'hidden',
   },
   profileView: {
     width: Dimensions.get('window').width * 0.31,
@@ -115,7 +116,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('2.5'),
     fontWeight: '500',
     paddingHorizontal: wp('3'),
-    paddingTop: hp('2'),
+    paddingVertical: hp('2'),
   },
   aboutText: {
     fontSize: hp('1.6'),
@@ -129,5 +130,67 @@ export const styles = StyleSheet.create({
     marginTop: hp('3'),
     paddingBottom: hp('3'),
     marginHorizontal: wp('4'),
+  },
+  review: {
+    fontSize: FontSize.scale12,
+    color: Colors.grayFadedBtn,
+    marginLeft: wp('2'),
+  },
+  editReview: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: wp('74'),
+    marginTop: hp('2'),
+  },
+  viewBtnView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: hp('2'),
+    alignItems: 'center',
+    width: wp('90'),
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  viewAppBtn: {
+    // backgroundColor: Colors.grayFadedBtn,
+    width: wp('43'),
+    height: hp('5'),
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: hp('1.5'),
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: Colors.grayFaded,
+    shadowColor: '#181818',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    backgroundColor: Colors.themeBlack,
+  },
+  buttonText: {
+    color: Colors.white,
+    fontSize: hp('1.5'),
+  },
+  appMainView: {
+    flex: 1,
+    paddingTop: hp('2'),
+    width: wp('90'),
+    alignSelf: 'center',
+  },
+  heading: {
+    paddingVertical: hp('2.5'),
+    fontSize: hp('2.5'),
+  },
+  selectedButton: {
+    backgroundColor: 'white',
+    color: Colors.themeBlack,
+  },
+  selectedButtonText: {
+    color: 'black',
   },
 });

@@ -52,19 +52,7 @@ const StackNavigatior = () => {
         )}
         {isLogin && (
           <>
-            {/* {!userData.is_verified && (
-              <Stack.Screen
-                name="EditPhoneNumberScreen"
-                component={Screens.EditPhoneNumberScreen}
-              />
-            )} */}
-            {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
-
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
-            {/* <Stack.Screen
-              name="ProfessionalProfile"
-              component={Screens.ProfessionalProfile}
-            /> */}
             <Stack.Screen
               name="ProfessionalProfileScreen"
               component={Screens.ProfessionalProfileScreen}
@@ -89,53 +77,10 @@ const StackNavigatior = () => {
               name="AppointmentDetailScreen"
               component={Screens.AppointmentDetailScreen}
             />
-            {/* <Stack.Screen name="BookAnAppointment" component={Screens.BookAnAppointment} /> */}
-
-            {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
-
-            {/* <Stack.Screen
-              name="EditPhoneNumberScreen"
-              component={Screens.EditPhoneNumberScreen}
-            />
             <Stack.Screen
-              name="VerficationScreen"
-              component={Screens.VerficationScreen}
+              name="SettingScreen"
+              component={Screens.SettingScreen}
             />
-            <Stack.Screen
-              name="EditTripScreen"
-              component={Screens.EditTripScreen}
-            />
-            <Stack.Screen
-              name="MapAndChatScreen"
-              component={Screens.MapAndChatScreen}
-            />
-            <Stack.Screen name="ChatScreen" component={Screens.ChatScreen} />
-            <Stack.Screen
-              name="EditProfileScreen"
-              component={Screens.EditProfileScreen}
-            />
-            <Stack.Screen
-              name="ResetPasswordScreen"
-              component={Screens.ResetPasswordScreen}
-            />
-            <Stack.Screen
-              name="ProfileScreen"
-              component={Screens.ProfileScreen}
-            />
-            <Stack.Screen
-              name="SyncingScreen"
-              component={Screens.SyncingScreen}
-            />
-            <Stack.Screen name="MapScreen" component={Screens.MapScreen} />
-            <Stack.Screen
-              name="InvitationScreen"
-              component={Screens.InvitationScreen}
-            />
-            <Stack.Screen
-              name="GeneralNotification"
-              component={Screens.GeneralNotification}
-            />
-            <Stack.Screen name="SyncScreen" component={Screens.SyncScreen} /> */}
           </>
         )}
       </Stack.Navigator>

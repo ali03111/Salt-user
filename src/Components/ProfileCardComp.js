@@ -17,8 +17,6 @@ import ThemeButton from './ThemeButton';
 import {imageUrl} from '../Utils/Urls';
 
 export const ProfileCardComp = ({data, onPress}) => {
-  const url =
-    'https://images.pexels.com/photos/19321447/pexels-photo-19321447/free-photo-of-needle-branch-with-christmas-ornament.jpeg';
   return (
     <View style={styles.viewStyle}>
       <CircleImage

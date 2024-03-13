@@ -5,18 +5,21 @@ import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
 import {Touchable} from './Touchable';
 
-export default function TimeSlot({data, onSelectVal, selectedVal}) {
+export default function TimeSlot({
+  data,
+  onSelectVal,
+  selectedVal,
+  title,
+  mapViewStyles,
+}) {
   return (
     <>
       <View>
-        <TextComponent text={'Time Slots'} styles={styles.titleStyle} />
-        <View
-          style={{
-            width: wp('90'),
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            marginTop: hp('1'),
-          }}>
+        <TextComponent
+          text={title ?? 'Time Slots'}
+          styles={styles.titleStyle}
+        />
+        <View style={{...styles.mapView, ...mapViewStyles}}>
           {data.map(res => {
             return (
               <Touchable
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     // flexWrap: 'wrap',
     // flexDirection: 'row',
     // justifyContent: 'space-between',
-    marginHorizontal: wp('1'),
+    // marginHorizontal: wp('1'),
     // paddingVertical: hp('2'),
   },
   slotStyle: isSelected => ({
@@ -67,4 +70,11 @@ const styles = StyleSheet.create({
     backgroundColor: isSelected ? 'white' : Colors.themeBlack,
     marginBottom: hp('1.5'),
   }),
+  mapView: {
+    width: wp('90'),
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: hp('1'),
+    justifyContent: 'space-between',
+  },
 });

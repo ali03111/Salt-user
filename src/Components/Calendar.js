@@ -5,12 +5,16 @@ import {hp, wp} from '../Config/responsive';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const UseCalendar = ({onSelectVal, selectedVal}) => {
+  const today = new Date(); // Get current date
+  const minDate = today.toISOString().split('T')[0]; // Convert to ISO format
+
   return (
     <Calendar
       firstDay={1}
       pastScrollRange={1}
       futureScrollRange={1}
       scrollEnabled
+      minDate={minDate} // Set minimum selectable date
       showScrollIndicator={true}
       renderArrow={direction =>
         direction === 'left' ? (
@@ -62,7 +66,7 @@ const UseCalendar = ({onSelectVal, selectedVal}) => {
         selectedDayBackgroundColor: Colors.themeRed,
         selectedDayTextColor: '#ffffff',
         todayTextColor: 'white',
-        dayTextColor: Colors.grayFaded,
+        dayTextColor: Colors.white,
         textDisabledColor: Colors.grayFaded,
         monthTextColor: Colors.white,
         arrowColor: Colors.white,

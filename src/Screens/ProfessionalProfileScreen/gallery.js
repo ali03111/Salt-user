@@ -5,32 +5,46 @@ import {portfolioImages} from '../../Utils/localDB';
 import {styles} from './style';
 import {TextComponent} from '../../Components/TextComponent';
 import {hp, wp} from '../../Config/responsive';
+import {imageUrl} from '../../Utils/Urls';
+import {EmptyViewComp} from '../../Components/EmptyViewComp';
+import BlurImage from '../../Components/BlurImage';
 
-const useGallery = ({gallary}) => {
-  console.log('gallarygallarygallarygallarygallarygallarygallary', gallary);
-  const photoCount = 10;
+const UseGallery = ({gallery}) => {
+  console.log('gallarygallarygallarygallarygallarygallarygallary', gallery);
   return (
-    <>
+    <View>
       <TextComponent
-        text={`Photos (${photoCount})`}
+        text={`Photos (${gallery?.length})`}
         styles={styles.aboutTitle}
       />
       <AniFlatOneByOne
-        flatListProps={{numColumns: 2, nestedScrollEnabled: true}}
-        data={portfolioImages}
-        // emptyView={}
-        InnerCompnonet={res => (
-          <Image
-            // source={{uri: res?.uri ?? res?.work_image}}
-            source={{uri: res?.image ?? res?.work_image}}
-            progressiveRenderingEnabled
-            style={styles.imageView}
-            flatListProps={{nestedScrollEnabled: true}}
-          />
-        )}
+        flatListProps={{
+          numColumns: 2,
+          nestedScrollEnabled: true,
+          ListEmptyComponent: (
+            <EmptyViewComp
+              des={''}
+              heading={'No image found!'}
+              refreshStyle={{
+                marginTop: hp('-10'),
+              }}
+            />
+          ),
+        }}
+        flatViewStyle={{paddingBottom: hp('6')}}
+        data={gallery}
+        InnerCompnonet={res => {
+          return (
+            <BlurImage
+              uri={imageUrl(res?.work_image)}
+              styles={styles.imageView}
+              isURI={true}
+            />
+          );
+        }}
       />
-    </>
+    </View>
   );
 };
 
-export default memo(useGallery);
+export default memo(UseGallery);
