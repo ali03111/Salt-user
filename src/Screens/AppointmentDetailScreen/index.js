@@ -27,7 +27,12 @@ const AppointmentDetailScreen = ({route, navigation}) => {
 
   const address = JSON.parse(data?.locations?.location);
 
-  console.log('address?.aaaaaaa', JSON.stringify(data));
+  const isHouseCall = Boolean(
+    locationType.filter(res => res?.locId == data?.locations?.loc_data)[0]
+      ?.label == locationType[0]?.locId,
+  );
+
+  console.log('address?.aaaaaasdsdsdsdsdsdsa', address?.currentLocation);
 
   return (
     <View style={styles.container}>
@@ -54,7 +59,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
         />
         <TextComponent
           numberOfLines={1}
-          text={data?.professional?.name}
+          text={`${data?.braid_type?.item} Professional`}
           styles={styles.tagLineStyle}
           fade={true}
         />
@@ -121,14 +126,16 @@ const AppointmentDetailScreen = ({route, navigation}) => {
             styles={styles.braidTitle}
           />
         </View>
-        <View style={styles.cardInner}>
-          <TextComponent text={'Address'} styles={styles.braidTitle} />
-          <TextComponent
-            text={`${address?.currentLocation?.description}`}
-            fade={true}
-            styles={styles.braidTitle}
-          />
-        </View>
+        {!isHouseCall && (
+          <View style={styles.cardInner}>
+            <TextComponent text={'Address'} styles={styles.braidTitle} />
+            <TextComponent
+              text={`${address?.currentLocation?.description}`}
+              fade={true}
+              styles={styles.braidTitle}
+            />
+          </View>
+        )}
       </View>
 
       <View style={styles.viewBtnView}>

@@ -111,7 +111,7 @@ const RegisterScreen = ({navigation}) => {
             reset,
             control,
             getValues,
-            placeholder: 'Password',
+            placeholder: 'Confirm Password',
             isImage: lock,
             defaultValue: '',
             isSecure: true,

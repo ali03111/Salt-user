@@ -16,13 +16,14 @@ import NoDataFoundVer from '../../Components/NoDataFoundVer';
 import {RefreshControl} from 'react-native-gesture-handler';
 
 const HomeScreen = ({navigation}) => {
-  const {homeContent, onRefresh, refresh, userData} = useHomeScreen();
+  const {homeContent, onRefresh, refresh, userData, dynamicNav} =
+    useHomeScreen(navigation);
   const renderItem = useCallback(
     ({item, index}) => {
       return (
         <UpComingAppCards
           onPress={() => {
-            navigation.navigate('AppointmentDetailScreen', item);
+            dynamicNav('AppointmentDetailScreen', item);
           }}
           data={item}
         />
@@ -38,14 +39,14 @@ const HomeScreen = ({navigation}) => {
         <ProfileCardComp
           data={item}
           onPress={() =>
-            navigation.navigate('ProfessionalProfileScreen', {
+            dynamicNav('ProfessionalProfileScreen', {
               item: {user: {...item, isProfile: true}},
             })
           }
         />
       );
     },
-    [UpcomingData],
+    [homeContent],
   );
 
   return (

@@ -39,6 +39,8 @@ export const UpComingAppView = ({data, viewStyle}) => {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   // const [accordionItem, setAccordionItem] = useState('');
 
+  console.log('datadatadatadatadatadata', data);
+
   // const renderHeader = (item, index) => {
   //   const i = [index].toString() == accordionItem.toString();
   const address = JSON.parse(data?.users?.location?.location);

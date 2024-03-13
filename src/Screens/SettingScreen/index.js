@@ -83,7 +83,6 @@ const SettingScreen = ({navigation}) => {
   bottomView[1].onPress = () => toggleAlert('deleteAlert');
 
   centerView[0].onPress = () => dynamicRoute('ChangePasswordScreen');
-  console.log(userData, isloading, 'saldfkklsadjflkajsd');
   return (
     <View>
       <BackHeader headerTitle={'Setting'} />

@@ -5,13 +5,18 @@ import {homeContentUrl} from '../../Utils/Urls';
 import {useQuery, useQueryClient} from '@tanstack/react-query';
 import useReduxStore from '../../Hooks/UseReduxStore';
 
-export default function useHomeScreen() {
+export default function useHomeScreen({navigate}) {
   const {data} = useQuery({
     queryKey: ['homeDataCous'],
     queryFn: () => API.get(homeContentUrl),
   });
+
   const {getState, dispatch} = useReduxStore();
+
   const {userData} = getState('Auth');
+
+  const dynamicNav = (route, item) => navigate(route, item);
+
   //   console.log('first', data?.data);
   const [refresh, setRefresh] = useState(false);
 
@@ -27,5 +32,5 @@ export default function useHomeScreen() {
     setRefresh(false);
   }, []);
 
-  return {homeContent: data?.data, onRefresh, refresh, userData};
+  return {homeContent: data?.data, onRefresh, refresh, userData, dynamicNav};
 }

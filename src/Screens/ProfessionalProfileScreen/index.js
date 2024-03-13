@@ -42,7 +42,7 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
         showsVerticalScrollIndicator={false}>
         <View style={styles.pImage}>
           <CircleImage
-            image={imageUrl(user?.user?.image)}
+            image={imageUrl(user?.image)}
             styles={styles.profileView}
             uri={true}
           />

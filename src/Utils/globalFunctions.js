@@ -1,7 +1,11 @@
-import {PermissionsAndroid, Platform} from 'react-native';
+import {Alert, PermissionsAndroid, Platform} from 'react-native';
 import Geolocationios from '@react-native-community/geolocation';
 // import Geolocation from 'react-native-geolocation-service';
 import Geolocation from '@react-native-community/geolocation';
+import {openSettings} from 'react-native-permissions';
+import {store} from '../Redux/Reducer';
+import {loadingFalse, loadingTrue} from '../Redux/Action/isloadingAction';
+import {errorMessage} from '../Config/NotificationMessage';
 
 const getSingleCharacter = text => {
   let letter = text?.charAt(0).toUpperCase();
@@ -9,6 +13,17 @@ const getSingleCharacter = text => {
 };
 
 const getProperLocation = () => {
+  store.dispatch(loadingTrue());
+
+  Geolocation.setRNConfiguration({
+    config: {
+      skipPermissionRequests: true,
+      authorizationLevel: 'always' | 'whenInUse' | 'auto',
+      enableBackgroundLocationUpdates: true,
+      locationProvider: 'playServices' | 'android' | 'auto',
+    },
+  });
+
   return new Promise(async (resolve, reject) => {
     console.log('first');
 
@@ -19,34 +34,60 @@ const getProperLocation = () => {
           PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         );
         if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
-          throw new Error('Location permission denied');
-        }
-      }
+          store.dispatch(loadingFalse());
 
-      if (Platform.OS === 'android') {
-        Geolocation.getCurrentPosition(
-          async info => {
-            console.log(
-              'kjsdbvjklsbdklvbsdklbvlksdbvlksdbvkljsblkvbsdlkvblskdbvlsdbvbsdkvds',
-              info,
-            );
-            // const locationName = await getLocationName(
-            //   info.coords.latitude,
-            //   info.coords.longitude,
-            // );
-            resolve({
-              coords: {
-                latitude: info.coords.latitude,
-                longitude: info.coords.longitude,
+          return Alert.alert(
+            'Warning',
+            `Location permission have been denied. Please enabled location permission from settings.`,
+            [
+              {
+                text: 'Cancel',
+                onPress: () => null,
+                style: 'cancel',
               },
-              description: 'Street338 Catherine St, Columbia.',
-            });
-          },
-          error => {
-            reject(error);
-          },
-          {enableHighAccuracy: true, accuracy: true},
-        );
+              {
+                text: 'Open Setting',
+                onPress: () => {
+                  openSettings().catch(() =>
+                    console.warn('Cannot open settings'),
+                  );
+                },
+              },
+            ],
+            {
+              userInterfaceStyle: 'light',
+            },
+          );
+        } else {
+          console.log(
+            'skjdbvojsndvjksndojnvs jkdnv jksdb vjksdb kjvsdb vjksdb kjvsd bkjvsdb kj sbdjksdb',
+          );
+          Geolocation.getCurrentPosition(
+            async info => {
+              console.log(
+                'kjsdbvjklsbdklvbsdklbvlksdbvlksdbvkljsblkvbsdlkvblskdbvlsdbvbsdkvds',
+                info,
+              );
+              // const locationName = await getLocationName(
+              //   info.coords.latitude,
+              //   info.coords.longitude,
+              // );
+              resolve({
+                coords: {
+                  latitude: info.coords.latitude,
+                  longitude: info.coords.longitude,
+                },
+                description: 'Street338 Catherine St, Columbia.',
+              });
+            },
+            error => {
+              errorMessage('Please enable your mobile location');
+              reject(error);
+            },
+            {enableHighAccuracy: true, accuracy: true},
+          );
+        }
+        store.dispatch(loadingFalse());
       } else {
         Geolocationios.getCurrentPosition(
           async info => {
@@ -67,8 +108,15 @@ const getProperLocation = () => {
           },
           {enableHighAccuracy: true, accuracy: true},
         );
+        store.dispatch(loadingFalse());
       }
+      store.dispatch(loadingFalse());
     } catch (error) {
+      console.log(
+        'osdbviosboivbsdiobvoisdbvoisdbovibsdoivbsodbvosdivbdsoibds',
+        error,
+      );
+      store.dispatch(loadingFalse());
       reject(error);
     }
   });

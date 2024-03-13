@@ -1,6 +1,6 @@
 import React from 'react';
 import {memo} from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, StatusBar, Text, View} from 'react-native';
 import BackHeader from '../../Components/BackHeader';
 import {addCircle} from '../../Assets';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -82,6 +82,7 @@ const AppointmentScreen = ({navigation}) => {
 
   return (
     <View style={{flex: 1}}>
+      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
       <BackHeader
         saveReset={addCircle}
         headerTitle={'Appointments'}
