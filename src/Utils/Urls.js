@@ -36,3 +36,4 @@ export const findProfessUrl = 'customer/set-appointment';
 export const sendReqUrl = 'customer/send-request';
 export const getAppProUrl = 'customer/appointment-professionals';
 export const contentHistoryUpcoming = 'customer/home-content-history-upcoming';
+export const customerRateUrl = 'customer/rate';

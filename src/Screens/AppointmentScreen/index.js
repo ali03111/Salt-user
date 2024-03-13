@@ -78,7 +78,7 @@ const AppointmentScreen = ({navigation}) => {
   const Tab = createMaterialTopTabNavigator();
   const {dataHistoryUpcoming} = useAppointmentScreen();
 
-  console.log('uphome', dataHistoryUpcoming?.upcoming);
+  // console.log('uphome', dataHistoryUpcoming?.upcoming);
 
   return (
     <View style={{flex: 1}}>
@@ -123,8 +123,10 @@ const AppointmentScreen = ({navigation}) => {
               textTransform: 'none',
             },
           }}
-          component={HistoryApp}
-        />
+          // component={HistoryApp}
+        >
+          {() => <HistoryApp data={dataHistoryUpcoming?.history} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </View>
   );

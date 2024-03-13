@@ -143,7 +143,7 @@ const FavouriteScreen = ({onPress}) => {
         </View>
         <View
           style={{
-            marginTop: 20,
+            marginTop: hp('4'),
             flexDirection: 'row',
             padding: 10,
             justifyContent: 'space-between',

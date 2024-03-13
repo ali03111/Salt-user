@@ -8,7 +8,8 @@ import ThemeButton from './ThemeButton';
 import {Colors} from '../Theme/Variables';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export const HistoryReqComp = ({data, viewStyle}) => {
+export const HistoryReqComp = ({data, viewStyle, onPress}) => {
+  const location = JSON.parse(data?.locations.location);
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>
@@ -53,10 +54,10 @@ export const HistoryReqComp = ({data, viewStyle}) => {
         </View>
       </View>
       <View style={styles.userView}>
-        <CircleImage image={data?.image} uri={true} />
+        <CircleImage image={data?.professional?.image} uri={true} />
         <View style={styles.nameView}>
           <TextComponent
-            text={`With - ${data?.name}`}
+            text={`With - ${data?.professional?.name}`}
             styles={{fontSize: hp('2.5'), fontWeight: '500'}}
           />
         </View>
@@ -73,7 +74,7 @@ export const HistoryReqComp = ({data, viewStyle}) => {
           size={hp('2.8')}
         />
         <TextComponent
-          text={`${data?.location}`}
+          text={`${location.currentLocation.description}`}
           fade={true}
           styles={{
             fontSize: hp('1.8'),
@@ -104,6 +105,7 @@ export const HistoryReqComp = ({data, viewStyle}) => {
           textStyle={{fontSize: hp('1.5')}}
         />
         <ThemeButton
+          onPress={onPress}
           title={'Add Review'}
           style={{...styles.viewAppBtn, backgroundColor: 'red'}}
           textStyle={{fontSize: hp('1.5')}}
