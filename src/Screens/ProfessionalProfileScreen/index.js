@@ -85,10 +85,7 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             <TextComponent text={'Reviews'} styles={styles.expText} />
           </View>
         </View>
-        <CustomTabs
-          gallery={user?.user?.past_works}
-          o={'kjsdbvjksbdjkvbsdkjvb'}
-        />
+        <CustomTabs gallery={user} />
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextComponent text={'Price'} styles={styles.aboutTitle} />
           <TextComponent text={`$${'10'}`} styles={styles.aboutTitle} />

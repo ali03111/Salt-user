@@ -19,7 +19,7 @@ export const ProfileCardView = ({text, email, image, onpress}) => {
           styles={{fontSize: hp('3'), fontWeight: 'bold'}}
         />
         <TextComponent
-          text={'jason.miller@mail.com'}
+          text={email}
           fade={true}
           styles={{fontSize: hp('1.5')}}
         />

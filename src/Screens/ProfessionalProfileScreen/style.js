@@ -1,7 +1,7 @@
 import {hp, wp} from '../../Config/responsive';
 
 const {StyleSheet, Platform, Dimensions} = require('react-native');
-const {Colors} = require('../../Theme/Variables');
+const {Colors, FontSize} = require('../../Theme/Variables');
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,9 +13,10 @@ export const styles = StyleSheet.create({
   imageView: {
     marginVertical: hp('2'),
     marginHorizontal: wp('2'),
-    width: wp('45'),
-    height: hp('20'),
+    width: wp('20'),
+    height: hp('10'),
     borderRadius: 10,
+    resizeMode: 'contain',
   },
   profileView: {
     width: Dimensions.get('window').width * 0.31,
@@ -129,5 +130,17 @@ export const styles = StyleSheet.create({
     marginTop: hp('3'),
     paddingBottom: hp('3'),
     marginHorizontal: wp('4'),
+  },
+  review: {
+    fontSize: FontSize.scale12,
+    color: Colors.grayFadedBtn,
+    marginLeft: wp('2'),
+  },
+  editReview: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: wp('74'),
+    marginTop: hp('2'),
   },
 });

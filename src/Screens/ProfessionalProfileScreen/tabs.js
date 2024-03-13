@@ -1,26 +1,16 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
-import React, {memo} from 'react';
-import BackHeader from '../../Components/BackHeader';
-import {styles} from './style';
-import {arrowBack, exp, fav} from '../../Assets';
-import {TextComponent} from '../../Components/TextComponent';
-import {ScrollView} from 'react-native-gesture-handler';
-import {CircleImage} from '../../Components/CircleImage';
-import useReduxStore from '../../Hooks/UseReduxStore';
-import {imageUrl} from '../../Utils/Urls';
+import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import useGallery from './gallery';
-import useReviews from './reviews';
-import useAbout from './about';
+import UseGallery from './gallery';
+import UseReviews from './reviews';
+import UseAbout from './about';
 import {Colors} from '../../Theme/Variables';
 import {hp} from '../../Config/responsive';
+import {styles} from './style';
 
 export default function CustomTabs({gallery}) {
-  console.log('gallerygallery', gallery);
   const Tab = createMaterialTopTabNavigator();
-
   return (
-    // <View style={{height: hp('60'), flex: 1}}>
     <Tab.Navigator
       initialRouteName={'Gallery'}
       screenOptions={{
@@ -33,12 +23,12 @@ export default function CustomTabs({gallery}) {
           tabBarScrollEnabled: true,
         },
       }}
-      style={{minHeight: hp('20'), maxHeight: hp('60')}}
+      style={{minHeight: hp('50'), maxHeight: hp('60')}}
       sceneContainerStyle={{
         backgroundColor: Colors.themeBlack,
       }}>
       <Tab.Screen
-        name={`About`}
+        name="About"
         options={{
           title: 'About',
           tabBarAllowFontScaling: false,
@@ -47,11 +37,11 @@ export default function CustomTabs({gallery}) {
             fontStyle: 'normal',
             textTransform: 'none',
           },
-        }}
-        component={useAbout}
-      />
+        }}>
+        {() => <UseAbout gallery={gallery} />}
+      </Tab.Screen>
       <Tab.Screen
-        name={`useGallery`}
+        name="Gallery"
         options={{
           title: 'Gallery',
           tabBarAllowFontScaling: false,
@@ -60,12 +50,11 @@ export default function CustomTabs({gallery}) {
             fontStyle: 'normal',
             textTransform: 'none',
           },
-        }}
-        component={useGallery}
-        initialParams={gallery}
-      />
+        }}>
+        {() => <UseGallery gallery={gallery} />}
+      </Tab.Screen>
       <Tab.Screen
-        name={`useReviews`}
+        name="Reviews"
         options={{
           title: 'Reviews',
           tabBarAllowFontScaling: false,
@@ -74,10 +63,9 @@ export default function CustomTabs({gallery}) {
             fontStyle: 'normal',
             textTransform: 'none',
           },
-        }}
-        component={useReviews}
-      />
+        }}>
+        {() => <UseReviews gallery={gallery} />}
+      </Tab.Screen>
     </Tab.Navigator>
-    // </View>
   );
 }

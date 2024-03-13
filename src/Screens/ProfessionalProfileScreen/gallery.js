@@ -5,32 +5,37 @@ import {portfolioImages} from '../../Utils/localDB';
 import {styles} from './style';
 import {TextComponent} from '../../Components/TextComponent';
 import {hp, wp} from '../../Config/responsive';
+import {imageUrl} from '../../Utils/Urls';
 
-const useGallery = ({gallary}) => {
-  console.log('gallarygallarygallarygallarygallarygallarygallary', gallary);
+const UseGallery = ({gallery}) => {
+  console.log('gallarygallarygallarygallarygallarygallarygallary', gallery);
   const photoCount = 10;
   return (
-    <>
+    <View>
       <TextComponent
         text={`Photos (${photoCount})`}
         styles={styles.aboutTitle}
       />
       <AniFlatOneByOne
-        flatListProps={{numColumns: 2, nestedScrollEnabled: true}}
-        data={portfolioImages}
+        flatListProps={{numColumns: 5, nestedScrollEnabled: true}}
+        data={gallery.past_works}
         // emptyView={}
-        InnerCompnonet={res => (
-          <Image
-            // source={{uri: res?.uri ?? res?.work_image}}
-            source={{uri: res?.image ?? res?.work_image}}
-            progressiveRenderingEnabled
-            style={styles.imageView}
-            flatListProps={{nestedScrollEnabled: true}}
-          />
-        )}
+        InnerCompnonet={res => {
+          return (
+            <Image
+              // source={{uri: res?.uri ?? res?.work_image}}
+              source={{
+                uri: imageUrl(res.work_image),
+              }}
+              progressiveRenderingEnabled
+              style={styles.imageView}
+              flatListProps={{nestedScrollEnabled: true}}
+            />
+          );
+        }}
       />
-    </>
+    </View>
   );
 };
 
-export default memo(useGallery);
+export default memo(UseGallery);
