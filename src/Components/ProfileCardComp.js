@@ -16,9 +16,11 @@ import {divider, star} from '../Assets';
 import ThemeButton from './ThemeButton';
 import {imageUrl} from '../Utils/Urls';
 
-export const ProfileCardComp = ({data, onPress}) => {
+export const ProfileCardComp = ({data, onPress, viewStyle, btnViewStyle}) => {
+  console.log('data?.ratingdata?.ratingdata?.rating', data?.rating);
+
   return (
-    <View style={styles.viewStyle}>
+    <View style={{...styles.viewStyle, ...viewStyle}}>
       <CircleImage
         uri={true}
         image={imageUrl(data?.image)}
@@ -28,7 +30,7 @@ export const ProfileCardComp = ({data, onPress}) => {
       <View style={styles.reviewView}>
         <Image source={star} resizeMode="contain" style={styles.starImage} />
         <TextComponent
-          text={`${data?.ratings_received_count} Reviews`}
+          text={`${data?.rating ?? 0} Reviews`}
           fade={true}
           styles={{fontSize: hp('1.8')}}
         />
@@ -36,7 +38,7 @@ export const ProfileCardComp = ({data, onPress}) => {
       <ThemeButton
         onPress={onPress}
         title={'View Profile'}
-        style={styles.viewBtn}
+        style={{...styles.viewBtn, ...btnViewStyle}}
       />
     </View>
   );

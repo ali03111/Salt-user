@@ -1,6 +1,13 @@
 import React from 'react';
 import {memo} from 'react';
-import {FlatList, Image, Pressable, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StatusBar,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import BackHeader from '../../Components/BackHeader';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
@@ -13,22 +20,40 @@ import useFavouriteScreen from './useFavouriteScreen';
 import BottomModal from '../../Components/BottomModal';
 import {Colors} from '../../Theme/Variables';
 import {divider} from '../../Assets';
+import NoDataFoundVer from '../../Components/NoDataFoundVer';
+import {EmptyViewComp} from '../../Components/EmptyViewComp';
+import {AniFlatOneByOne} from '../../AnimatedComp/AniFlatOneByOne';
+import BottomModalComp from './BottomModalComp';
+import {imageUrl} from '../../Utils/Urls';
 
-const FavouriteScreen = ({onPress}) => {
-  const {setIsModalVisible, isModalVisible, rating, setRating, toggleModal} =
-    useFavouriteScreen();
-  const ratingCompleted = rating => {
-    console.log('Rating is: ' + rating);
-    setRating(rating);
-  };
-  const renderItem = () => {
+const FavouriteScreen = ({navigation}) => {
+  const {
+    setIsModalVisible,
+    isModalVisible,
+    rating,
+    setRating,
+    toggleModal,
+    ratingCompleted,
+    data,
+    onRefresh,
+    setInderNumber,
+    indexNumber,
+    removeFav,
+  } = useFavouriteScreen();
+
+  const RenderItem = ({item, index}) => {
+    console.log('datafayuvcsvjasvjkcasvbkjbvaskljbklbad', item?.image);
     return (
       <View style={styles.favContainer}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <View style={styles.innerFav}>
-            <CircleImage styles={styles.circleImage} />
+            <CircleImage
+              styles={styles.circleImage}
+              image={imageUrl(item?.image)}
+              uri={true}
+            />
             <View style={{marginLeft: wp('3'), alignSelf: 'center'}}>
-              <TextComponent styles={styles.name} text={'James Dean'} />
+              <TextComponent styles={styles.name} text={item?.name} />
               <View
                 style={{
                   flexDirection: 'row',
@@ -37,33 +62,28 @@ const FavouriteScreen = ({onPress}) => {
                 <AirbnbRating
                   showRating={false}
                   count={5}
-                  // reviews={[
-                  //   'Terrible',
-                  //   'Bad',
-                  //   'Meh',
-                  //   'OK',
-                  //   'Good',
-                  //   'Hmm...',
-                  //   'Very Good',
-                  //   'Wow',
-                  //   'Amazing',
-                  //   'Unbelievable',
-                  //   'Jesus',
-                  // ]}
-                  defaultRating={0}
+                  defaultRating={item?.rating ?? 0}
                   size={10}
                   onFinishRating={ratingCompleted}
                 />
-                <TextComponent styles={styles.rating} text={rating} />
+                <TextComponent styles={styles.rating} text={item?.rating} />
               </View>
             </View>
           </View>
-          <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
+          <TouchableOpacity
+            onPress={() => {
+              setInderNumber(index);
+              setIsModalVisible(!isModalVisible);
+            }}>
             <Image source={heartFill} style={styles.hearticon} />
           </TouchableOpacity>
         </View>
         <ThemeButton
-          onPress={onPress}
+          onPress={() =>
+            navigation.navigate('ProfessionalProfileScreen', {
+              item: {user: {user: item, isProfile: true}},
+            })
+          }
           title={'View Profile'}
           style={styles.viewProfile}
         />
@@ -72,94 +92,28 @@ const FavouriteScreen = ({onPress}) => {
   };
   return (
     <>
+      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
       <BackHeader headerTitle={'Favorites'} />
       <View style={styles.container}>
-        <FlatList
-          contentContainerStyle={{
-            alignSelf: 'center',
-            marginTop: hp('3'),
-            paddingBottom: hp('5'),
+        <AniFlatOneByOne
+          data={data?.favorites}
+          flatViewStyle={styles.flatListView}
+          flatListProps={{
+            onRefresh: () => onRefresh(),
+            ListEmptyComponent: <EmptyViewComp onRefresh={onRefresh} />,
           }}
-          data={[1, 2, 3, 4, 5]}
-          renderItem={renderItem}
+          InnerCompnonet={(item, index) => (
+            <RenderItem item={item} index={index} />
+          )}
         />
       </View>
-      <BottomModal isVisible={isModalVisible} onClose={toggleModal}>
-        <TextComponent
-          text={'Remove from Favourites ?'}
-          styles={{
-            fontWeight: '600',
-          }}
-        />
-        <Image source={divider} resizeMode="contain" style={styles.divider} />
-        <View style={styles.favContainer}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <View style={styles.innerFav}>
-              <CircleImage styles={styles.circleImage} />
-              <View style={{marginLeft: wp('3'), alignSelf: 'center'}}>
-                <TextComponent styles={styles.name} text={'James Dean'} />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}>
-                  <AirbnbRating
-                    isDisabled
-                    showRating={false}
-                    count={5}
-                    // reviews={[
-                    //   'Terrible',
-                    //   'Bad',
-                    //   'Meh',
-                    //   'OK',
-                    //   'Good',
-                    //   'Hmm...',
-                    //   'Very Good',
-                    //   'Wow',
-                    //   'Amazing',
-                    //   'Unbelievable',
-                    //   'Jesus',
-                    // ]}
-
-                    defaultRating={0}
-                    size={10}
-                    onFinishRating={ratingCompleted}
-                  />
-                  <TextComponent styles={styles.rating} text={rating} />
-                </View>
-              </View>
-            </View>
-            {/* <TouchableOpacity
-              onPress={() => setIsModalVisible(!isModalVisible)}>
-              <Image source={heartFill} style={styles.hearticon} />
-            </TouchableOpacity> */}
-          </View>
-
-          {/* <ThemeButton title={'View Profile'} style={styles.viewProfile} /> */}
-        </View>
-        <View
-          style={{
-            marginTop: 20,
-            flexDirection: 'row',
-            padding: 10,
-            justifyContent: 'space-between',
-            width: wp('90'),
-          }}>
-          <ThemeButton
-            onPress={() => setIsModalVisible(false)}
-            title={'Cancel'}
-            style={styles.viewProfile1}
-          />
-          <ThemeButton
-            title={'Yes, Remove'}
-            style={{...styles.viewProfile1, backgroundColor: Colors.themeRed}}
-          />
-        </View>
-      </BottomModal>
+      <BottomModalComp
+        isModalVisible={isModalVisible}
+        toggleModal={toggleModal}
+        ratingCompleted={ratingCompleted}
+        rating={data?.favorites[indexNumber]?.rating}
+        removeFav={removeFav}
+      />
     </>
   );
 };

@@ -7,8 +7,11 @@ import {downArrow, information} from '../Assets';
 import ThemeButton from './ThemeButton';
 import {Colors} from '../Theme/Variables';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {imageUrl} from '../Utils/Urls';
 
-export const HistoryReqComp = ({data, viewStyle}) => {
+export const HistoryReqComp = ({data, viewStyle, onPress, onPressProfile}) => {
+  const location = 'JSON.parse(data?.locations?.location)';
+  console.log('datadatadatadatadatadatadatadata', data?.ratings[0]?.is_review);
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>
@@ -53,18 +56,13 @@ export const HistoryReqComp = ({data, viewStyle}) => {
         </View>
       </View>
       <View style={styles.userView}>
-        <CircleImage image={data?.image} uri={true} />
+        <CircleImage image={imageUrl(data?.professional?.image)} uri={true} />
         <View style={styles.nameView}>
           <TextComponent
-            text={`With - ${data?.name}`}
+            text={`With - ${data?.professional?.name}`}
             styles={{fontSize: hp('2.5'), fontWeight: '500'}}
           />
         </View>
-        {/* <Image
-          source={information}
-          resizeMode="contain"
-          style={styles.infIcon}
-        /> */}
       </View>
       <View style={styles.locationStyle}>
         <MaterialCommunityIcons
@@ -73,7 +71,10 @@ export const HistoryReqComp = ({data, viewStyle}) => {
           size={hp('2.8')}
         />
         <TextComponent
-          text={`${data?.location}`}
+          text={`${
+            location?.currentLocation?.description ??
+            'Street338 Catherine St, Columbia.'
+          }`}
           fade={true}
           styles={{
             fontSize: hp('1.8'),
@@ -82,32 +83,29 @@ export const HistoryReqComp = ({data, viewStyle}) => {
           numberOfLines={2}
         />
       </View>
-      {/* <TextComponent
-        text={'Appointment Details'}
-        styles={{marginTop: hp('3'), marginLeft: wp('3')}}
-      /> */}
-      {/* <View style={styles.bottomTextView}>
-        {['pny tall', 'Extra Small', 'CHain legth', 'House Call'].map(res => {
-          return <TextComponent text={res} styles={styles.roundText} />;
-        })}
-      </View> */}
       <View style={styles.viewBtnView}>
         <ThemeButton
           title={'Re - Schedule'}
           style={styles.viewAppBtn}
           image={downArrow}
-          imageStyle={{
-            tintColor: 'white',
-            width: wp('2.5'),
-            marginLeft: wp('2'),
-          }}
+          imageStyle={styles.arrow}
           textStyle={{fontSize: hp('1.5')}}
         />
-        <ThemeButton
-          title={'Add Review'}
-          style={{...styles.viewAppBtn, backgroundColor: 'red'}}
-          textStyle={{fontSize: hp('1.5')}}
-        />
+        {data?.ratings[0]?.is_review == 1 ? (
+          <ThemeButton
+            onPress={onPress}
+            title={'Add Review'}
+            style={{...styles.viewAppBtn, backgroundColor: 'red'}}
+            textStyle={{fontSize: hp('1.5')}}
+          />
+        ) : (
+          <ThemeButton
+            onPress={onPressProfile}
+            title={'View Profile'}
+            style={{...styles.viewAppBtn, backgroundColor: 'red'}}
+            textStyle={{fontSize: hp('1.5')}}
+          />
+        )}
       </View>
     </View>
   );
@@ -224,5 +222,10 @@ const styles = StyleSheet.create({
     borderColor: Colors.grayBorder,
     flexDirection: 'row',
     alignItems: 'flex-start',
+  },
+  arrow: {
+    tintColor: 'white',
+    width: wp('2.5'),
+    marginLeft: wp('2'),
   },
 });

@@ -97,7 +97,7 @@ const EditProfileScreen = ({navigation}) => {
             title={'Cancel'}
             style={styles.cancelBtn}
             textStyle={styles.cancelBtnText}
-            onPress={() => navigation.navigate('SettingScreen')}
+            onPress={() => navigation.goBack()}
           />
           <ThemeButton
             title={'Save'}

@@ -193,4 +193,11 @@ export const styles = StyleSheet.create({
   selectedButtonText: {
     color: 'black',
   },
+  emptyText: {
+    textAlign: 'center',
+    fontSize: hp('3'),
+    width: wp('80'),
+    alignSelf: 'center',
+    marginTop: hp('10'),
+  },
 });

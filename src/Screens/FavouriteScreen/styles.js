@@ -77,4 +77,16 @@ export const styles = StyleSheet.create({
     height: Dimensions.get('window').width * 0.13,
   },
   divider: {width: wp('90'), marginTop: hp('2'), marginBottom: hp('6')},
+  flatListView: {
+    alignSelf: 'center',
+    marginTop: hp('3'),
+    paddingBottom: hp('5'),
+  },
+  btnView: {
+    marginTop: hp('4'),
+    flexDirection: 'row',
+    padding: 10,
+    justifyContent: 'space-between',
+    width: wp('90'),
+  },
 });

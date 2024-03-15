@@ -3,13 +3,13 @@ const getCredentials = () => {
     return {
       // baseURL: 'http://3.20.179.123/salt/api/',
       // imageURL: 'http://3.20.179.123/salt/',
-      baseURL: 'https://virtualrealitycreators.com/salt/api/',
+      baseURL: 'https://saltbraiding.com/api/',
       imageURL: 'https://virtualrealitycreators.com/salt/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'https://virtualrealitycreators.com/salt/api/',
+      baseURL: 'https://saltbraiding.com/api/',
       imageURL: 'https://virtualrealitycreators.com/salt/',
       // baseURL: 'http://3.20.179.123/salt/api/',
       // imageURL: 'http://3.20.179.123/salt/',
@@ -36,3 +36,8 @@ export const findProfessUrl = 'customer/set-appointment';
 export const sendReqUrl = 'customer/send-request';
 export const getAppProUrl = 'customer/appointment-professionals';
 export const contentHistoryUpcoming = 'customer/home-content-history-upcoming';
+export const customerRateUrl = 'customer/rate';
+export const addfavoriteUrl = 'customer/favorite';
+export const getfavoriteUrl = 'customer/user-fav';
+export const createAppeUrl = 'customer/create-appointment';
+export const TopRatedProUrl = 'customer/top-rated-list';

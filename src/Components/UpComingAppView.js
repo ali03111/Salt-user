@@ -43,7 +43,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
 
   // const renderHeader = (item, index) => {
   //   const i = [index].toString() == accordionItem.toString();
-  const address = JSON.parse(data?.locations?.location);
+  const address = JSON.parse(data?.location?.location);
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>
@@ -110,7 +110,10 @@ export const UpComingAppView = ({data, viewStyle}) => {
           size={hp('2.8')}
         />
         <TextComponent
-          text={address?.currentLocation?.description}
+          text={
+            address?.currentLocation?.description ??
+            'Street338 Catherine St, Columbia.'
+          }
           fade={true}
           styles={{
             fontSize: hp('1.8'),

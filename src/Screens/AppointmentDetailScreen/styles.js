@@ -6,8 +6,9 @@ const {Colors} = require('../../Theme/Variables');
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: Colors.black,
+    paddingBottom: hp('5'),
   },
   bgImg: {
     width: wp('100'),
@@ -31,6 +32,7 @@ export const styles = StyleSheet.create({
   },
   tagLineStyle: {
     fontSize: hp('1.6'),
+    textDecorationLine: 'underline',
   },
   topTier: {
     flexDirection: 'row',

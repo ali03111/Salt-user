@@ -2,7 +2,15 @@ import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React, {memo} from 'react';
 import BackHeader from '../../Components/BackHeader';
 import {styles} from './style';
-import {arrowBack, exp, fav, messagefill, starfill} from '../../Assets';
+import {
+  arrowBack,
+  exp,
+  fav,
+  heartFill,
+  heartWhite,
+  messagefill,
+  starfill,
+} from '../../Assets';
 import {TextComponent} from '../../Components/TextComponent';
 // import {ScrollView} from 'react-native-gesture-handler';
 import {CircleImage} from '../../Components/CircleImage';
@@ -22,10 +30,8 @@ import {locationType} from '../../Utils/localDB';
 import AppointmentBookView from './AppointmentBookView';
 
 const ProfessionalProfileScreen = ({navigation, route}) => {
-  const {user, appData, onBook} = useProfessionalProfileScreen(
-    navigation,
-    route,
-  );
+  const {user, appData, onBook, onFavPress, isFav, priceRef, price, setPrice} =
+    useProfessionalProfileScreen(navigation, route);
 
   console.log('12361267387isajdhakjshdk', user);
 
@@ -34,8 +40,10 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
       <BackHeader
         isBack={true}
         headerTitle={'Professional Detail'}
-        saveReset={fav}
+        saveReset={isFav ? heartWhite : fav}
         goBack={() => navigation.goBack()}
+        onRightPress={() => onFavPress(user?.user?.id)}
+        rightIconStyle={{tintColor: 'white'}}
       />
       <ScrollView
         contentContainerStyle={styles.container}
@@ -43,19 +51,19 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
         showsVerticalScrollIndicator={false}>
         <View style={styles.pImage}>
           <CircleImage
-            image={imageUrl(user?.image)}
+            image={imageUrl(user?.user?.image)}
             styles={styles.profileView}
             uri={true}
           />
         </View>
-        <TextComponent text={user?.name} styles={styles.userName} />
+        <TextComponent text={user?.user?.name} styles={styles.userName} />
         <View style={styles.infoMain}>
           <View style={styles.userInfo}>
             <View style={styles.expIconMain}>
               <Image source={exp} style={styles.expIcon} />
             </View>
             <TextComponent
-              text={user?.experience ?? 0}
+              text={user?.user?.experience ?? 0}
               styles={styles.expNumber}
             />
             <TextComponent text={'Years Experience'} styles={styles.expText} />
@@ -65,7 +73,7 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
               <Image source={starfill} style={styles.expIcon} />
             </View>
             <TextComponent
-              text={user?.ratings_received_count}
+              text={user?.user?.rating ?? 0}
               styles={styles.expNumber}
             />
             <TextComponent text={'Rating'} styles={styles.expText} />
@@ -78,20 +86,29 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             <TextComponent text={'Reviews'} styles={styles.expText} />
           </View>
         </View>
-        <CustomTabs gallery={user?.past_works} about={user?.about} />
+        <CustomTabs gallery={user?.user?.past_works} about={user?.about} />
 
-        <AppointmentBookView user={user} />
-
+        {user?.isProfile == true && (
+          <AppointmentBookView
+            user={user?.user}
+            onBook={onBook}
+            priceRef={setPrice}
+          />
+        )}
         {/* {user?.isPorfile} */}
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <TextComponent text={'Price'} styles={styles.aboutTitle} />
-          <TextComponent text={`$${'10'}`} styles={styles.aboutTitle} />
-        </View>
-        {user?.isPorfile && (
+        {price && (
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <TextComponent text={'Price'} styles={styles.aboutTitle} />
+            <TextComponent text={`$${price}`} styles={styles.aboutTitle} />
+          </View>
+        )}
+        {!user?.isProfile && (
           <View style={styles.btnView}>
             <ThemeButton
               title={'Book An Appointment'}
-              onPress={() => onBook(appData?.id, user?.user?.id)}
+              onPress={() =>
+                onBook({appId: appData?.id, proId: user?.user?.id})
+              }
             />
           </View>
         )}

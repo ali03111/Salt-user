@@ -14,3 +14,4 @@ export {default as ProfessionalList} from './ProfessionalList';
 export {default as ProfessionalProfile} from './ProfessionalProfile';
 export {default as ProfessionalProfileScreen} from './ProfessionalProfileScreen';
 export {default as AppointmentDetailScreen} from './AppointmentDetailScreen';
+export {default as AllProfessionalScreen} from './AllProfessionalScreen';

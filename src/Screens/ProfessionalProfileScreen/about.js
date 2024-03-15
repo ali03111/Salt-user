@@ -9,12 +9,20 @@ const UseAbout = ({about}) => {
   return (
     <View>
       <TextComponent text={'About'} styles={styles.aboutTitle} />
-      <TextComponent
-        fade={true}
-        text={`${about}`}
-        // text={`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.`}
-        styles={styles.aboutText}
-      />
+      {about ? (
+        <TextComponent
+          fade={true}
+          text={`${about ?? ''}`}
+          // text={`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.`}
+          styles={styles.aboutText}
+        />
+      ) : (
+        <TextComponent
+          text={'Professional has not yet added their information.'}
+          styles={styles.emptyText}
+          fade={true}
+        />
+      )}
     </View>
   );
 };

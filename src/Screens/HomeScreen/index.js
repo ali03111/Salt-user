@@ -31,7 +31,7 @@ const HomeScreen = ({navigation}) => {
     },
     [homeContent],
   );
-  console.log(JSON.stringify(homeContent), 'kladjs');
+  // console.log("JSON.stringify(homeContent)", 'kladjs');
   const topRatedrenderItem = useCallback(
     ({item, index}) => {
       // console.log('item', item);
@@ -40,7 +40,7 @@ const HomeScreen = ({navigation}) => {
           data={item}
           onPress={() =>
             dynamicNav('ProfessionalProfileScreen', {
-              item: {user: {...item, isProfile: true}},
+              item: {user: {user: item, isProfile: true}},
             })
           }
         />
@@ -90,7 +90,10 @@ const HomeScreen = ({navigation}) => {
           imageStyle={styles.btnImage}
           onPress={() => navigation.navigate('BookAnAppointment')}
         />
-        <HeadingView title={'Top-rated professionals '} />
+        <HeadingView
+          title={'Top-rated professionals '}
+          onPress={() => dynamicNav('AllProfessionalScreen')}
+        />
         <FlatList
           data={homeContent?.top_rated}
           renderItem={topRatedrenderItem}

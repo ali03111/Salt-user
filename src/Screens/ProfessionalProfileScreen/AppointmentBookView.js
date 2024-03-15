@@ -9,8 +9,14 @@ import BraidComp from '../../Components/BraidComp';
 import {Touchable} from '../../Components/Touchable';
 import {styles} from './style';
 import {useState} from 'react';
+import ThemeButton from '../../Components/ThemeButton';
+import {getProperLocation} from '../../Utils/globalFunctions';
+import useReduxStore from '../../Hooks/UseReduxStore';
+import {loadingTrue} from '../../Redux/Action/isloadingAction';
 
-const AppointmentBookView = ({user}) => {
+const AppointmentBookView = ({user, onBook, priceRef}) => {
+  const {dispatch} = useReduxStore();
+
   const [details, setDetails] = useState({
     type: null,
     size: null,
@@ -59,22 +65,29 @@ const AppointmentBookView = ({user}) => {
       />
       <DividerComp styles={{marginVertical: hp('5')}} />
       <BraidComp
-        onSelectValue={value => onSelectValue('type', value)}
+        onSelectValue={value => {
+          onSelectValue('type', value);
+          console.log(
+            'kubdkbdvbsdbvbsdbsdkjbfkjsdbfkjsdbfkjsdbfikdsbkfjbsdkjfbsdkjbfjksdbfksdbfjksdbjkfbsdk',
+            user?.braid_type.filter(res => res?.id == value)[0]?.price,
+          );
+          priceRef(user?.braid_type.filter(res => res?.id == value)[0]?.price);
+        }}
         braidTitle={'Braid Type'}
-        data={user?.braid_types}
+        data={user?.braid_type}
         selectedVal={type}
       />
       <BraidComp
         onSelectValue={value => onSelectValue('size', value)}
         selectedVal={size}
         braidTitle={'Braid Size'}
-        data={user?.braid_sizes}
+        data={user?.braid_size}
       />
       <BraidComp
         onSelectValue={value => onSelectValue('length', value)}
         selectedVal={length}
         braidTitle={'Braid Length'}
-        data={user?.braid_lengths}
+        data={user?.braid_length}
       />
 
       <DividerComp styles={{marginVertical: hp('5')}} />
@@ -109,7 +122,7 @@ const AppointmentBookView = ({user}) => {
               text={locationType[1]?.label}
               styles={{
                 ...styles.buttonText,
-                ...('locationId' === locationType[1]?.locId &&
+                ...(locationId === locationType[1]?.locId &&
                   styles.selectedButtonText),
               }}
             />
@@ -131,12 +144,33 @@ const AppointmentBookView = ({user}) => {
             }
             styles={{
               ...styles.buttonText,
-              ...('locationId' === locationType[1]?.locId &&
+              ...(locationId === locationType[1]?.locId &&
                 styles.selectedButtonText),
             }}
           />
         </Touchable>
       )}
+      {/* <View style={styles.btnView}> */}
+      <ThemeButton
+        title={'Book An Appointment'}
+        style={{marginTop: hp('5')}}
+        onPress={async () => {
+          dispatch(loadingTrue());
+          const loc = await getProperLocation();
+          updateState({locationDes: loc});
+          onBook({...details, proId: user?.id, locationDes: loc});
+          updateState({
+            type: null,
+            size: null,
+            length: null,
+            locationId: null,
+            date: null,
+            time: null,
+            locationDes: {coords: {}, des: null},
+          });
+        }}
+      />
+      {/* </View> */}
     </View>
   );
 };

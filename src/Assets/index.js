@@ -64,6 +64,7 @@ export {default as heartFill} from './Icons/heartFill.png';
 export {default as settingFill} from './Icons/profile-1.png';
 export {default as messagefill} from './Icons/messagefill.png';
 export {default as starfill} from './Icons/starfill.png';
+export {default as heartWhite} from './Icons/heartwhite.png';
 
 export {default as settingWhite} from './Icons/settingWhite.png';
 export {default as notificationWhite} from './Icons/notificationWhite.png';

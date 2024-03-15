@@ -49,10 +49,13 @@ const BackHeader = ({
       </View>
       <View style={styles.HeaderRight}>
         <Touchable style={styles.styleCheck} onPress={onRightPress}>
-          <Image source={icon} style={styles.filterIcon} />
+          <Image source={icon} style={{...styles.filterIcon, rightIconStyle}} />
         </Touchable>
         <Touchable style={styles.backMain} onPress={onRightPress}>
-          <Image source={saveReset} style={styles.filterIcon} />
+          <Image
+            source={saveReset}
+            style={{...styles.filterIcon, rightIconStyle}}
+          />
 
           {/* <TextComponent
             text={saveReset}

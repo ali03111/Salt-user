@@ -36,7 +36,7 @@ export const AniFlatOneByOne = ({
       <Animatable.View
         animation={'fadeIn'}
         delay={Number(index.toString() + '00')}>
-        {InnerCompnonet(item)}
+        {InnerCompnonet(item, index)}
       </Animatable.View>
     );
   };
@@ -50,6 +50,7 @@ export const AniFlatOneByOne = ({
         scrollEnabled: true,
         showsVerticalScrollIndicator: false,
         showsHorizontalScrollIndicator: false,
+        refreshing: false,
         // ListEmptyComponent: {emptyView},
         ...flatListProps,
       }}

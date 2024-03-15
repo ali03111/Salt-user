@@ -17,10 +17,10 @@ const UseReviews = () => {
       }}>
       <View style={{flexDirection: 'row'}}>
         <TextComponent text={'Reviews'} styles={styles.aboutTitle} />
-        <TouchableOpacity onPress={() => {}} style={styles.editReview}>
+        {/* <TouchableOpacity onPress={() => {}} style={styles.editReview}>
           <AntDesign name="edit" color="white" size={hp('2.5')} />
           <TextComponent text={'Add Review'} styles={styles.review} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <AniFlatOneByOne
         data={ProfesReviews}

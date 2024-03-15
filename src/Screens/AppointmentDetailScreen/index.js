@@ -25,17 +25,20 @@ const AppointmentDetailScreen = ({route, navigation}) => {
     route,
   );
 
-  const address = JSON.parse(data?.locations?.location);
+  console.log('data?.usersdata?.usersdata?.usersdata?.usersdata?.users', data);
+
+  const address = JSON.parse(data?.users?.location?.location);
 
   const isHouseCall = Boolean(
-    locationType.filter(res => res?.locId == data?.locations?.loc_data)[0]
-      ?.label == locationType[0]?.locId,
+    locationType.filter(
+      res => res?.locId == data?.users?.locations?.loc_data,
+    )[0]?.label == locationType[0]?.locId,
   );
 
-  console.log('address?.aaaaaasdsdsdsdsdsdsa', address?.currentLocation);
+  console.log('address?.aaaaaasdsdsdsdsdsdsa', data?.professional);
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <StatusBar
         backgroundColor={Colors.themeBlack}
         barStyle={'light-content'}
@@ -56,6 +59,20 @@ const AppointmentDetailScreen = ({route, navigation}) => {
           numberOfLines={1}
           text={data?.professional?.name}
           styles={styles.titleStyle}
+          onPress={() =>
+            navigation.navigate('ProfessionalProfileScreen', {
+              item: {
+                user: {
+                  user: {
+                    ...data?.professional,
+                    location: data?.location,
+                    past_works: data?.past_work,
+                  },
+                  isProfile: true,
+                },
+              },
+            })
+          }
         />
         <TextComponent
           numberOfLines={1}
@@ -119,7 +136,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
           <TextComponent
             text={
               locationType.filter(
-                res => res?.locId == data?.locations?.loc_data,
+                res => res?.locId == data?.users?.location?.loc_data,
               )[0]?.label
             }
             fade={true}
@@ -138,25 +155,27 @@ const AppointmentDetailScreen = ({route, navigation}) => {
         )}
       </View>
 
-      <View style={styles.viewBtnView}>
-        {/* {status == null ? ( */}
-        <ThemeButton
-          title={data?.isPending ? 'Reject' : 'Cancel'}
-          style={styles.viewAppBtn}
-          textStyle={{fontSize: hp('1.5')}}
-          onPress={onCancelPress[data?.isPending]}
-        />
-        {/* ) : ( */}
-        {/* // <TextComponent text={'hufhucvjvcc'} /> */}
-        {/* )} */}
-        <ThemeButton
-          title={data?.isPending ? 'Accept' : 'Chat'}
-          style={{...styles.viewAppBtn, backgroundColor: 'red'}}
-          textStyle={{fontSize: hp('1.5')}}
-          onPress={onAcceptPress[data?.isPending]}
-        />
-      </View>
-    </View>
+      {!data.isCompleted && (
+        <View style={styles.viewBtnView}>
+          {/* {status == null ? ( */}
+          <ThemeButton
+            title={data?.isPending ? 'Reject' : 'Cancel'}
+            style={styles.viewAppBtn}
+            textStyle={{fontSize: hp('1.5')}}
+            onPress={onCancelPress[data?.isPending]}
+          />
+          {/* ) : ( */}
+          {/* // <TextComponent text={'hufhucvjvcc'} /> */}
+          {/* )} */}
+          <ThemeButton
+            title={data?.isPending ? 'Accept' : 'Chat'}
+            style={{...styles.viewAppBtn, backgroundColor: 'red'}}
+            textStyle={{fontSize: hp('1.5')}}
+            onPress={onAcceptPress[data?.isPending]}
+          />
+        </View>
+      )}
+    </ScrollView>
   );
 };
 
