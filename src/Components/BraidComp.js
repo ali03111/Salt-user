@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {wp, hp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
@@ -14,6 +14,8 @@ export default function BraidComp({
   selectedVal,
   pickerTextStyle,
 }) {
+  const IsIOS = Boolean(Platform.OS == 'ios');
+
   return (
     <>
       <View style={{...braidContainerStyles, paddingBottom: hp('1')}}>
@@ -26,14 +28,21 @@ export default function BraidComp({
         </View>
         <View style={styles.cardContainer}>
           <View style={styles.cardInner}>
-            <View style={styles.innerWrapper}>
-              <TextComponent text={braidTitle} styles={styles.braidTitle} />
+            <View style={styles.innerWrapper(IsIOS)}>
+              {!IsIOS && (
+                <TextComponent text={braidTitle} styles={styles.braidTitle} />
+              )}
               <View style={styles.agePicker}>
                 <Picker
-                  style={styles.pickerStyle}
+                  style={
+                    Platform.OS == 'ios'
+                      ? styles.pickerStyleIOS
+                      : styles.pickerStyle
+                  }
                   dropdownIconColor={Colors.white}
                   itemStyle={{
                     fontSize: hp('1.5'),
+                    color: 'white',
                   }}
                   selectedValue={selectedVal}
                   onValueChange={(itemValue, itemIndex) => {
@@ -44,18 +53,19 @@ export default function BraidComp({
                     return <Picker.Item label={res?.item} value={res.id} />;
                   })}
                 </Picker>
-
-                <TextComponent
-                  text={
-                    selectedVal
-                      ? data?.filter(res => res?.id == selectedVal)[0]?.item
-                      : 'Select braid'
-                  }
-                  styles={{
-                    ...styles.pickerText(selectedVal),
-                    ...pickerTextStyle,
-                  }}
-                />
+                {!IsIOS && (
+                  <TextComponent
+                    text={
+                      selectedVal
+                        ? data?.filter(res => res?.id == selectedVal)[0]?.item
+                        : 'Select braid'
+                    }
+                    styles={{
+                      ...styles.pickerText(selectedVal),
+                      ...pickerTextStyle,
+                    }}
+                  />
+                )}
               </View>
             </View>
 
@@ -72,12 +82,13 @@ export default function BraidComp({
 }
 
 const styles = StyleSheet.create({
-  innerWrapper: {
+  innerWrapper: isIOS => ({
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'center',
+    justifyContent: isIOS ? 'center' : 'space-between',
     alignItems: 'center',
     width: wp('85'),
-  },
+  }),
   titleStyle: {
     paddingBottom: hp('1'),
     fontSize: hp('2'),
@@ -98,7 +109,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     marginVertical: hp('1.5'),
     borderRadius: 10,
-    borderWidth: wp('0.1'),
+    borderWidth: wp('0.2'),
     borderColor: Colors.grayFaded,
     shadowColor: '#181818',
     shadowOffset: {
@@ -152,5 +163,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     color: 'transparent',
     // fontSize: hp('1'),
+  },
+  pickerStyleIOS: {
+    width: wp('80'),
+    alignSelf: 'center',
   },
 });

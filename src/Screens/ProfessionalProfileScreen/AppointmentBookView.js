@@ -67,10 +67,6 @@ const AppointmentBookView = ({user, onBook, priceRef}) => {
       <BraidComp
         onSelectValue={value => {
           onSelectValue('type', value);
-          console.log(
-            'kubdkbdvbsdbvbsdbsdkjbfkjsdbfkjsdbfkjsdbfikdsbkfjbsdkjfbsdkjbfjksdbfksdbfjksdbjkfbsdk',
-            user?.braid_type.filter(res => res?.id == value)[0]?.price,
-          );
           priceRef(user?.braid_type.filter(res => res?.id == value)[0]?.price);
         }}
         braidTitle={'Braid Type'}

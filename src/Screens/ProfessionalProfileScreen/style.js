@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     // flexGrow: 1,
     backgroundColor: Colors.themeBlack,
     paddingTop: hp('2.5'),
-    paddingBottom: hp('10'),
+    paddingBottom: Platform.OS == 'ios' ? hp('15') : hp('10'),
   },
   imageView: {
     marginVertical: hp('2'),

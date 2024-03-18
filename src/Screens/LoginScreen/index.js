@@ -104,7 +104,10 @@ const LoginScreen = ({navigation}) => {
           styles={styles.forgotText}
         />
       </View>
-      <DashText text={'Log In'} />
+      <DashText
+        text={'Log In'}
+        localStyle={{marginTop: Platform.OS == 'ios' ? hp('15') : 0}}
+      />
       <SocialBottomView />
       <BottomText
         text={'Don’t have an account?'}

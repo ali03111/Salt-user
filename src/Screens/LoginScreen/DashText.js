@@ -1,6 +1,6 @@
-import { StyleSheet, View } from 'react-native';
-import {hp ,wp} from '../../Config/responsive';
-import { Colors } from '../../Theme/Variables';
+import {StyleSheet, View} from 'react-native';
+import {hp, wp} from '../../Config/responsive';
+import {Colors} from '../../Theme/Variables';
 
 const {TextComponent} = require('../../Components/TextComponent');
 
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginTop: hp('10'),
   },
   barLine: {
-    width: wp('28'),
+    width: wp('23'),
     borderBottomWidth: 1,
     height: hp('.5'),
   },
@@ -29,7 +29,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('4'),
     color: Colors.black,
   },
-})
+});
 export default DashText;
-
-

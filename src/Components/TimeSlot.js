@@ -27,7 +27,7 @@ export default function TimeSlot({
                 onPress={() => onSelectVal(res)}>
                 <TextComponent
                   styles={styles.slotStyle(Boolean(res?.id == selectedVal?.id))}
-                  text={`10:00 AM   to  12:00 PM `}
+                  text={`10:00 AM to 12:00 PM`}
                 />
               </Touchable>
             );
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     color: isSelected ? Colors.themeBlack : 'white',
     backgroundColor: isSelected ? 'white' : Colors.themeBlack,
     marginBottom: hp('1.5'),
+    overflow: 'hidden',
   }),
   mapView: {
     width: wp('90'),

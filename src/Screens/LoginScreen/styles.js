@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {hp, wp} from '../../Config/responsive';
 import {Colors} from '../../Theme/Variables';
 
@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   topImage: isIOS => ({
     position: 'absolute',
     fontSize: hp('4'),
-    marginTop: isIOS ? hp('7') : hp('9'),
+    marginTop: isIOS ? hp('6') : hp('9'),
     alignSelf: 'center',
     marginLeft: wp('7'),
   }),
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     backgroundColor: 'white',
     alignSelf: 'center',
-    marginTop: hp('-32'),
+    marginTop: Platform.OS == 'ios' ? hp('-30') : hp('-32'),
     // position: 'absolute',
     zIndex: 1,
     borderRadius: 20,
@@ -61,6 +61,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center',
+    // marginTop: Platform.OS == 'ios' ? hp('5') : 0,
   },
 
   imageStyle: {width: wp('30'), height: hp('15')},
