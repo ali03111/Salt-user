@@ -34,6 +34,8 @@ import {
 } from '../Assets';
 import useReduxStore from '../Hooks/UseReduxStore';
 import Lottie from 'lottie-react-native';
+import {fetchGetWithToken} from '../Utils/helperFunc';
+import {verifyUserUrl} from '../Utils/Urls';
 
 globalStyles = {};
 const isIOS = Boolean(Platform.OS == 'ios');
@@ -41,6 +43,8 @@ const isIOS = Boolean(Platform.OS == 'ios');
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
   const {getState} = useReduxStore();
+
+  fetchGetWithToken(verifyUserUrl);
 
   const {inviNotify} = getState('inviNotify');
   const {generalNotify} = getState('generalNotify');
@@ -96,7 +100,7 @@ function MybottomTabs() {
     <Tab.Navigator
       sceneContainerStyle={{
         backgroundColor: Colors.themeBlack,
-        paddingBottom: hp('1')
+        paddingBottom: hp('1'),
       }}
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'white',
@@ -132,7 +136,7 @@ function MybottomTabs() {
           width: wp('100'),
           alignSelf: 'center',
           overflow: 'hidden',
-          marginTop: hp('-2')          
+          marginTop: hp('-2'),
         },
       })}>
       <Tab.Screen

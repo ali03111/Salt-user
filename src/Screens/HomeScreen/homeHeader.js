@@ -14,6 +14,7 @@ import {Touchable} from '../../Components/Touchable';
 import Lottie from 'lottie-react-native';
 
 const HomeHeader = ({text, onSettingPress, onNotiPress}) => {
+  let firstName = text?.split(' ')[0];
   return (
     <View style={styles.headerView}>
       <View style={styles.firstView}>
@@ -26,7 +27,10 @@ const HomeHeader = ({text, onSettingPress, onNotiPress}) => {
                 alignItems: 'center',
                 marginTop: hp('2.5'),
               }}>
-              <TextComponent text={text} styles={styles.nameText} />
+              <TextComponent
+                text={`Hello ${firstName}`}
+                styles={styles.nameText}
+              />
               <Lottie
                 source={handShakeLottie}
                 resizeMode="contain"

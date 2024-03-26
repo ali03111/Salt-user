@@ -6,6 +6,10 @@ import {TextComponent} from '../../Components/TextComponent';
 import {hp, wp} from '../../Config/responsive';
 
 const UseAbout = ({about}) => {
+  console.log(
+    'lksdbklsdbvlksdbvlkjsbdlkvbsdlkvblksdbvlksdbvklsdbvklsdbvklsdbvlksdbvlksd',
+    about,
+  );
   return (
     <View>
       <TextComponent text={'About'} styles={styles.aboutTitle} />

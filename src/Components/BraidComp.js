@@ -57,7 +57,8 @@ export default function BraidComp({
                   <TextComponent
                     text={
                       selectedVal
-                        ? data?.filter(res => res?.id == selectedVal)[0]?.item
+                        ? data?.filter(res => res?.id == selectedVal)[0]
+                            ?.item ?? 'Select braid'
                         : 'Select braid'
                     }
                     styles={{

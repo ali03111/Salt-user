@@ -4,9 +4,24 @@ import {Colors, FontSize} from '../Theme/Variables';
 import {hp, wp} from '../Config/responsive';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const UseCalendar = ({onSelectVal, selectedVal}) => {
+const UseCalendar = ({onSelectVal, selectedVal, markedDates}) => {
   const today = new Date(); // Get current date
-  const minDate = today.toISOString().split('T')[0]; // Convert to ISO format
+  today.setDate(today.getDate() + 1); // Increase date by one day
+
+  const minDate = today.toISOString().split('T')[0];
+
+  let markedDay = {};
+
+  markedDates.map(item => {
+    markedDay[item] = {
+      selected: true,
+      marked: true,
+      selectedColor: Colors.grayFadedBtn,
+      disabled: true,
+      inactive: true,
+      disableTouchEvent: true,
+    };
+  });
 
   return (
     <Calendar
@@ -40,6 +55,7 @@ const UseCalendar = ({onSelectVal, selectedVal}) => {
           disableTouchEvent: true,
           selectedDotColor: 'orange',
         },
+        ...markedDay,
       }}
       style={{
         height: 'auto',
@@ -65,7 +81,7 @@ const UseCalendar = ({onSelectVal, selectedVal}) => {
         textSectionTitleColor: Colors.white,
         selectedDayBackgroundColor: Colors.themeRed,
         selectedDayTextColor: '#ffffff',
-        todayTextColor: 'white',
+        todayTextColor: Colors.grayFaded,
         dayTextColor: Colors.white,
         textDisabledColor: Colors.grayFaded,
         monthTextColor: Colors.white,

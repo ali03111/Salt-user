@@ -7,6 +7,7 @@ import {locationType} from '../../Utils/localDB';
 import {getProperLocation} from '../../Utils/globalFunctions';
 
 const useBookAnAppointment = ({navigate}) => {
+  var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const {data} = useQuery({
     queryKey: ['braidData'],
     queryFn: () => API.get(braidDataUrl),
@@ -65,6 +66,7 @@ const useBookAnAppointment = ({navigate}) => {
         location_id: locationId,
         date: date,
         time: time?.label,
+        timezone: timeZone,
       });
     } else errorMessage('Please select all options!');
   };

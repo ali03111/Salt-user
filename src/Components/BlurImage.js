@@ -24,7 +24,7 @@ const BlurImage = ({styles, uri, blurhash, radius, children, isURI}) => {
       {load && (
         <Blurhash
           shouldRasterizeIOS
-          blurhash={blurhash || 'LTG*j6E0~VnLxV?ZMw%05P-pNZWB'}
+          blurhash={blurhash || 'LKK1wP_3yYIU4.jsWrt7_NRjMdt7'}
           style={[styles, {zIndex: 1, position: 'absolute'}]}
         />
       )}

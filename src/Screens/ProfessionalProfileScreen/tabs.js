@@ -22,9 +22,10 @@ export default function CustomTabs({gallery, about}) {
           tabBarScrollEnabled: true,
         },
       }}
-      style={{minHeight: hp('50'), maxHeight: hp('60')}}
+      style={{maxHeight: hp('60')}}
       sceneContainerStyle={{
         backgroundColor: Colors.themeBlack,
+        minHeight: 'auto',
       }}>
       <Tab.Screen
         name="About"

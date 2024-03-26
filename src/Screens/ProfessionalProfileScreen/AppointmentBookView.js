@@ -13,19 +13,35 @@ import ThemeButton from '../../Components/ThemeButton';
 import {getProperLocation} from '../../Utils/globalFunctions';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {loadingTrue} from '../../Redux/Action/isloadingAction';
+import {createAppeUrl, createResAppUrl} from '../../Utils/Urls';
 
-const AppointmentBookView = ({user, onBook, priceRef}) => {
+const AppointmentBookView = ({
+  user,
+  onBook,
+  priceRef,
+  isSuccess,
+  BraidLength,
+  BraidType,
+  BraidSize,
+  isReShedule,
+}) => {
   const {dispatch} = useReduxStore();
 
+  const address = user?.users?.location?.location
+    ? JSON.parse(user?.users?.location?.location)
+    : '';
+
   const [details, setDetails] = useState({
-    type: null,
-    size: null,
-    length: null,
+    type: BraidType?.id ?? null,
+    size: BraidSize?.id ?? null,
+    length: BraidLength?.id ?? null,
     locationId: null,
     date: null,
-    time: null,
-    locationDes: {coords: {}, des: null},
+    time: user?.time ? {id: 1, label: user?.time} : null,
+    locationDes: address?.currentLocation,
   });
+
+  console.log('useruseruseruseruseruseruseruseruseruseruseruseruseruser', user);
 
   const {length, locationDes, size, time, type, locationId, date} = details;
 
@@ -55,6 +71,7 @@ const AppointmentBookView = ({user, onBook, priceRef}) => {
       <UseCalendar
         onSelectVal={data => onSelectValue('date', data)}
         selectedVal={date}
+        markedDates={user?.appointment_dates ?? []}
       />
       <DividerComp styles={{marginVertical: hp('5')}} />
       <TimeSlot
@@ -67,7 +84,10 @@ const AppointmentBookView = ({user, onBook, priceRef}) => {
       <BraidComp
         onSelectValue={value => {
           onSelectValue('type', value);
-          priceRef(user?.braid_type.filter(res => res?.id == value)[0]?.price);
+          priceRef(
+            user?.braid_type.filter(res => res?.id == value)[0]?.price ??
+              BraidType?.price,
+          );
         }}
         braidTitle={'Braid Type'}
         data={user?.braid_type}
@@ -128,10 +148,20 @@ const AppointmentBookView = ({user, onBook, priceRef}) => {
         <Touchable
           style={{
             ...styles.viewAppBtn,
-            ...(locationId == locationType[1]?.locId && styles.selectedButton),
+            ...(locationId ==
+              locationType.filter(
+                res => res.locId == user?.location?.loc_data,
+              )[0]?.locId && styles.selectedButton),
             marginTop: hp('2'),
           }}
-          onPress={() => onSelectValue('locationId', locationType[1]?.locId)}>
+          onPress={() =>
+            onSelectValue(
+              'locationId',
+              locationType.filter(
+                res => res.locId == user?.location?.loc_data,
+              )[0]?.locId,
+            )
+          }>
           <TextComponent
             text={
               locationType.filter(
@@ -140,8 +170,10 @@ const AppointmentBookView = ({user, onBook, priceRef}) => {
             }
             styles={{
               ...styles.buttonText,
-              ...(locationId === locationType[1]?.locId &&
-                styles.selectedButtonText),
+              ...(locationId ===
+                locationType.filter(
+                  res => res.locId == user?.location?.loc_data,
+                )[0]?.locId && styles.selectedButtonText),
             }}
           />
         </Touchable>
@@ -154,7 +186,12 @@ const AppointmentBookView = ({user, onBook, priceRef}) => {
           dispatch(loadingTrue());
           const loc = await getProperLocation();
           updateState({locationDes: loc});
-          onBook({...details, proId: user?.id, locationDes: loc});
+          onBook({
+            ...details,
+            proId: user?.id,
+            locationDes: loc,
+            url: isReShedule ? createResAppUrl : createAppeUrl,
+          });
           updateState({
             type: null,
             size: null,

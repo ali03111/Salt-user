@@ -106,7 +106,7 @@ const LoginScreen = ({navigation}) => {
       </View>
       <DashText
         text={'Log In'}
-        localStyle={{marginTop: Platform.OS == 'ios' ? hp('15') : 0}}
+        localStyle={{marginTop: Platform.OS == 'ios' ? hp('15') : hp('13')}}
       />
       <SocialBottomView />
       <BottomText

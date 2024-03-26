@@ -20,7 +20,7 @@ export const FavoriteComp = ({data, viewStyle, onReq, onProView, appData}) => {
     'isRequestedisRequestedisRequestedisRequestedisRequested',
     isRequested,
   );
-  console.log(data, 'asjkdfkljasdklfjaklsdfjaklsdjfpRo');
+  console.log(JSON.stringify(data), 'asjkdfkljasdklfjaklsdfjaklsdjfpRo');
 
   return (
     <View style={{...styles.comingView, ...viewStyle}}>

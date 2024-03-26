@@ -93,6 +93,21 @@ const HistoryApp = ({navigation, data}) => {
                 isCompleted: true,
               })
             }
+            reShedulePress={() =>
+              navigation.navigate('ProfessionalProfileScreen', {
+                item: {
+                  user: {
+                    user: {...item, ...item?.professional},
+                    isProfile: true,
+                    isReShedule: true,
+                    braid_type: item?.braid_type,
+                    braid_length: item?.braid_length,
+                    braid_size: item?.braid_size,
+                    appointment_id: item?.id,
+                  },
+                },
+              })
+            }
             // isReview={item?.ratings[0].is_review}
             data={item}
           />
@@ -171,22 +186,6 @@ const HistoryApp = ({navigation, data}) => {
           />
         </View>
       </BottomModal>
-
-      {/* <FlatList
-        data={UpcomingData}
-        renderItem={renderItem}
-        scrollEnabled
-        refreshing={false}
-        extraData={keyExtractor}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.upComingFlatlistView}
-      /> */}
-      {/* <AppointmentReqCompSkeleton /> */}
-      {/* <SkeletonPlaceholder>
-        <AppointmentReqCompSkeleton />
-        <AppointmentReqCompSkeleton />
-        <AppointmentReqCompSkeleton />
-      </SkeletonPlaceholder> */}
     </View>
   );
 };

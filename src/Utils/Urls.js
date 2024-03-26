@@ -3,19 +3,23 @@ const getCredentials = () => {
     return {
       // baseURL: 'http://3.20.179.123/salt/api/',
       // imageURL: 'http://3.20.179.123/salt/',
-      baseURL: 'https://saltbraiding.com/api/',
-      imageURL: 'https://virtualrealitycreators.com/salt/',
+      baseURL: 'https://saltbraiding.com/salt/api/',
+      imageURL: 'https://saltbucket1.s3.us-east-2.amazonaws.com/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'https://saltbraiding.com/api/',
-      imageURL: 'https://virtualrealitycreators.com/salt/',
+      baseURL: 'https://saltbraiding.com/salt/api/',
+      imageURL: 'https://saltbucket1.s3.us-east-2.amazonaws.com/',
       // baseURL: 'http://3.20.179.123/salt/api/',
       // imageURL: 'http://3.20.179.123/salt/',
     };
   }
 };
+
+export const aboutUrl = 'https://saltbraiding.com/deletion_policy';
+export const privacyUrl = 'https://saltbraiding.com/privacy_policy';
+export const termsUrl = 'https://saltbraiding.com/terms_and_conditions';
 
 export const {baseURL, imageURL, twiloURL} = getCredentials();
 
@@ -41,3 +45,6 @@ export const addfavoriteUrl = 'customer/favorite';
 export const getfavoriteUrl = 'customer/user-fav';
 export const createAppeUrl = 'customer/create-appointment';
 export const TopRatedProUrl = 'customer/top-rated-list';
+export const createResAppUrl = 'customer/reschedule-appointment';
+export const deleteAccUrl = 'customer/deactive-user';
+export const verifyUserUrl = 'customer/verify-user';

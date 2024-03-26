@@ -21,6 +21,7 @@ const UpcomingApp = () => {
         flatViewStyle={styles.upComingFlatlistView}
         flatListProps={{
           ListEmptyComponent: <EmptyViewComp onRefresh={onRefresh} />,
+          onRefresh,
         }}
         InnerCompnonet={item => (
           <UpComingAppView

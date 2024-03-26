@@ -35,7 +35,7 @@ export const MultiView = ({data, viewStyle}) => {
       <FlatList
         scrollEnabled={false}
         renderItem={renderItem}
-        data={data}
+        data={data ?? []}
         ItemSeparatorComponent={
           <Image source={divider} resizeMode="contain" style={styles.divider} />
         }

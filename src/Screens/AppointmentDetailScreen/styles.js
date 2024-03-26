@@ -32,7 +32,6 @@ export const styles = StyleSheet.create({
   },
   tagLineStyle: {
     fontSize: hp('1.6'),
-    textDecorationLine: 'underline',
   },
   topTier: {
     flexDirection: 'row',

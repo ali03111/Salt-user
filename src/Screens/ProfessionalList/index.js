@@ -12,7 +12,10 @@ import {FavoriteComp} from '../../Components/FavoriteComp';
 import useProfessionalList, {mutate} from './useProfessionalList';
 
 const ProfessionalList = ({navigation, route}) => {
-  const {appData, profData, onBook} = useProfessionalList(navigation, route);
+  const {appData, profData, onBook, onRefresh} = useProfessionalList(
+    navigation,
+    route,
+  );
   console.log(profData, 'asdklfjaklsdfjlkasjdflajlsdfjkalsdf');
   return (
     <>
@@ -25,6 +28,9 @@ const ProfessionalList = ({navigation, route}) => {
         <AniFlatOneByOne
           data={profData}
           flatViewStyle={styles.upComingFlatlistView}
+          flatListProps={{
+            onRefresh,
+          }}
           InnerCompnonet={item => (
             <FavoriteComp
               viewStyle={{

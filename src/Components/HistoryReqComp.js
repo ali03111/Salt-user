@@ -9,7 +9,13 @@ import {Colors} from '../Theme/Variables';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {imageUrl} from '../Utils/Urls';
 
-export const HistoryReqComp = ({data, viewStyle, onPress, onPressProfile}) => {
+export const HistoryReqComp = ({
+  data,
+  viewStyle,
+  onPress,
+  onPressProfile,
+  reShedulePress,
+}) => {
   const location = 'JSON.parse(data?.locations?.location)';
   console.log('datadatadatadatadatadatadatadata', data?.ratings[0]?.is_review);
   return (
@@ -90,6 +96,7 @@ export const HistoryReqComp = ({data, viewStyle, onPress, onPressProfile}) => {
           image={downArrow}
           imageStyle={styles.arrow}
           textStyle={{fontSize: hp('1.5')}}
+          onPress={reShedulePress}
         />
         {data?.ratings[0]?.is_review == 1 ? (
           <ThemeButton

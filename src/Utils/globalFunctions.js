@@ -1,7 +1,7 @@
-import {Alert, PermissionsAndroid, Platform} from 'react-native';
+import {Alert, Linking, PermissionsAndroid, Platform} from 'react-native';
 import Geolocationios from '@react-native-community/geolocation';
-// import Geolocation from 'react-native-geolocation-service';
-import Geolocation from '@react-native-community/geolocation';
+import Geolocation from 'react-native-geolocation-service';
+// import Geolocation from '@react-native-community/geolocation';
 import {openSettings} from 'react-native-permissions';
 import {store} from '../Redux/Reducer';
 import {loadingFalse, loadingTrue} from '../Redux/Action/isloadingAction';
@@ -185,9 +185,15 @@ function getDateMonthYear(dateString) {
   };
 }
 
+const openGoogleMaps = (latitude, longitude) => {
+  const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+  Linking.openURL(url);
+};
+
 export {
   getSingleCharacter,
   getProperLocation,
   getDateMonthYear,
   extractTimeFromString,
+  openGoogleMaps,
 };

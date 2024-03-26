@@ -42,7 +42,7 @@ const FavouriteScreen = ({navigation}) => {
   } = useFavouriteScreen();
 
   const RenderItem = ({item, index}) => {
-    console.log('datafayuvcsvjasvjkcasvbkjbvaskljbklbad', item?.image);
+    console.log('datafayuvcsvjasvjkcasvbkjbvaskljbklbad', item);
     return (
       <View style={styles.favContainer}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>

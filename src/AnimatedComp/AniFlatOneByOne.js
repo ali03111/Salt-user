@@ -44,7 +44,7 @@ export const AniFlatOneByOne = ({
   return (
     <FlatList
       {...{
-        data: data,
+        data: data ?? [],
         renderItem: renderItem,
         contentContainerStyle: {...flatViewStyle},
         scrollEnabled: true,

@@ -69,6 +69,7 @@ export default function BookAnAppoint({navigation}) {
           <UseCalendar
             onSelectVal={data => onSelectValue('date', data)}
             selectedVal={date}
+            markedDates={[]}
           />
           <View
             style={{
@@ -91,19 +92,19 @@ export default function BookAnAppoint({navigation}) {
           <BraidComp
             onSelectValue={value => onSelectValue('type', value)}
             braidTitle={'Braid Type'}
-            data={data?.braid_type}
+            data={data?.braid_type ?? []}
             selectedVal={type}
           />
           <BraidComp
             onSelectValue={value => onSelectValue('size', value)}
             braidTitle={'Braid Size'}
-            data={data?.braid_size}
+            data={data?.braid_size ?? []}
             selectedVal={size}
           />
           <BraidComp
             onSelectValue={value => onSelectValue('length', value)}
             braidTitle={'Braid Length'}
-            data={data?.braid_length}
+            data={data?.braid_length ?? []}
             selectedVal={length}
           />
           <View

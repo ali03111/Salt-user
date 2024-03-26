@@ -30,10 +30,22 @@ import {locationType} from '../../Utils/localDB';
 import AppointmentBookView from './AppointmentBookView';
 
 const ProfessionalProfileScreen = ({navigation, route}) => {
-  const {user, appData, onBook, onFavPress, isFav, priceRef, price, setPrice} =
-    useProfessionalProfileScreen(navigation, route);
+  const {
+    user,
+    appData,
+    onBook,
+    onFavPress,
+    isFav,
+    priceRef,
+    price,
+    setPrice,
+    isSuccess,
+    braid_length,
+    braid_size,
+    braid_type,
+  } = useProfessionalProfileScreen(navigation, route);
 
-  console.log('12361267387isajdhakjshdk', user);
+  console.log('12361267387isajdhakjshdk', JSON.stringify(user));
 
   return (
     <View style={{flexGrow: 1, backgroundColor: Colors.themeBlack}}>
@@ -86,13 +98,23 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
             <TextComponent text={'Reviews'} styles={styles.expText} />
           </View>
         </View>
-        <CustomTabs gallery={user?.user?.past_works} about={user?.about} />
+        <CustomTabs
+          gallery={
+            user?.isReShedule ? user?.user?.past_work : user?.user?.past_works
+          }
+          about={user?.user?.about}
+        />
 
         {user?.isProfile == true && (
           <AppointmentBookView
             user={user?.user}
             onBook={onBook}
             priceRef={setPrice}
+            isSuccess={isSuccess}
+            BraidType={braid_type}
+            BraidSize={braid_size}
+            BraidLength={braid_length}
+            isReShedule={user?.isReShedule}
           />
         )}
         {/* {user?.isPorfile} */}

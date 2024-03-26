@@ -25,6 +25,7 @@ import {fcmRegister, verifyUser} from './src/Redux/Action/AuthAction';
 import {Colors} from './src/Theme/Variables';
 import {hp, wp} from './src/Config/responsive';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {QueryClient} from '@tanstack/react-query';
 
 const App = () => {
   const flexStyle = {flex: 1};
@@ -40,8 +41,15 @@ const App = () => {
     return 2000;
   };
 
+  const queryClient = new QueryClient({});
+
+  queryClient.defaultQueryOptions({
+    networkMode: 'online',
+    refetchOnReconnect: true,
+  });
+
   const useEffectFun = () => {
-    dispatch(verifyUser());
+    // dispatch(verifyUser());
     // GoogleSignin.configure({
     //   webClientId:
     //     '1005053076444-mgrhj94e5bcv1a937pc07914jmevu2gv.apps.googleusercontent.com',

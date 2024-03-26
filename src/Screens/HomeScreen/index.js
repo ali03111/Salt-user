@@ -66,7 +66,7 @@ const HomeScreen = ({navigation}) => {
           onPress={() => navigation.navigate('AppointmentScreen')}
         />
         <FlatList
-          data={homeContent?.upcoming}
+          data={homeContent?.upcoming ?? []}
           renderItem={renderItem}
           scrollEnabled
           refreshing={false}
@@ -95,7 +95,7 @@ const HomeScreen = ({navigation}) => {
           onPress={() => dynamicNav('AllProfessionalScreen')}
         />
         <FlatList
-          data={homeContent?.top_rated}
+          data={homeContent?.top_rated ?? []}
           renderItem={topRatedrenderItem}
           scrollEnabled
           refreshing={false}

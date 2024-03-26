@@ -13,7 +13,7 @@ import {loadingFalse, loadingTrue} from '../Redux/Action/isloadingAction';
 import {Platform} from 'react-native';
 import {logOutUser} from '../Redux/Action/AuthAction';
 import {types} from '../Redux/types';
-import {logoutService} from '../Services/AuthServices';
+import {logOutFirebase, logoutService} from '../Services/AuthServices';
 
 const API = create({
   baseURL,
@@ -146,6 +146,38 @@ const formDataFunc = (url, body, imageKey, isArray) => {
     });
 };
 
-export {formDataFunc};
+const fetchGetWithToken = async url => {
+  const {Auth} = store.getState('Auth');
+  const fullUrl = baseURL + url;
+  // console.log(Auth.token, Auth.userData, 'Auth Token', fullUrl);
+
+  try {
+    const response = await fetch(fullUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Auth.token}`, // Assuming a Bearer token authentication
+        // Add other headers if needed
+      },
+    });
+    if (!response.ok) {
+      await logOutFirebase();
+      store.dispatch({type: types.LogoutType});
+      throw new Error('Network response was not ok.');
+    }
+
+    // console.log(data, 'alskdjfklajsdfkljadlsfjaklsdjfl2kds444ajf2lkdjs');
+    const data = await response.json();
+    console.log('datadatadatadatadatadatadata', data);
+
+    return data; // Return the fetched data
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error; // Rethrow the error to handle it at the caller's level if needed
+  }
+  // store.dispatch({type: types.LogoutType});
+};
+
+export {formDataFunc, fetchGetWithToken};
 
 export default API;

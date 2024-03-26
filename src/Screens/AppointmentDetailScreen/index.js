@@ -18,6 +18,7 @@ import {styles} from './styles';
 import useAppointmentDetail from './useAppointmentDetail';
 import {locationType} from '../../Utils/localDB';
 import {CircleImage} from '../../Components/CircleImage';
+import {openGoogleMaps} from '../../Utils/globalFunctions';
 
 const AppointmentDetailScreen = ({route, navigation}) => {
   const {data, onAcceptPress, onCancelPress, status} = useAppointmentDetail(
@@ -67,6 +68,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
                     ...data?.professional,
                     location: data?.location,
                     past_works: data?.past_work,
+                    appointment_dates: data?.appointment_dates,
                   },
                   isProfile: true,
                 },
@@ -92,7 +94,6 @@ const AppointmentDetailScreen = ({route, navigation}) => {
           text={'Back to Home'}
           styles={styles.tagLineStyle}
           onPress={() => navigation.navigate('MybottomTabs')}
-          fade={true}
         />
       </View>
       <View style={styles.cardContainer}>
@@ -133,15 +134,27 @@ const AppointmentDetailScreen = ({route, navigation}) => {
         </View>
         <View style={styles.cardInner}>
           <TextComponent text={'Location'} styles={styles.braidTitle} />
-          <TextComponent
-            text={
-              locationType.filter(
-                res => res?.locId == data?.users?.location?.loc_data,
-              )[0]?.label
-            }
-            fade={true}
-            styles={styles.braidTitle}
-          />
+          <View style={{flexDirection: 'row'}}>
+            <TextComponent
+              text={`( ${
+                locationType.filter(
+                  res => res?.locId == data?.users?.location?.loc_data,
+                )[0]?.label
+              } ) `}
+              fade={true}
+              styles={styles.braidTitle}
+            />
+            <TextComponent
+              text={'View on map'}
+              styles={{color: Colors.themeRed, fontSize: hp('1.5')}}
+              onPress={() =>
+                openGoogleMaps(
+                  address?.currentLocation?.coords?.latitude,
+                  address?.currentLocation?.coords?.longitude,
+                )
+              }
+            />
+          </View>
         </View>
         {!isHouseCall && (
           <View style={styles.cardInner}>

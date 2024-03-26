@@ -6,10 +6,12 @@ import {useQuery, useQueryClient} from '@tanstack/react-query';
 import useReduxStore from '../../Hooks/UseReduxStore';
 
 export default function useHomeScreen({navigate}) {
-  const {data} = useQuery({
+  const {data, error} = useQuery({
     queryKey: ['homeDataCous'],
     queryFn: () => API.get(homeContentUrl),
   });
+
+  console.log('datadatadatadatadatadatadatadatadatadata', data?.originalError);
 
   const {getState, dispatch} = useReduxStore();
 

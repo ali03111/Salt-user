@@ -78,7 +78,7 @@ const OnboardScreen = ({navigation}) => {
         />
         <Animatable.View animation={startAnimation ? animationValue : 0}>
           <SlideButton
-            title=""
+            title="Swipe right"
             icon={<Images />}
             height={hp('7.2')}
             thumbStyle={{backgroundColor: Colors.themeRed}}

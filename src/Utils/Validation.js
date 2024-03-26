@@ -24,9 +24,12 @@ const signUpschema = yup.object().shape({
   email: yup
     .string()
     // .email('Email must be valid')
-    .required('Please enter your email')
-    .min(3, 'Email must be valid')
-    .max(50, 'Email must be valid'),
+    .required('Please enter your email.')
+    .max(50, 'Please enter valid email.')
+    .matches(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      'Please enter valid email.',
+    ),
   // .matches(emailRegex, 'email is not Valid'),
   name: yup
     .string()
@@ -57,9 +60,8 @@ const logInUpschema = yup.object().shape({
   email: yup
     .string()
     // .email('Email must be valid')
-    .min(3, 'Email must be valid')
-    .max(50, 'Email must be valid')
-    .required('Please enter your email')
+    .required('Please enter your email.')
+    .max(50, 'Please enter valid email.')
     .matches(
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       'Please enter valid email',
@@ -69,8 +71,9 @@ const logInUpschema = yup.object().shape({
 const forgotSchema = yup.object().shape({
   email: yup
     .string()
-    .email('Email must be valid')
-    .required('Please enter your email'),
+    .required('Please enter your email.')
+    .email('Please enter valid email.')
+    .max(50, 'Please enter valid email.'),
 });
 const verificationSchema = yup.object().shape({
   reset_code: yup
