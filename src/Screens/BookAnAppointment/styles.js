@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     paddingTop: hp('2.5'),
     marginLeft: 'auto',
     marginRight: 'auto',
+    paddingBottom: hp('5'),
   },
   viewBtnView: {
     flexDirection: 'row',

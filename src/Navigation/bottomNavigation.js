@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   Text,
+  Alert,
 } from 'react-native';
 import * as Screens from '../Screens/index';
 import {Colors} from '../Theme/Variables';
@@ -36,6 +37,7 @@ import useReduxStore from '../Hooks/UseReduxStore';
 import Lottie from 'lottie-react-native';
 import {fetchGetWithToken} from '../Utils/helperFunc';
 import {verifyUserUrl} from '../Utils/Urls';
+import NetInfo, {useNetInfo} from '@react-native-community/netinfo';
 
 globalStyles = {};
 const isIOS = Boolean(Platform.OS == 'ios');
@@ -43,6 +45,9 @@ const isIOS = Boolean(Platform.OS == 'ios');
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
   const {getState} = useReduxStore();
+  const {type, isConnected} = useNetInfo();
+
+  if (isConnected == false) Alert.alert('Please connect to the network!');
 
   fetchGetWithToken(verifyUserUrl);
 
@@ -130,7 +135,7 @@ function MybottomTabs() {
           borderTopRightRadius: 20,
           borderTopLeftRadius: 20,
           // overflow: 'hidden',
-          height: hp('8'),
+          height: Platform.OS == 'ios' ? hp('10') : hp('8'),
           paddingBottom: hp('0'),
           bottom: Platform.OS == 'ios' ? hp('0') : hp('0'),
           width: wp('100'),
@@ -217,6 +222,6 @@ const styles = StyleSheet.create({
     width: wp('10'),
     position: 'absolute',
     right: wp('-1'),
-    bottom: Platform.OS == 'ios' ? hp('7') : hp('7.5'),
+    bottom: Platform.OS == 'ios' ? hp('8') : hp('7.5'),
   },
 });

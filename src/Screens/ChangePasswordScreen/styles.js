@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     paddingVertical: hp('3'),
     alignItems: 'center',
     marginTop: hp('5'),
+    marginBottom: hp('10'),
   },
   btn: {width: wp('85'), marginTop: hp('5')},
   lockstyle: {

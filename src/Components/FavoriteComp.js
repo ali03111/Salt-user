@@ -43,7 +43,7 @@ export const FavoriteComp = ({data, viewStyle, onReq, onProView, appData}) => {
                 size={hp('2')}
               />
               <TextComponent
-                text={`( ${data?.rateCount} Reviews )`}
+                text={`( ${data?.rateCount ?? 0} Reviews )`}
                 fade={true}
                 styles={styles.reviewText}
                 numberOfLines={1}

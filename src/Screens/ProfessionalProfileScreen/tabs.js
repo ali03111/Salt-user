@@ -22,7 +22,7 @@ export default function CustomTabs({gallery, about}) {
           tabBarScrollEnabled: true,
         },
       }}
-      style={{maxHeight: hp('60')}}
+      style={{minHeight: hp('60')}}
       sceneContainerStyle={{
         backgroundColor: Colors.themeBlack,
         minHeight: 'auto',

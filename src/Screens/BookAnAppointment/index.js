@@ -64,7 +64,7 @@ export default function BookAnAppoint({navigation}) {
         goBack={() => navigation.goBack()}
       />
       <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.innerContainer}>
           <UseCalendar
             onSelectVal={data => onSelectValue('date', data)}

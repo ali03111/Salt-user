@@ -10,6 +10,7 @@ import {UpcomingData} from '../../Utils/localDB';
 import {hp} from '../../Config/responsive';
 import {FavoriteComp} from '../../Components/FavoriteComp';
 import useProfessionalList, {mutate} from './useProfessionalList';
+import {EmptyViewComp} from '../../Components/EmptyViewComp';
 
 const ProfessionalList = ({navigation, route}) => {
   const {appData, profData, onBook, onRefresh} = useProfessionalList(
@@ -30,6 +31,7 @@ const ProfessionalList = ({navigation, route}) => {
           flatViewStyle={styles.upComingFlatlistView}
           flatListProps={{
             onRefresh,
+            ListEmptyComponent: <EmptyViewComp />,
           }}
           InnerCompnonet={item => (
             <FavoriteComp
