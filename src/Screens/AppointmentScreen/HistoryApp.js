@@ -87,10 +87,25 @@ const HistoryApp = ({navigation, data}) => {
             viewStyle={{
               marginBottom: hp('2'),
             }}
-            onPressProfile={() =>
+            onPressDetail={() =>
               navigation.navigate('AppointmentDetailScreen', {
                 ...item,
                 isCompleted: true,
+              })
+            }
+            onPressProfile={() =>
+              navigation.navigate('ProfessionalProfileScreen', {
+                item: {
+                  user: {
+                    user: {
+                      ...item?.professional,
+                      location: item?.location,
+                      past_works: item?.past_work,
+                      appointment_dates: item?.appointment_dates,
+                    },
+                    isProfile: true,
+                  },
+                },
               })
             }
             reShedulePress={() =>

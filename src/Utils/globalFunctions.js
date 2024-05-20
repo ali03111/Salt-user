@@ -68,10 +68,14 @@ const getProperLocation = () => {
                 'kjsdbvjklsbdklvbsdklbvlksdbvlksdbvkljsblkvbsdlkvblskdbvlsdbvbsdkvds',
                 info,
               );
-              // const locationName = await getLocationName(
-              //   info.coords.latitude,
-              //   info.coords.longitude,
-              // );
+              const locationName = await getLocationName(
+                info.coords.latitude,
+                info.coords.longitude,
+              );
+              console.log(
+                'lksdbvlkbsdlkvbklsdbvlkbklsbvbklsdbvlksdbklvbsdl',
+                locationName,
+              );
               resolve({
                 coords: {
                   latitude: info.coords.latitude,
@@ -91,10 +95,14 @@ const getProperLocation = () => {
       } else {
         Geolocationios.getCurrentPosition(
           async info => {
-            // const locationName = await getLocationName(
-            //   info.coords.latitude,
-            //   info.coords.longitude,
-            // );
+            const locationName = await getLocationName(
+              info.coords.latitude,
+              info.coords.longitude,
+            );
+            console.log(
+              'lksdbvlkbsdlkvbklsdbvlkbklsbvbklsdbvlksdbklvbsdl',
+              locationName,
+            );
             resolve({
               coords: {
                 latitude: info.coords.latitude,
@@ -153,6 +161,17 @@ function extractTimeFromString(str) {
   }
 }
 
+function removeTimeFromDate(datetimeStr) {
+  // input value ""2024-03-12T08:00:15.000000Z""
+  // output value "2024-03-12"
+
+  const dateInString = datetimeStr.toISOString();
+
+  // Split the string at 'T' and take the first part (the date)
+  const datePart = dateInString.split('T')[0];
+  return datePart;
+}
+
 function getDateMonthYear(dateString) {
   const dateParts = dateString.split('-'); // Splitting the date string by '-'
   const year = dateParts[0];
@@ -196,4 +215,5 @@ export {
   getDateMonthYear,
   extractTimeFromString,
   openGoogleMaps,
+  removeTimeFromDate,
 };

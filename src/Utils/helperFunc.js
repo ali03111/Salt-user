@@ -161,14 +161,14 @@ const fetchGetWithToken = async url => {
       },
     });
     if (!response.ok) {
-      await logOutFirebase();
       store.dispatch({type: types.LogoutType});
       throw new Error('Network response was not ok.');
     }
 
     // console.log(data, 'alskdjfklajsdfkljadlsfjaklsdjfl2kds444ajf2lkdjs');
     const data = await response.json();
-    console.log('datadatadatadatadatadatadata', data);
+
+    console.log('datadatadatadatadatadatadatadata', data);
 
     return data; // Return the fetched data
   } catch (error) {
@@ -177,7 +177,6 @@ const fetchGetWithToken = async url => {
   }
   // store.dispatch({type: types.LogoutType});
 };
-
 export {formDataFunc, fetchGetWithToken};
 
 export default API;

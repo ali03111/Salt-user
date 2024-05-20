@@ -41,8 +41,6 @@ const AppointmentBookView = ({
     locationDes: address?.currentLocation,
   });
 
-  console.log('useruseruseruseruseruseruseruseruseruseruseruseruseruser', user);
-
   const {length, locationDes, size, time, type, locationId, date} = details;
 
   const updateState = data => setDetails(prev => ({...prev, ...data}));

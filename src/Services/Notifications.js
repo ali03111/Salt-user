@@ -5,18 +5,16 @@ import notifee, {
   AndroidLaunchActivityFlag,
 } from '@notifee/react-native';
 import {requestNotifications, openSettings} from 'react-native-permissions';
-import {useNavigation} from '@react-navigation/native';
+import {useQueryClient} from '@tanstack/react-query';
 import {store} from '../Redux/Reducer';
-import {types} from '../Redux/types';
-import NavigationService from './NavigationService';
-// import NavigationService from './NavigationService';
-// import useRouteName from '@/hooks/useRouteName';
+// import {setNotificationLength} from '../Redux/Action/recentNotification';
 
-// notifee.registerForegroundService(() => {});
-
+// const {dispatch} = useReduxStore();
 const sound = Platform.select({ios: 'interval.wav', android: 'interval.mp3'});
+
 const onNotificationNotiFee = async (data, appState) => {
-  // const navigation = useNavigation();
+  // store.dispatch(setNotificationLength(data));
+  // await notifee.setBadgeCount(5);
   const channelId = await notifee.createChannel({
     id: 'default',
     name: 'Default Channel',
@@ -35,37 +33,19 @@ const onNotificationNotiFee = async (data, appState) => {
         launchActivityFlags: [AndroidLaunchActivityFlag.SINGLE_TOP],
       },
       // sound,
+      badge: {
+        // Include badge count here
+        count: data.notification.android?.badge || 0,
+      },
     },
     ios: {sound},
   });
+  console.log('data=>>>>>>>', data);
 
-  const getNameFunc = NavigationService.getCurrentRoute();
-  const routeName = getNameFunc?.getCurrentRoute()?.name;
-
-  const notificationData = JSON.parse(data.data.payload);
-
-  const isRoute = Boolean(notificationData.is_route);
-
-  const isInvitation = Boolean(notificationData.route == 'InvitationScreen');
-
-  console.log('data=>>>>>dsdfsdfsdfdsfsdfds>>', notificationData, routeName);
-
-  const storeObj = {
-    InvitationScreen: types.addNotiInvitation,
-    GeneralScreen: types.addNotification,
-    MapAndChatScreen: types.addChatNoification,
-  };
-
-  isRoute &&
-    routeName != 'InvitationScreen' &&
-    store.dispatch({
-      type: storeObj[notificationData.route],
-      payload: notificationData,
-    });
-  // navigation.navigate('Invitation');
   // const isActive = Boolean(NavigationService.ref && appState == 'active');
   // const notificationObj = JSON.parse(data.data.payload);
-
+  // const getNameFunc = NavigationService.getCurrentRoute();
+  // const routeName = getNameFunc?.getCurrentRoute()?.name;
   // if (
   //   isActive &&
   //   notificationObj?.notification_type == 'badge_unlocked' &&
@@ -75,37 +55,10 @@ const onNotificationNotiFee = async (data, appState) => {
   // }
 };
 
-// Register background handler
-// backgroundListner = () => {
-// messaging().setBackgroundMessageHandler(async remoteMessage => {
-//   console.log('Message handled in the background!', remoteMessage);
-
-//   const notificationData = JSON.parse(remoteMessage.data.payload);
-
-//   const isRoute = Boolean(notificationData.is_route);
-
-//   const isInvitation = Boolean(notificationData.route == 'InvitationScreen');
-
-//   isRoute &&
-//     store.dispatch({
-//       type: isInvitation ? types.addNotiInvitation : types.addNotification,
-//       payload: notificationData,
-//     });
-
-//   // store.dispatch(setNotificationLength(remoteMessage));
-// });
-// };
-
 class FCMService {
-  register = (onRegister, onOpenNotification, appState, onNotification) => {
+  register = (onRegister, onOpenNotification, appState) => {
     this.checkPermission(onRegister);
-    this.registerDeviceForNotification();
-    this.createNoitificationListeners(
-      onRegister,
-      onOpenNotification,
-      appState,
-      onNotification,
-    );
+    this.createNoitificationListeners(onRegister, onOpenNotification, appState);
   };
 
   checkPermission = async onRegister => {
@@ -121,13 +74,11 @@ class FCMService {
     }
   };
 
-  getToken = async onRegister => {
-    await messaging().registerDeviceForRemoteMessages();
+  getToken = onRegister =>
     messaging()
       .getToken()
-      .then(res => onRegister(res))
-      .catch(e => console.log('ndjkcsdkcnksdcnsdvnsd', e));
-  };
+      .then(res => onRegister(res));
+
   requestPermission = async onRegister => {
     try {
       const {status} = await requestNotifications(['alert', 'sound', 'badge']);
@@ -169,31 +120,19 @@ class FCMService {
       });
   };
 
-  registerDeviceForNotification = async () => {
-    try {
-      if (!messaging().isDeviceRegisteredForRemoteMessages)
-        await messaging().registerDeviceForRemoteMessages();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  createNoitificationListeners = (
+  createNoitificationListeners = async (
     onRegister,
     onOpenNotification,
     appState,
-    onNotification,
   ) => {
     // Triggered  when a particular  notification  has been recevied in foreground
-    this.notificationListener = messaging().onMessage(notification => {
-      console.log('yyyyyyyyytytytytytytytytytytytt', notification);
-      onNotification(notification);
-    });
-
-    // Triggered  when a particular  notification  has been recevied in foreground
     this.notificationListener = messaging().onMessage(
-      data => onNotificationNotiFee(data, appState),
-      console.log('notifynotifynotifynotifynotifynotify'),
+      data => {
+        console.log(data, 'eieiieieieieieiei', 'aklsdjalksjdlakjsdlajklkdjl');
+
+        onNotificationNotiFee(data, appState);
+      },
+
       // {
       //   if (NavigationService.ref && appState == 'active') {
       //     NavigationService.navigate(
@@ -208,7 +147,9 @@ class FCMService {
     //notification is clicked / tapped / opened as follows
     this.notificationOpenedListener = messaging().onNotificationOpenedApp(
       notification => {
-        console.log('onNotificationOpenedApp', notification);
+        // console.log(notification);
+        console.log(notification, 'aklsdjalksjdlakjsdlajklkdjl');
+
         if (notification) onOpenNotification(notification);
         // this.removeDelieveredNotification(notification);
       },
@@ -216,81 +157,65 @@ class FCMService {
 
     // if your app is closed, you can check if  it was opened by notification
     // being  clicked / tapped / opened as follows
-    notifee.getInitialNotification().then(notification => {
-      console.log('getInitialNotification', notification);
-      if (notification) onOpenNotification(notification);
-      // this.removeDelieveredNotification(notification);
-    });
+    messaging()
+      .getInitialNotification()
+      .then(notification => {
+        if (notification) onOpenNotification(notification);
+        // this.removeDelieveredNotification(notification);
+      });
 
-    // Triggered for data only payload  in foreground
-    this.messageListener = messaging().onMessage(message => {
-      onNotification(message);
-    });
     // Triggered when have  new token
     this.onTokenRefreshListener = messaging().onTokenRefresh(onRegister);
 
     this.forgroundListener = notifee.onForegroundEvent(
       async ({type, detail}) => {
-        const {notification} = detail;
-        console.log(
-          'notificationnotificationnotificationnotificatioasdasdasdasdasdasnnotificationnotification',
-          notification,
-        );
+        console.log(detail, 'alkjakljalkajlkajl11ajlajklajlajl');
+        // const notificationdisplay = await notifee.getDisplayedNotifications();
 
+        const {notification} = detail;
         const isPressed = Boolean(
           type === EventType.ACTION_PRESS || type == EventType.PRESS,
         );
-        if (isPressed) onOpenNotification(notification);
+        if (isPressed) onOpenNotification(detail);
         if (type !== 7) await this.setBadge();
+        // this.getNotification();
       },
     );
     this.backgroundListner = notifee.onBackgroundEvent(
       async ({type, detail}) => {
+        console.log(detail, 'alkjakljalkajlkajlajlajklajlajl');
+
         const {notification} = detail;
-        console.log(
-          'notificationnotificationnotificatisdsdsonnoasdasdastificationnotificationnotification',
-          notification,
-          routeName,
-        );
-        let searchTerm = /invitation/;
-        let findWord = Boolean(searchTerm.test(notification.body));
-        const getNameFunc = NavigationService.getCurrentRoute();
-        const routeName = getNameFunc?.getCurrentRoute()?.name;
-
-        const storeObj = {
-          InvitationScreen: types.addNotiInvitation,
-          GeneralScreen: types.addNotification,
-          MapAndChatScreen: types.addChatNoification,
-        };
-
-        // isRoute &&
-        //   routeName != 'InvitationScreen' &&
-        //   store.dispatch({
-        //     type: storeObj[notificationData.route],
-        //     payload: notificationData,
-        //   });
-        findWord &&
-          routeName != 'InvitationScreen' &&
-          store.dispatch({
-            type: findWord ? types.addNotiInvitation : types.addNotification,
-            payload: notification,
-          });
         const isPressed = Boolean(
-          type === EventType.ACTION_PRESS || type == EventType.PRESS,
+          type === EventType.ACTION_PRESS || type === EventType.PRESS,
         );
-        if (isPressed) onOpenNotification(notification);
-        if (type !== 7) await this.setBadge();
+
+        if (isPressed) {
+          // Handle notification press
+          onOpenNotification(notification);
+        }
+
+        if (type !== 7) {
+          // Check if this condition is relevant for iOS (adjust as needed)
+          await this.setBadge();
+        }
       },
     );
   };
   setBadge = (badge = 0) => notifee.setBadgeCount(badge);
+  // getNotification = () => {
+  //   const queryClient = useQueryClient();
+  //   queryClient.invalidateQueries({queryKey: ['notificationdisplaykey']});
+  // };
+  // APP receive notification on foreground, if go to background and click the notification
+
   unRegister = () => {
     this.notificationListener();
     this.notificationOpenedListener();
-    this.onTokenRefreshListener();
+    // this.onTokenRefreshListener();
     this.forgroundListener();
-    this.deletedToken();
-    // this.backgroundListner();
+    // this.deletedToken();
+    this.backgroundListner;
     console.log('FCMService unRegister successfully');
   };
 }

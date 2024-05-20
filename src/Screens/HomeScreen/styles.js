@@ -75,12 +75,12 @@ export const styles = StyleSheet.create({
     width: wp('70'),
   },
   dateText: {
-    fontSize: hp('1.8'),
+    fontSize: hp('1.5'),
     marginLeft: wp('2'),
     marginRight: wp('10'),
   },
   timeText: {
-    fontSize: hp('1.8'),
+    fontSize: hp('1.5'),
     marginLeft: wp('2'),
   },
   upComingFlatlistView: {

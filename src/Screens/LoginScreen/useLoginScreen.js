@@ -41,6 +41,10 @@ const useLogin = ({navigate, goBack}) => {
 
   const goToForgotPassword = () => navigate('ForgotPasswordScreen');
 
+  const onSocialLogin = async name => {
+    dispatch(loginUser({type: name, datas: {}}));
+  };
+
   const googleLoginFunc = async () => {
     dispatch(loginUser({type: 'Google', datas: {}}));
   };
@@ -67,6 +71,7 @@ const useLogin = ({navigate, goBack}) => {
     loginUser: loginUserFun,
     appleIdlogin,
     goToForgotPassword,
+    onSocialLogin,
   };
 };
 

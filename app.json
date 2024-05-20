@@ -1,4 +1,5 @@
 {
   "name": "salt",
-  "displayName": "salt"
+  "displayName": "salt",
+  "plugins": ["@notifee/react-native"]
 }

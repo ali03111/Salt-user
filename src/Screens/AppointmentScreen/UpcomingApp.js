@@ -11,7 +11,7 @@ import AniLeftScroll from '../../AnimatedComp/AniLeftScroll';
 import useAppointmentScreen from './useAppointmentScreen';
 import {EmptyViewComp} from '../../Components/EmptyViewComp';
 
-const UpcomingApp = () => {
+const UpcomingApp = ({navigation}) => {
   const {dataHistoryUpcoming, onRefresh} = useAppointmentScreen();
   console.log('up', dataHistoryUpcoming?.upcoming);
   return (
@@ -28,6 +28,26 @@ const UpcomingApp = () => {
             viewStyle={{
               marginBottom: hp('2'),
             }}
+            onPressDetail={() =>
+              navigation.navigate('AppointmentDetailScreen', {
+                ...item,
+              })
+            }
+            onPressProfile={() =>
+              navigation.navigate('ProfessionalProfileScreen', {
+                item: {
+                  user: {
+                    user: {
+                      ...item?.professional,
+                      location: item?.location,
+                      past_works: item?.past_work,
+                      appointment_dates: item?.appointment_dates,
+                    },
+                    isProfile: true,
+                  },
+                },
+              })
+            }
             data={item}
           />
         )}

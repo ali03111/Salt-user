@@ -8,6 +8,7 @@ import ThemeButton from './ThemeButton';
 import {Colors} from '../Theme/Variables';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {imageUrl} from '../Utils/Urls';
+import {Touchable} from './Touchable';
 
 export const HistoryReqComp = ({
   data,
@@ -15,9 +16,14 @@ export const HistoryReqComp = ({
   onPress,
   onPressProfile,
   reShedulePress,
+  onPressDetail,
 }) => {
-  const location = 'JSON.parse(data?.locations?.location)';
-  console.log('datadatadatadatadatadatadatadata', data?.ratings[0]?.is_review);
+  const location = JSON.parse(data?.location?.location);
+  console.log(
+    'datadatadatadatadatadatadatasdfsdfsdfsddata',
+    data?.ratings[0]?.is_review,
+    data,
+  );
   return (
     <View style={{...styles.comingView, ...viewStyle}}>
       <View style={styles.bottomViewTop}>
@@ -52,16 +58,15 @@ export const HistoryReqComp = ({
             size={hp('1.8')}
           />
           <TextComponent
-            text={'Cancelled'}
+            text={data?.appointment_status}
             styles={{
-              fontSize: hp('1.6'),
+              fontSize: hp('1.5'),
               color: Colors.white,
-              marginLeft: wp('2'),
             }}
           />
         </View>
       </View>
-      <View style={styles.userView}>
+      <Touchable style={styles.userView} onPress={onPressProfile}>
         <CircleImage image={imageUrl(data?.professional?.image)} uri={true} />
         <View style={styles.nameView}>
           <TextComponent
@@ -69,7 +74,7 @@ export const HistoryReqComp = ({
             styles={{fontSize: hp('2.5'), fontWeight: '500'}}
           />
         </View>
-      </View>
+      </Touchable>
       <View style={styles.locationStyle}>
         <MaterialCommunityIcons
           name="map-marker-outline"
@@ -107,8 +112,8 @@ export const HistoryReqComp = ({
           />
         ) : (
           <ThemeButton
-            onPress={onPressProfile}
-            title={'View Profile'}
+            onPress={onPressDetail}
+            title={'View Details'}
             style={{...styles.viewAppBtn, backgroundColor: 'red'}}
             textStyle={{fontSize: hp('1.5')}}
           />
@@ -167,13 +172,13 @@ const styles = StyleSheet.create({
     // borderRadius: 10,
   },
   dateText: {
-    fontSize: hp('1.6'),
+    fontSize: hp('1.5'),
     marginLeft: wp('2'),
     marginRight: wp('0'),
     color: Colors.grayFaded,
   },
   timeText: {
-    fontSize: hp('1.6'),
+    fontSize: hp('1.5'),
     marginLeft: wp('0'),
     color: Colors.grayFaded,
   },

@@ -52,7 +52,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <HomeHeader
-        text={userData.name}
+        text={userData?.name}
         onSettingPress={() => dynamicNav('SettingScreen')}
       />
       <ScrollView

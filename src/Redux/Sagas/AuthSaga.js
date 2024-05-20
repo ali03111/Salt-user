@@ -53,6 +53,7 @@ const loginSaga = function* ({payload: {datas, type}}) {
           type: 'customer',
         });
         yield put(loadingTrue());
+        console.log('slkdbvlkjsdbvlksdblvkbsdklvbsdklvbskldbvlksdbvklsd', data);
         if (ok) {
           yield put(loadingTrue());
           yield put(updateAuth(data));
@@ -192,7 +193,7 @@ function* verifySage(action) {
   }
 }
 
-/ This function is used to add the fcm token to the database. /;
+// / This function is used to add the fcm token to the database. /;
 function* fcmTokenSaga(action) {
   yield call(fcmRegService, action.payload);
 }

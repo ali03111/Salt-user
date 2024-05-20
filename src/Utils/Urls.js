@@ -17,6 +17,9 @@ const getCredentials = () => {
   }
 };
 
+export const StripePublicKey =
+  'pk_test_51L3FxODOXZK7YV6slAtL46RT2WW38ikItXTNalrundN9kcsekaF7w5DV7P4IpDW9QqnB1wR5UBloDDfpSWv7OQZh00lnb5EoTB';
+
 export const aboutUrl = 'https://saltbraiding.com/deletion_policy';
 export const privacyUrl = 'https://saltbraiding.com/privacy_policy';
 export const termsUrl = 'https://saltbraiding.com/terms_and_conditions';
@@ -48,3 +51,7 @@ export const TopRatedProUrl = 'customer/top-rated-list';
 export const createResAppUrl = 'customer/reschedule-appointment';
 export const deleteAccUrl = 'customer/deactive-user';
 export const verifyUserUrl = 'customer/verify-user';
+export const CreateIntentUrl = 'customer/create-payment-intent';
+export const AfterPaymentUrl = 'customer/create-payment-data';
+export const CheckIsCurrentDateUrl = 'customer/current-date';
+export const FcmTokenUrl = 'customer/add-fcm-token';

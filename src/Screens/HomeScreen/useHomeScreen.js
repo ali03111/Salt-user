@@ -11,8 +11,6 @@ export default function useHomeScreen({navigate}) {
     queryFn: () => API.get(homeContentUrl),
   });
 
-  console.log('datadatadatadatadatadatadatadatadatadata', data?.originalError);
-
   const {getState, dispatch} = useReduxStore();
 
   const {userData} = getState('Auth');

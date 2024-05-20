@@ -41,6 +41,7 @@ const RegisterScreen = ({navigation}) => {
     error,
     number,
     setNumber,
+    onSocialRegister,
   } = useRegister(navigation);
   const isIOS = Boolean(Platform.OS == 'ios');
 
@@ -127,7 +128,7 @@ const RegisterScreen = ({navigation}) => {
         />
       </View>
       <DashText text={'Sign Up'} localStyle={{marginTop: hp('4')}} />
-      <SocialBottomView />
+      <SocialBottomView onSocialPress={name => onSocialRegister(name)} />
       <BottomText
         text={'Already have an account?'}
         ButtonText={'Log In'}

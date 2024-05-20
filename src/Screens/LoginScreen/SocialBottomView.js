@@ -3,24 +3,24 @@ import {Touchable} from '../../Components/Touchable';
 import {appleImage, facebookImage, googleImage} from '../../Assets';
 import {styles} from './styles';
 
-const SocialBottomView = ({google, facebook, apple}) => {
+const SocialBottomView = ({onSocialPress}) => {
   return (
     <View style={styles.socialView}>
-      <Touchable onPress={() => onPress('Google')}>
+      <Touchable onPress={() => onSocialPress('Google')}>
         <Image
           source={googleImage}
           resizeMode="contain"
           style={styles.imageStyle}
         />
       </Touchable>
-      <Touchable onPress={() => onPress('Apple')}>
+      <Touchable onPress={() => onSocialPress('appleID')}>
         <Image
           source={appleImage}
           resizeMode="contain"
           style={styles.imageStyle}
         />
       </Touchable>
-      <Touchable onPress={() => onPress('Facebook')}>
+      <Touchable onPress={() => onSocialPress('facebook')}>
         <Image
           source={facebookImage}
           resizeMode="contain"

@@ -47,6 +47,7 @@ const LoginScreen = ({navigation}) => {
     googleLoginFunc,
     facebookLoginFunc,
     goToForgotPassword,
+    onSocialLogin,
   } = useLogin(navigation);
 
   const isIOS = Boolean(Platform.OS == 'ios');
@@ -108,7 +109,7 @@ const LoginScreen = ({navigation}) => {
         text={'Log In'}
         localStyle={{marginTop: Platform.OS == 'ios' ? hp('15') : hp('13')}}
       />
-      <SocialBottomView />
+      <SocialBottomView onSocialPress={name => onSocialLogin(name)} />
       <BottomText
         text={'Don’t have an account?'}
         ButtonText={'Sign Up'}

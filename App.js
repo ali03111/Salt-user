@@ -15,6 +15,7 @@ import {
   StatusBar,
   Platform,
   TextInput,
+  AppState,
 } from 'react-native';
 import StackNavigatior from './src/Navigation/navigation';
 import {SplashScreen} from './src/Assets';
@@ -26,8 +27,50 @@ import {Colors} from './src/Theme/Variables';
 import {hp, wp} from './src/Config/responsive';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {QueryClient} from '@tanstack/react-query';
+import {fcmService} from './src/Services/Notifications';
+import usePushNotification from './src/Services/usePushNotification';
+import notifee, {EventType} from '@notifee/react-native';
+import NavigationService from './src/Services/NavigationService';
 
 const App = () => {
+  useEffect(() => {
+    return notifee.onForegroundEvent(({type, detail}) => {
+      switch (type) {
+        case EventType.DISMISSED:
+          console.log('User dismissed notification', detail.notification);
+          break;
+        case EventType.PRESS:
+          console.log('User pressed notification', detail.notification);
+          break;
+      }
+    });
+  }, []);
+  // const {
+  //   requestUserPermission,
+  //   getFCMToken,
+  //   listenToBackgroundNotifications,
+  //   listenToForegroundNotifications,
+  //   onNotificationOpenedAppFromBackground,
+  //   onNotificationOpenedAppFromQuit,
+  // } = usePushNotification();
+
+  // useEffect(() => {
+  //   const listenToNotifications = () => {
+  //     try {
+  //       getFCMToken();
+  //       requestUserPermission();
+  //       onNotificationOpenedAppFromQuit();
+  //       listenToBackgroundNotifications();
+  //       listenToForegroundNotifications();
+  //       onNotificationOpenedAppFromBackground();
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   listenToNotifications();
+  // }, []);
+
   const flexStyle = {flex: 1};
   const [isVisible, setIsVisible] = useState(true);
   const Hide_Splash_Screen = () => {
@@ -36,9 +79,52 @@ const App = () => {
   const {getState, dispatch} = useReduxStore();
   const {isloading} = getState('isloading');
   const {isAlert} = getState('isAlert');
+  const {isLogin} = getState('Auth');
+
+  const appState = useRef(AppState.currentState);
 
   const time = () => {
     return 2000;
+  };
+
+  useEffect(() => {
+    /* It's a function that registers the device to receive push notifications. */
+    if (isLogin) {
+      setTimeout(() => {
+        fcmService.register(
+          onRegister,
+          onOpenNotification,
+          appState.current,
+          () => {},
+        );
+      }, 5000);
+    }
+    return () => {
+      /* It's a function that unregisters the device from receiving push notifications. */
+      if (isLogin) {
+        fcmService.unRegister();
+      }
+    };
+  }, [isLogin]);
+  const onRegister = fcm_token => {
+    console.log('fcm_token', Platform.OS, fcm_token);
+    dispatch(fcmRegister(fcm_token));
+  };
+
+  const onOpenNotification = notify => {
+    if (notify?.data?.payload) {
+      console.log(
+        'payloadDatapayloadDatapayloadDatapayloadDatapayloadData',
+        payloadData,
+      );
+      const payloadData = JSON.parse(notify?.data?.payload);
+      if (payloadData?.isRoute) {
+        NavigationService.navigate(
+          payloadData?.screenRoute,
+          payloadData?.app_data?.id && payloadData?.app_data,
+        );
+      }
+    }
   };
 
   const queryClient = new QueryClient({});

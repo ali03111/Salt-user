@@ -34,7 +34,12 @@ import {UpcomingData} from '../Utils/localDB';
 import {imageUrl} from '../Utils/Urls';
 import {extractTimeFromString} from '../Utils/globalFunctions';
 
-export const UpComingAppView = ({data, viewStyle}) => {
+export const UpComingAppView = ({
+  data,
+  viewStyle,
+  onPressDetail,
+  onPressProfile,
+}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   // const [accordionItem, setAccordionItem] = useState('');
@@ -89,20 +94,15 @@ export const UpComingAppView = ({data, viewStyle}) => {
           />
         </View>
       </View>
-      <View style={styles.userView}>
-        {/* <CircleImage image={imageUrl(data?.users?.image)} uri={true} /> */}
+      <Touchable style={styles.userView} onPress={onPressProfile}>
+        <CircleImage image={imageUrl(data?.professional?.image)} uri={true} />
         <View style={styles.nameView}>
           <TextComponent
             text={`With - ${data?.professional?.name}`}
             styles={{fontSize: hp('2.5'), fontWeight: '500'}}
           />
         </View>
-        {/* <Image
-          source={information}
-          resizeMode="contain"
-          style={styles.infIcon}
-        /> */}
-      </View>
+      </Touchable>
       <View style={styles.locationStyle}>
         <MaterialCommunityIcons
           name="map-marker-outline"
@@ -133,7 +133,12 @@ export const UpComingAppView = ({data, viewStyle}) => {
       </View> */}
       <View style={styles.viewBtnView}>
         <ThemeButton
-          title={'Cancel'}
+          title={'Chat'}
+          style={{...styles.viewAppBtn, backgroundColor: 'red'}}
+          textStyle={{fontSize: hp('1.5')}}
+        />
+        <ThemeButton
+          title={'View Detail'}
           style={styles.viewAppBtn}
           image={downArrow}
           imageStyle={{
@@ -141,11 +146,7 @@ export const UpComingAppView = ({data, viewStyle}) => {
             width: wp('2.5'),
             marginLeft: wp('2'),
           }}
-          textStyle={{fontSize: hp('1.5')}}
-        />
-        <ThemeButton
-          title={'Chat'}
-          style={{...styles.viewAppBtn, backgroundColor: 'red'}}
+          onPress={onPressDetail}
           textStyle={{fontSize: hp('1.5')}}
         />
       </View>

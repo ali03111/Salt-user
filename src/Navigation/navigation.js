@@ -7,7 +7,7 @@ import useReduxStore from '../Hooks/UseReduxStore';
 import NavigationService from '../Services/NavigationService';
 import {Colors} from '../Theme/Variables';
 import {Platform} from 'react-native';
-import HistoryApp from '../Screens/AppointmentScreen/HistoryApp';
+import AppointmentScreen from '../Screens/AppointmentScreen/HistoryApp';
 
 const Stack = createNativeStackNavigator();
 const StackNavigatior = () => {
@@ -82,7 +82,10 @@ const StackNavigatior = () => {
               name="AppointmentDetailScreen"
               component={Screens.AppointmentDetailScreen}
             />
-            <Stack.Screen name="History" component={HistoryApp} />
+            <Stack.Screen
+              name="AppointmentScreen"
+              component={Screens.AppointmentScreen}
+            />
             <Stack.Screen
               name="SettingScreen"
               component={Screens.SettingScreen}
