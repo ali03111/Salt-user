@@ -50,7 +50,7 @@ const ChangePasswordScreen = ({navigation}) => {
         // paddingBottom: hp('10'),
       }}
       bounce={false}>
-      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
+      {/* <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} /> */}
       <BackHeader
         headerTitle={'Change Password'}
         isBack={true}

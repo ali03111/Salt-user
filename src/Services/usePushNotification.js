@@ -62,24 +62,12 @@ const usePushNotification = () => {
     const unsubscribe = messaging().onNotificationOpenedApp(
       async remoteMessage => {
         const notificationData = JSON.stringify(remoteMessage);
-        console.log(
-          'notificationDatanotificationDatanotificationDatanotificationDatanotificationData',
-          notificationData?.data?.payload,
-        );
         if (notificationData?.data?.payload != null) {
-          console.log(
-            'payloadDatapayloadDatapayloadDatapayloadDatapayloadDatapayloadData',
-            payloadData,
-          );
           const payloadData = JSON.parse(notificationData?.data?.payload);
           if (payloadData?.isRoute) {
             NavigationService.navigate(payloadData?.screenRoute);
           }
         }
-        // console.log(
-        //   'App opened from BACKGROUND by tapping notification:',
-        //   JSON.stringify(remoteMessage),
-        // );
       },
     );
     return unsubscribe;
@@ -89,6 +77,13 @@ const usePushNotification = () => {
     const message = await messaging().getInitialNotification();
 
     if (message) {
+      const notificationData = JSON.stringify(message);
+      if (notificationData?.data?.payload != null) {
+        const payloadData = JSON.parse(notificationData?.data?.payload);
+        if (payloadData?.isRoute) {
+          NavigationService.navigate(payloadData?.screenRoute);
+        }
+      }
       console.log(
         'App opened from QUIT by tapping notification:',
         JSON.stringify(message),

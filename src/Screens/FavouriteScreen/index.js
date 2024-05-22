@@ -92,7 +92,7 @@ const FavouriteScreen = ({navigation}) => {
   };
   return (
     <>
-      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
+      {/* <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} /> */}
       <BackHeader headerTitle={'Favorites'} />
       <View style={styles.container}>
         <AniFlatOneByOne

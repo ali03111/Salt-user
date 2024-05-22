@@ -54,6 +54,7 @@ const HomeScreen = ({navigation}) => {
       <HomeHeader
         text={userData?.name}
         onSettingPress={() => dynamicNav('SettingScreen')}
+        onNotiPress={() => dynamicNav('NotificationScreen')}
       />
       <ScrollView
         refreshControl={

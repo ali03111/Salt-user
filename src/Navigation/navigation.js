@@ -90,6 +90,10 @@ const StackNavigatior = () => {
               name="SettingScreen"
               component={Screens.SettingScreen}
             />
+            <Stack.Screen
+              name="NotificationScreen"
+              component={Screens.NotificationScreen}
+            />
           </>
         )}
       </Stack.Navigator>

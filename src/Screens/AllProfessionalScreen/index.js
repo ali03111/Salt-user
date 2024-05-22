@@ -14,7 +14,7 @@ const AllProfessionalScreen = ({navigation}) => {
 
   return (
     <View style={{flex: 1, backgroundColor: Colors.themeBlack}}>
-      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
+      {/* <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} /> */}
       <BackHeader
         headerTitle={'Top Rated-Professional'}
         isBack={true}

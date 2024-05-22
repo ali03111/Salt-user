@@ -41,14 +41,18 @@ const AppointmentDetailScreen = ({route, navigation}) => {
     )[0]?.label == locationType[0]?.locId,
   );
 
-  StripePublicKey;
+  console.log(
+    'sldbvlksbdlkvbsdklvbslkdbvlksdbvlksdblkbdsksdlbvlksdbvklsdbvlk',
+    data?.appointment_dates,
+  );
+
   return (
     <StripeProvider publishableKey={StripePublicKey}>
       <ScrollView contentContainerStyle={styles.container} bounces={false}>
-        <StatusBar
+        {/* <StatusBar
           backgroundColor={Colors.themeBlack}
           barStyle={'light-content'}
-        />
+        /> */}
         <Image
           source={textureBg}
           style={{...styles.bgImg}}

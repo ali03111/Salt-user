@@ -55,3 +55,4 @@ export const CreateIntentUrl = 'customer/create-payment-intent';
 export const AfterPaymentUrl = 'customer/create-payment-data';
 export const CheckIsCurrentDateUrl = 'customer/current-date';
 export const FcmTokenUrl = 'customer/add-fcm-token';
+export const getNotificationUrl = 'customer/all-notifications';

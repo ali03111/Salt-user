@@ -78,7 +78,7 @@ export const UpComingAppView = ({
             alignItems: 'center',
           }}>
           <TextComponent
-            text={'Cancelled'}
+            text={data?.appointment_status ?? 'pending'}
             styles={{
               fontSize: hp('1.6'),
               color: Colors.white,

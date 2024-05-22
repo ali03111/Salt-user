@@ -63,7 +63,7 @@ export default function BookAnAppoint({navigation}) {
         isBack={true}
         goBack={() => navigation.goBack()}
       />
-      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
+      {/* <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} /> */}
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.innerContainer}>
           <UseCalendar

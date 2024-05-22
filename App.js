@@ -40,6 +40,20 @@ const App = () => {
           console.log('User dismissed notification', detail.notification);
           break;
         case EventType.PRESS:
+          const notify = detail.notification;
+          if (notify?.data?.payload) {
+            console.log(
+              'payloadDatapayloadDatapayloadDatapayloadDatapayloadData',
+              payloadData,
+            );
+            const payloadData = JSON.parse(notify?.data?.payload);
+            if (payloadData?.isRoute) {
+              NavigationService.navigate(
+                payloadData?.screenRoute,
+                payloadData?.app_data?.id && payloadData?.app_data,
+              );
+            }
+          }
           console.log('User pressed notification', detail.notification);
           break;
       }
@@ -175,7 +189,7 @@ const App = () => {
       <StatusBar
         hidden={isVisible}
         backgroundColor={Platform.OS == 'ios' ? 'white' : '#F2F2F2'}
-        barStyle={'dark-content'}
+        barStyle={Platform.OS == 'ios' ? 'light-content' : 'dark-content'}
       />
       {isVisible === true ? Splash_Screen : <StackNavigatior />}
     </GestureHandlerRootView>

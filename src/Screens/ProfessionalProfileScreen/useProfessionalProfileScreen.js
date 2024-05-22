@@ -14,6 +14,11 @@ const useProfessionalProfileScreen = ({navigate, goBack}, {params}) => {
   const [price, setPrice] = useState(item?.user?.braid_type?.price);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  console.log(
+    'kljsdbvlksbdlvbsdklvblksdbvlksdbvklsdbklvbsd;bvlksdbvlksdb.vskdvb',
+    item?.user,
+  );
+
   const priceRef = useRef(null);
 
   // Get QueryClient from the context

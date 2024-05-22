@@ -19,7 +19,7 @@ const AppointmentScreen = ({navigation}) => {
 
   return (
     <View style={{flex: 1}}>
-      <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} />
+      {/* <StatusBar backgroundColor={Colors.themeRed} barStyle={'light-content'} /> */}
       <BackHeader
         saveReset={addCircle}
         headerTitle={'Appointments'}

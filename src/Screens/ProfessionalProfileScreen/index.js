@@ -45,8 +45,6 @@ const ProfessionalProfileScreen = ({navigation, route}) => {
     braid_type,
   } = useProfessionalProfileScreen(navigation, route);
 
-  console.log('12361267387isajdhakjshdk', JSON.stringify(user));
-
   return (
     <View style={{flexGrow: 1, backgroundColor: Colors.themeBlack}}>
       <BackHeader

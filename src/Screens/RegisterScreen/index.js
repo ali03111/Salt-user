@@ -49,7 +49,7 @@ const RegisterScreen = ({navigation}) => {
     <KeyBoardWrapper
       showsVerticalScrollIndicator={false}
       styles={styles.logInMain}>
-      <StatusBar barStyle={isIOS ? 'light-content' : 'dark-content'} />
+      {/* <StatusBar barStyle={isIOS ? 'light-content' : 'dark-content'} /> */}
       <Image
         source={loginBgBlack}
         style={{
