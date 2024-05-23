@@ -22,7 +22,7 @@ const NotificationComp = ({item, onPress, disabled}) => {
       <View style={styles.mainView}>
         <CircleImage
           image={imageUrl(item?.appointments?.professional?.image)}
-          isURI={true}
+          uri={true}
           styles={styles.imageView}
         />
         <View style={styles.upperMainView}>

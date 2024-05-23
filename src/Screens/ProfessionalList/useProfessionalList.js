@@ -29,7 +29,8 @@ const useProfessionalList = ({navigate}, {params}) => {
     },
     onSuccess: ({ok, data}) => {
       if (ok) {
-        queryClient.invalidateQueries({queryKey: ['profList']});
+        onRefresh();
+        // queryClient.invalidateQueries({queryKey: ['profList']});
         successMessage(data?.message);
       } else errorMessage(data?.message);
     },

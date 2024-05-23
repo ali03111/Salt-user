@@ -138,6 +138,8 @@ const App = () => {
           payloadData?.app_data?.id && payloadData?.app_data,
         );
       }
+    } else {
+      NavigationService.navigate('NotificationScreen');
     }
   };
 
@@ -186,11 +188,15 @@ const App = () => {
   return (
     <GestureHandlerRootView style={flexStyle}>
       {isloading && <Overlay />}
-      <StatusBar
-        hidden={isVisible}
-        backgroundColor={Platform.OS == 'ios' ? 'white' : '#F2F2F2'}
-        barStyle={Platform.OS == 'ios' ? 'light-content' : 'dark-content'}
-      />
+      {Platform.OS == 'ios' ? (
+        <StatusBar
+          hidden={isVisible}
+          backgroundColor={'white'}
+          barStyle={'light-content'}
+        />
+      ) : (
+        <StatusBar hidden={isVisible} />
+      )}
       {isVisible === true ? Splash_Screen : <StackNavigatior />}
     </GestureHandlerRootView>
   );

@@ -28,7 +28,6 @@ const StackNavigatior = () => {
           headerShown: false,
           statusBarAnimation: 'slide',
           statusBarStyle: 'light',
-          ...statusBarColor,
         }}>
         {!onboarding && (
           <Stack.Screen

@@ -2,7 +2,7 @@ import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import API from '../../Utils/helperFunc';
 import {getNotificationUrl, sendReqUrl} from '../../Utils/Urls';
 import {errorMessage, successMessage} from '../../Config/NotificationMessage';
-import {useCallback} from 'react';
+import {useCallback, useEffect} from 'react';
 import notifee, {
   EventType,
   AndroidLaunchActivityFlag,
@@ -14,7 +14,7 @@ const useNotificationScreen = () => {
 
   var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  React.useEffect(() => {
+  useEffect(() => {
     // App launched, remove the badge count
     notifee.setBadgeCount(0).then(() => console.log('Badge count removed'));
   }, []);
