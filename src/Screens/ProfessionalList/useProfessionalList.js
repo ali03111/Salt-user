@@ -28,6 +28,7 @@ const useProfessionalList = ({navigate}, {params}) => {
       });
     },
     onSuccess: ({ok, data}) => {
+      console.log('sldbvlksbdlkvbsdlkbvlksdbvklsdbvskdlvbsdklbvklsdv', data);
       if (ok) {
         onRefresh();
         // queryClient.invalidateQueries({queryKey: ['profList']});

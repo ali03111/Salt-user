@@ -11,7 +11,7 @@ const UseAbout = ({about}) => {
     about,
   );
   return (
-    <View>
+    <View style={{minHeight: hp('15'), maxHeight: hp('50')}}>
       <TextComponent text={'About'} styles={styles.aboutTitle} />
       {about ? (
         <TextComponent

@@ -12,7 +12,7 @@ import BlurImage from '../../Components/BlurImage';
 const UseGallery = ({gallery}) => {
   console.log('gallarygallarygallarygallarygallarygallarygallary', gallery);
   return (
-    <View>
+    <View style={{minHeight: hp('15'), maxHeight: hp('50')}}>
       <TextComponent
         text={`Photos (${gallery?.length})`}
         styles={styles.aboutTitle}

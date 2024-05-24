@@ -25,7 +25,6 @@ export default function CustomTabs({gallery, about}) {
       style={{minHeight: hp('60')}}
       sceneContainerStyle={{
         backgroundColor: Colors.themeBlack,
-        minHeight: 'auto',
       }}>
       <Tab.Screen
         name="About"

@@ -14,6 +14,8 @@ const UseReviews = () => {
       style={{
         width: wp('100'),
         justifyContent: 'center',
+        minHeight: hp('15'),
+        maxHeight: hp('50'),
       }}>
       <View style={{flexDirection: 'row'}}>
         <TextComponent text={'Reviews'} styles={styles.aboutTitle} />
