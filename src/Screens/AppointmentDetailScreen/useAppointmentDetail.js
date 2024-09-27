@@ -4,6 +4,7 @@ import {
   AfterPaymentUrl,
   CheckIsCurrentDateUrl,
   CreateIntentUrl,
+  GetDetailsUrl,
   changeAppStatusUrl,
 } from '../../Utils/Urls';
 import {errorMessage, successMessage} from '../../Config/NotificationMessage';
@@ -17,7 +18,10 @@ import {
 } from '../../Utils/globalFunctions';
 
 const useAppointmentDetail = ({goBack}, {params}) => {
-  const data = params;
+  const {data, error, isSuccess, isLoading} = useQuery({
+    queryKey: ['appointDetail'],
+    queryFn: () => API.get(GetDetailsUrl + params?.id),
+  });
 
   const {dispatch, getState} = useReduxStore();
   const {userData} = getState('Auth');
@@ -30,25 +34,30 @@ const useAppointmentDetail = ({goBack}, {params}) => {
 
   console.log(
     'slkdnvklsd klv sdlkv klsd vklsd vkls dklv sdklv klsd',
-    removeTimeFromDate(NewDate),
+    data?.data,
   );
 
   const checkIsDate = useMutation({
     mutationFn: body => {
       return API.post(CheckIsCurrentDateUrl, {
-        app_id: data?.appointment_request[0]?.appointment_id,
+        app_id:
+          data?.data?.user_appointment?.appointment_request[0]?.appointment_id,
         current_date: removeTimeFromDate(NewDate),
       });
     },
     onSuccess: ({ok, data}) => {
       console.log('jksdbvjksdkbvdjksbvjkldsjklvbdsklvbdlvks', data);
       if (ok) {
-        setAppointData(data?.data);
+        queryClient.invalidateQueries({queryKey: ['appointDetail']});
       } else errorMessage(data?.message);
     },
   });
 
-  useEffect(checkIsDate.mutate, []);
+  useEffect(() => {
+    if (isSuccess && !isLoading) {
+      checkIsDate.mutate();
+    }
+  }, []);
 
   // Stripe functions
   const {
@@ -61,23 +70,32 @@ const useAppointmentDetail = ({goBack}, {params}) => {
 
   const {mutateAsync} = useMutation({
     mutationFn: body => {
-      return API.post(CreateIntentUrl, {amount: data?.braid_type?.price * 100});
+      return API.post(CreateIntentUrl, {
+        amount: data?.data?.user_appointment?.braid_type?.price * 100,
+      });
     },
     onSuccess: ({ok, data}) => {
+      console.log('lksdbvklbslkbskdlbvbsdklvbsdkl', data);
       if (ok) {
         initPaymentScreenStripe(data?.client_secret);
-      } else errorMessage(data?.message);
+      } else errorMessage(data?.message ?? 'Network request failed');
     },
   });
   const afterPayment = useMutation({
     mutationFn: body => {
       return API.post(AfterPaymentUrl, {
-        data: {...body, app_id: data?.appointment_request[0]?.appointment_id},
+        data: {
+          ...body,
+          app_id:
+            data?.data?.user_appointment?.appointment_request[0]
+              ?.appointment_id,
+        },
       });
     },
     onSuccess: ({ok, data}) => {
       if (ok) {
-        setAppointData(data?.appointment_data);
+        // setAppointData(data?.appointment_data);
+        queryClient.invalidateQueries({queryKey: ['appointDetail']});
         queryClient.invalidateQueries({queryKey: ['homeData']});
         successMessage(data?.message);
       } else errorMessage(data?.message);
@@ -133,7 +151,7 @@ const useAppointmentDetail = ({goBack}, {params}) => {
   const onCancelPress = {
     true: () =>
       mutate({
-        appointment_id: data?.id,
+        appointment_id: data?.data?.user_appointment?.id,
         aor: false,
       }),
     undefined: () => mutateAsync(),
@@ -141,14 +159,14 @@ const useAppointmentDetail = ({goBack}, {params}) => {
   const onAcceptPress = {
     true: () =>
       mutate({
-        appointment_id: data?.id,
+        appointment_id: data?.data?.user_appointment?.id,
         aor: true,
       }),
     false: () => console.log('klsnvlksdnlkvnsdkl'),
   };
 
   return {
-    data: appointData ?? data,
+    data: data?.data?.user_appointment,
     onAcceptPress,
     onCancelPress,
     status,

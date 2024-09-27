@@ -6,6 +6,7 @@ import {openSettings} from 'react-native-permissions';
 import {store} from '../Redux/Reducer';
 import {loadingFalse, loadingTrue} from '../Redux/Action/isloadingAction';
 import {errorMessage} from '../Config/NotificationMessage';
+import {APIKey} from './Urls';
 
 const getSingleCharacter = text => {
   let letter = text?.charAt(0).toUpperCase();
@@ -133,7 +134,7 @@ const getProperLocation = () => {
 const getLocationName = async (latitude, longitude) => {
   console.log('third');
 
-  const geocodingAPI = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDQ_pjAQYvVcGWNLy-ND_ZtyufjXtiUAxs`;
+  const geocodingAPI = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${APIKey}`;
 
   // Replace "YOUR_API_KEY" with your actual Google Maps Geocoding API key
 

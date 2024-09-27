@@ -108,5 +108,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Allow notification</string>
 </dict>
 </plist>

@@ -33,7 +33,9 @@ const AppointmentDetailScreen = ({route, navigation}) => {
     retrieveSetupIntent,
   } = useStripe();
 
-  const address = JSON.parse(data?.users?.location?.location);
+  const address = data?.users?.location?.location
+    ? JSON.parse(data?.users?.location?.location)
+    : 'kjdsbklvsbdk';
 
   const isHouseCall = Boolean(
     locationType.filter(
@@ -43,7 +45,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
 
   console.log(
     'sldbvlksbdlkvbsdklvbslkdbvlksdbvlksdblkbdsksdlbvlksdbvklsdbvlk',
-    data?.appointment_dates,
+    JSON.stringify(data?.braid_type),
   );
 
   return (
@@ -142,6 +144,14 @@ const AppointmentDetailScreen = ({route, navigation}) => {
             />
           </View>
           <View style={styles.cardInner}>
+            <TextComponent text={'Price'} styles={styles.braidTitle} />
+            <TextComponent
+              text={data?.braid_type?.price}
+              fade={true}
+              styles={styles.braidTitle}
+            />
+          </View>
+          <View style={styles.cardInner}>
             <TextComponent text={'Location'} styles={styles.braidTitle} />
             <View style={{flexDirection: 'row'}}>
               <TextComponent
@@ -194,7 +204,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
             }}
           />
         ) : (
-          !data.isCompleted && (
+          !data?.isCompleted && (
             <View style={styles.viewBtnView}>
               <ThemeButton
                 title={'Chat'}
@@ -206,7 +216,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
                 title={'Complete Job'}
                 style={{...styles.viewAppBtn, backgroundColor: 'red'}}
                 textStyle={{fontSize: hp('1.5')}}
-                disable={data?.appointment_status == 'started' ? false : true}
+                // disable={data?.appointment_status == 'started' ? false : true}
                 onPress={hitPayment}
               />
             </View>

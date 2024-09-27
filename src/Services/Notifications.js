@@ -18,7 +18,7 @@ const onNotificationNotiFee = async (data, appState) => {
   const channelId = await notifee.createChannel({
     id: 'default',
     name: 'Default Channel',
-    sound,
+    // sound,
   });
 
   // Display a notification
