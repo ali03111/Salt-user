@@ -12,7 +12,6 @@ import {
   starfill,
 } from '../../Assets';
 import {TextComponent} from '../../Components/TextComponent';
-// import {ScrollView} from 'react-native-gesture-handler';
 import {CircleImage} from '../../Components/CircleImage';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {imageUrl} from '../../Utils/Urls';

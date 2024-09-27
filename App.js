@@ -25,7 +25,6 @@ import Overlay from './src/Components/Overlay';
 import {fcmRegister, verifyUser} from './src/Redux/Action/AuthAction';
 import {Colors} from './src/Theme/Variables';
 import {hp, wp} from './src/Config/responsive';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {QueryClient} from '@tanstack/react-query';
 import {fcmService} from './src/Services/Notifications';
 import usePushNotification from './src/Services/usePushNotification';
@@ -186,7 +185,7 @@ const App = () => {
   );
 
   return (
-    <GestureHandlerRootView style={flexStyle}>
+    <View style={flexStyle}>
       {isloading && <Overlay />}
       {Platform.OS == 'ios' ? (
         <StatusBar
@@ -198,7 +197,7 @@ const App = () => {
         <StatusBar hidden={isVisible} />
       )}
       {isVisible === true ? Splash_Screen : <StackNavigatior />}
-    </GestureHandlerRootView>
+    </View>
   );
 };
 

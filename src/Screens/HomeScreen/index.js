@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {memo} from 'react';
-import {FlatList, ScrollView, Text, View} from 'react-native';
+import {FlatList, RefreshControl, ScrollView, Text, View} from 'react-native';
 import HomeHeader from './homeHeader';
 import {HeadingView} from './headingView';
 import {UpComingAppCards} from './UpComingAppCard';
@@ -13,7 +13,6 @@ import {arrowRightIcon} from '../../Assets';
 import {ProfileCardComp} from '../../Components/ProfileCardComp';
 import useHomeScreen from './useHomeScreen';
 import NoDataFoundVer from '../../Components/NoDataFoundVer';
-import {RefreshControl} from 'react-native-gesture-handler';
 
 const HomeScreen = ({navigation}) => {
   const {homeContent, onRefresh, refresh, userData, dynamicNav} =

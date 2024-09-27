@@ -9,7 +9,6 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import FlashMessage from 'react-native-flash-message';
 import {persistor, store} from './src/Redux/Reducer';
-import 'react-native-gesture-handler';
 import {
   QueryClient,
   QueryClientProvider,
