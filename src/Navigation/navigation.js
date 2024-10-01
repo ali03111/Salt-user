@@ -29,12 +29,12 @@ const StackNavigatior = () => {
           statusBarAnimation: 'slide',
           statusBarStyle: 'light',
         }}>
-        {!onboarding && (
+        {/* {!onboarding && (
           <Stack.Screen
             name="OnBoardScreen"
             component={Screens.OnBoardScreen}
           />
-        )}
+        )} */}
         {!isLogin && (
           <>
             {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}

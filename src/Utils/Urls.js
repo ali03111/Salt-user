@@ -5,14 +5,14 @@ const getCredentials = () => {
       // imageURL: 'http://3.20.179.123/salt/',
       // baseURL: 'https://saltbraiding.com/salt/api/',
       baseURL: 'https://virtualrealitycreators.com/salt/api/',
-      imageURL: 'https://saltbucket1.s3.us-east-2.amazonaws.com/',
+      imageURL: 'https://salt-new.s3.us-east-2.amazonaws.com/',
     };
   else {
     console.log = () => {};
     return {
       // baseURL: 'https://saltbraiding.com/salt/api/',
       baseURL: 'https://virtualrealitycreators.com/salt/api/',
-      imageURL: 'https://saltbucket1.s3.us-east-2.amazonaws.com/',
+      imageURL: 'https://salt-new.s3.us-east-2.amazonaws.com/',
       // baseURL: 'http://3.20.179.123/salt/api/',
       // imageURL: 'http://3.20.179.123/salt/',
     };
