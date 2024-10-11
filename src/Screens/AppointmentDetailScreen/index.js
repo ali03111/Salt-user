@@ -22,7 +22,7 @@ import {openGoogleMaps} from '../../Utils/globalFunctions';
 import {StripeProvider, useStripe} from '@stripe/stripe-react-native';
 
 const AppointmentDetailScreen = ({route, navigation}) => {
-  const {data, onAcceptPress, onCancelPress, status, hitPayment} =
+  const {data, onAcceptPress, onCancelPress, status, hitPayment, onChatClick} =
     useAppointmentDetail(navigation, route);
 
   const {
@@ -45,7 +45,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
 
   console.log(
     'sldbvlksbdlkvbsdklvbslkdbvlksdbvlksdblkbdsksdlbvlksdbvklsdbvlk',
-    JSON.stringify(data?.braid_type),
+    JSON.stringify(data),
   );
 
   return (
@@ -210,7 +210,7 @@ const AppointmentDetailScreen = ({route, navigation}) => {
                 title={'Chat'}
                 style={styles.viewAppBtn}
                 textStyle={{fontSize: hp('1.5')}}
-                // onPress={onCancelPress[data?.isPending]}
+                onPress={onChatClick}
               />
               <ThemeButton
                 title={'Complete Job'}

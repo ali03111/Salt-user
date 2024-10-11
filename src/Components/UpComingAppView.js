@@ -39,6 +39,7 @@ export const UpComingAppView = ({
   viewStyle,
   onPressDetail,
   onPressProfile,
+  onChatPress,
 }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -85,13 +86,13 @@ export const UpComingAppView = ({
               marginRight: wp('1.5'),
             }}
           />
-          <Switch
+          {/* <Switch
             trackColor={{false: Colors.grayFaded, true: Colors.avtiveCard}}
             thumbColor={isEnabled ? Colors.themeRed : Colors.avtiveCard}
             ios_backgroundColor="#EAF6ED"
             onValueChange={toggleSwitch}
             value={isEnabled}
-          />
+          /> */}
         </View>
       </View>
       <Touchable style={styles.userView} onPress={onPressProfile}>
@@ -136,6 +137,7 @@ export const UpComingAppView = ({
           title={'Chat'}
           style={{...styles.viewAppBtn, backgroundColor: 'red'}}
           textStyle={{fontSize: hp('1.5')}}
+          onPress={onChatPress}
         />
         <ThemeButton
           title={'View Detail'}

@@ -59,7 +59,7 @@
 		A643CD892B31ADBB00E70D08 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A643CD5C2B31ADBB00E70D08 /* MaterialIcons.ttf */; };
 		A643CD8A2B31ADBB00E70D08 /* Proxima-Nova-Alt-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A643CD5D2B31ADBB00E70D08 /* Proxima-Nova-Alt-Thin.otf */; };
 		A643CD8B2B31ADBB00E70D08 /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A643CD5E2B31ADBB00E70D08 /* Rubik-BoldItalic.ttf */; };
-		A67754642B32CB1F00EB790A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A67754632B32CB1F00EB790A /* GoogleService-Info.plist */; };
+		A6FE20B72CB9487000DF6212 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6FE20B62CB9487000DF6212 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,8 +134,8 @@
 		A643CD5C2B31ADBB00E70D08 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		A643CD5D2B31ADBB00E70D08 /* Proxima-Nova-Alt-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima-Nova-Alt-Thin.otf"; sourceTree = "<group>"; };
 		A643CD5E2B31ADBB00E70D08 /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
-		A67754632B32CB1F00EB790A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A69C15B42BF65FE6009E3358 /* salt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = salt.entitlements; path = salt/salt.entitlements; sourceTree = "<group>"; };
+		A6FE20B62CB9487000DF6212 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../salt-professionals/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -210,7 +210,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				A67754632B32CB1F00EB790A /* GoogleService-Info.plist */,
+				A6FE20B62CB9487000DF6212 /* GoogleService-Info.plist */,
 				A643CD312B31ADBB00E70D08 /* Resources */,
 				13B07FAE1A68108700A75B9A /* salt */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -432,7 +432,7 @@
 				A643CD832B31ADBB00E70D08 /* Proxima Nova Bold.otf in Resources */,
 				A643CD6D2B31ADBB00E70D08 /* Foundation.ttf in Resources */,
 				A643CD682B31ADBB00E70D08 /* MaterialCommunityIcons.ttf in Resources */,
-				A67754642B32CB1F00EB790A /* GoogleService-Info.plist in Resources */,
+				A6FE20B72CB9487000DF6212 /* GoogleService-Info.plist in Resources */,
 				A643CD7D2B31ADBB00E70D08 /* Rubik-SemiBold.ttf in Resources */,
 				A643CD842B31ADBB00E70D08 /* SimpleLineIcons.ttf in Resources */,
 				A643CD8A2B31ADBB00E70D08 /* Proxima-Nova-Alt-Thin.otf in Resources */,

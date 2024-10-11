@@ -57,6 +57,7 @@ const StackNavigatior = () => {
               name="AllProfessionalScreen"
               component={Screens.AllProfessionalScreen}
             />
+            <Stack.Screen name="ChatScreen" component={Screens.ChatScreen} />
             <Stack.Screen
               name="ProfessionalProfileScreen"
               component={Screens.ProfessionalProfileScreen}

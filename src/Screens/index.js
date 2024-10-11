@@ -16,3 +16,4 @@ export {default as ProfessionalProfileScreen} from './ProfessionalProfileScreen'
 export {default as AppointmentDetailScreen} from './AppointmentDetailScreen';
 export {default as AllProfessionalScreen} from './AllProfessionalScreen';
 export {default as NotificationScreen} from './NotificationScreen';
+export {default as ChatScreen} from './ChatScreen';

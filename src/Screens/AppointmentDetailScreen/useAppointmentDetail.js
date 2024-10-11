@@ -17,7 +17,7 @@ import {
   removeTimeFromDate,
 } from '../../Utils/globalFunctions';
 
-const useAppointmentDetail = ({goBack}, {params}) => {
+const useAppointmentDetail = ({goBack, navigate}, {params}) => {
   const {data, error, isSuccess, isLoading} = useQuery({
     queryKey: ['appointDetail'],
     queryFn: () => API.get(GetDetailsUrl + params?.id),
@@ -162,7 +162,7 @@ const useAppointmentDetail = ({goBack}, {params}) => {
         appointment_id: data?.data?.user_appointment?.id,
         aor: true,
       }),
-    false: () => console.log('klsnvlksdnlkvnsdkl'),
+    false: () => console.log('sjkdvbkj'),
   };
 
   return {
@@ -171,6 +171,11 @@ const useAppointmentDetail = ({goBack}, {params}) => {
     onCancelPress,
     status,
     hitPayment: mutateAsync,
+    onChatClick: () =>
+      navigate('ChatScreen', {
+        app_id: data?.data?.user_appointment?.id,
+        userId: data?.data?.user_appointment?.professional_id,
+      }),
   };
 };
 

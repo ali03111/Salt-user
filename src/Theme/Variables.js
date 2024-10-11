@@ -25,6 +25,7 @@ const Colors = {
   grayFadedBtn: 'rgba(255, 255, 255, 0.2)',
   textGray: 'rgba(154, 154, 154, 1)',
   placeholderColor: '#181818',
+  lightBlack: 'rgba(255, 255, 255, 0.1)',
 };
 
 /** FontSize **/

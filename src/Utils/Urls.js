@@ -62,3 +62,5 @@ export const FcmTokenUrl = 'customer/add-fcm-token';
 export const getNotificationUrl = 'customer/all-notifications';
 export const changeAppStatusUrl = 'customer/current-date';
 export const GetDetailsUrl = 'customer/appointment-detail/';
+export const GetUserUrl = 'customer/get-user/';
+export const GetChatListUrl = 'customer/chat-list';

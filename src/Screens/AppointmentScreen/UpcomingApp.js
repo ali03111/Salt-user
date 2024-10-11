@@ -13,7 +13,10 @@ import {EmptyViewComp} from '../../Components/EmptyViewComp';
 
 const UpcomingApp = ({navigation}) => {
   const {dataHistoryUpcoming, onRefresh} = useAppointmentScreen();
-  console.log('up', dataHistoryUpcoming?.upcoming);
+  console.log(
+    'usdfsdksvdjksdkvkjsdvklcbvdklsbvilsdbilvesdoip',
+    dataHistoryUpcoming?.upcoming,
+  );
   return (
     <View style={{flex: 1}}>
       <AniFlatOneByOne
@@ -31,6 +34,12 @@ const UpcomingApp = ({navigation}) => {
             onPressDetail={() =>
               navigation.navigate('AppointmentDetailScreen', {
                 ...item,
+              })
+            }
+            onChatPress={() =>
+              navigation.navigate('ChatScreen', {
+                app_id: item?.id,
+                userId: item?.professional?.id,
               })
             }
             onPressProfile={() =>
