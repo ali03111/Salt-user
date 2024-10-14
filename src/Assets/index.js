@@ -126,6 +126,7 @@ export {default as exp} from './Icons/exp.png';
 export {default as rating} from './Icons/rating.png';
 export {default as review} from './Icons/review.png';
 export {default as userSearch} from './Icons/userSearch.png';
+export {default as rightArrowFill} from './Icons/rightArrowFill.png';
 
 // Lotties files
 

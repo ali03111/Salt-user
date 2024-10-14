@@ -7,24 +7,53 @@ import {TextComponent} from './TextComponent';
 import {Touchable} from './Touchable';
 import {imageUrl} from '../Utils/Urls';
 
-export const MessageViewComp = ({data, viewStyle, onPress}) => {
+export const MessageViewComp = ({data, viewStyle, onPress, userData}) => {
+  // Convert Firebase timestamp into a JS Date object
+  const timestamp = data?.lastMessage?.createdAt?.seconds
+    ? new Date(data?.lastMessage?.createdAt?.seconds * 1000)
+    : '';
+
+  // Format the date into a readable time (e.g., '4:32 PM')
+  const formattedTime = !timestamp
+    ? ''
+    : timestamp.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+  const isUnread =
+    userData?.id === data?.lastMessage?.receiver &&
+    data?.lastMessage?.seen == 0;
+
   return (
     <Touchable style={{...styles.mainView, ...viewStyle}} onPress={onPress}>
       <View style={styles.userView}>
         <CircleImage
-          image={imageUrl(data?.image)}
+          image={imageUrl(data?.professional?.image)}
           styles={styles.circleImage}
           uri={true}
         />
-        <View style={{marginLeft: wp('2'), marginTop: hp('1')}}>
-          <TextComponent text={data?.name} styles={{marginTop: hp('0')}} />
+        <View style={{marginLeft: wp('2'), marginTop: hp('-0.8')}}>
           <TextComponent
-            text={data?.lastMsg}
+            text={data?.professional?.name}
+            styles={{marginTop: hp('0')}}
+          />
+          <TextComponent
+            text={`${data?.braid_type?.item}, ${data?.braid_type?.price} `}
+            styles={{fontSize: hp('1.5'), marginTop: hp('0.5')}}
+            numberOfLines={1}
+            fade={true}
+          />
+          <TextComponent
+            text={data?.lastMessage?.text || 'Start Conversation...'}
             styles={styles.lastMsg}
             numberOfLines={1}
           />
         </View>
-        <TextComponent text={data?.time} fade={true} styles={styles.timeText} />
+        <TextComponent
+          text={formattedTime}
+          fade={true}
+          styles={styles.timeText}
+        />
       </View>
     </Touchable>
   );
@@ -34,11 +63,9 @@ const styles = StyleSheet.create({
   mainView: {
     width: wp('90'),
     alignSelf: 'center',
-    borderRadius: 5,
-    borderWidth: 0.5,
-    borderColor: Colors.grayFaded,
-    borderWidth: 0.2,
-    borderColor: Colors.grayFaded,
+    borderRadius: 10,
+    borderColor: Colors.lightBlack,
+    borderWidth: 0.3,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,

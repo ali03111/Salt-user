@@ -11,7 +11,7 @@ import React, {memo} from 'react';
 import {Colors} from '../../Theme/Variables';
 import {hp, wp} from '../../Config/responsive';
 import {Touchable} from '../../Components/Touchable';
-import {arrowBack, send} from '../../Assets';
+import {arrowBack, rightArrowFill, send} from '../../Assets';
 import {TextComponent} from '../../Components/TextComponent';
 import {CircleImage} from '../../Components/CircleImage';
 import {styles} from './styles';
@@ -28,6 +28,7 @@ const ChatScreen = ({navigation, route}) => {
     sendMessage,
     setMessage,
     handleAutoScroll,
+    app_id,
     isLoading,
     scrollViewRef,
     message,
@@ -38,6 +39,18 @@ const ChatScreen = ({navigation, route}) => {
   } = useChatScreen(navigation, route);
 
   const renderItem = ({item, index}) => {
+    // Convert Firebase timestamp into a JS Date object
+    const timestamp = item?.createdAt?.seconds
+      ? new Date(item?.createdAt?.seconds * 1000)
+      : '';
+
+    // Format the date into a readable time (e.g., '4:32 PM')
+    const formattedTime = !timestamp
+      ? ''
+      : timestamp.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
     const isSender = Boolean(item.sender == userData?.id);
     return !isSender ? (
       <View style={styles.senderView(isSender)}>
@@ -45,7 +58,7 @@ const ChatScreen = ({navigation, route}) => {
           <TextComponent text={item?.text} styles={{fontWeight: '300'}} />
         </View>
         <TextComponent
-          text={new Date(item?.createdAt?.seconds * 1000).toLocaleTimeString()}
+          text={formattedTime}
           fade={true}
           styles={{fontSize: hp('1.5'), marginLeft: wp('2')}}
         />
@@ -54,7 +67,7 @@ const ChatScreen = ({navigation, route}) => {
       <View
         style={{...styles.senderView(isSender), justifyContent: 'flex-end'}}>
         <TextComponent
-          text={new Date(item?.createdAt?.seconds * 1000).toLocaleTimeString()}
+          text={formattedTime}
           fade={true}
           styles={{fontSize: hp('1.5'), marginRight: wp('2')}}
         />
@@ -94,6 +107,18 @@ const ChatScreen = ({navigation, route}) => {
         </View>
         <View style={styles.HeaderRight} />
       </View>
+      <Touchable
+        style={styles.upperButton}
+        onPress={() =>
+          navigation.navigate('AppointmentDetailScreen', {id: app_id})
+        }>
+        <TextComponent text={'View Appointment'} />
+        <Image
+          source={rightArrowFill}
+          resizeMode="contain"
+          style={{width: wp('5'), height: hp('5')}}
+        />
+      </Touchable>
       <FlatList
         data={allMessages}
         renderItem={renderItem}
@@ -101,6 +126,7 @@ const ChatScreen = ({navigation, route}) => {
         onLayout={handleAutoScroll}
         ref={scrollViewRef}
         onContentSizeChange={handleAutoScroll}
+        showsVerticalScrollIndicator={false}
       />
       <View style={styles.searchMain}>
         <TextInput

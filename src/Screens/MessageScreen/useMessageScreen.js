@@ -1,7 +1,7 @@
 import {useQuery} from '@tanstack/react-query';
-import API from '../../Utils/helperFunc';
+import API, {fetchGetWithToken} from '../../Utils/helperFunc';
 import {GetChatListUrl} from '../../Utils/Urls';
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {
   collection,
@@ -23,22 +23,21 @@ const useMessageScreen = ({navigate, addListener}) => {
   const [users, setUsers] = useState([]);
   const isUnreadRef = useRef(false);
 
-  const {getState, dispatch} = useReduxStore();
+  const {getState, dispatch, queryClient} = useReduxStore();
   const {userData} = getState('Auth');
   const [unreadCount, setUnreadCount] = useState(0);
 
   const fetchUsersAndMessages = async () => {
     try {
-      const fetchedUsers = data?.data || [];
+      const fetchedUsers = await fetchGetWithToken(GetChatListUrl);
 
       const unsubscribeFunctions = fetchedUsers.map(async appointments => {
-        const chatroomDocRef = doc(db, 'messages', appointments?.id);
-        const chatroomDocSnap = await getDoc(chatroomDocRef);
-
-        console.log(
-          'skbvklsbdlkvbsdlkbvklsdbvlksdbvklsdblkbsdklvblkdsbvkldsbvklsdblkvdsblkvbdsklvbkdlsv',
-          chatroomDocSnap.exists(),
+        const chatroomDocRef = doc(
+          db,
+          'messages',
+          appointments?.id?.toString(),
         );
+        const chatroomDocSnap = await getDoc(chatroomDocRef);
 
         if (chatroomDocSnap.exists()) {
           return listenForLastMessage(appointments);
@@ -56,36 +55,28 @@ const useMessageScreen = ({navigate, addListener}) => {
   const listenForLastMessage = appointment => {
     const appId = appointment.id;
 
-    console.log('appIdappIdappIdappIdappIdappIdappIdappIdappId', appId);
-
     const messageRef = query(
-      collection(db, 'messages', appId, 'messages'),
+      collection(db, 'messages', appId.toString(), 'messages'),
       orderBy('createdAt', 'desc'),
       limit(1),
     );
 
-    console.log(
-      'messageRefmessageRefmessageRefmessageRefmessageRef',
-      messageRef,
-    );
-
     const unsubscribe = onSnapshot(messageRef, querySnapshot => {
       let lastMessage = null;
-      console.log(
-        'querySnapshotquerySnapshotquerySnapshotquerySnapshotquerySnapshotquerySnapshotquerySnapshot',
-        querySnapshot,
-      );
+
       querySnapshot.forEach(doc => {
         lastMessage = doc.data();
       });
 
       setUsers(prevUsers =>
-        prevUsers.map(u => (u.id == appId ? {...u, lastMessage} : u)),
+        prevUsers.map(u => {
+          return u.id == appId.toString() ? {...u, lastMessage} : u;
+        }),
       );
 
       // Count unread messages
       const isUnread =
-        authUser?.user?.id === lastMessage?.receiver && lastMessage?.seen == 0;
+        userData?.id === lastMessage?.receiver && lastMessage?.seen == 0;
       isUnreadRef.current = isUnread;
 
       // Update unread count
@@ -102,22 +93,29 @@ const useMessageScreen = ({navigate, addListener}) => {
     // dispatch(updateUnreadCount(unreadCount));
   }, [unreadCount]);
 
+  const initializeChat = async () => {
+    try {
+      // Reset the unread count  when the Chat screen is focused
+      //   dispatch(resetUnreadCount());
+      queryClient.fetchQuery({
+        queryKey: ['chatList'],
+        staleTime: 1000,
+      });
+      await fetchUsersAndMessages();
+    } catch (error) {
+      console.error('Error initializing chat:', error);
+    }
+  };
   useEffect(() => {
     const unsubscribe = addListener('focus', () => {
-      const initializeChat = async () => {
-        try {
-          // Reset the unread count  when the Chat screen is focused
-          //   dispatch(resetUnreadCount());
-
-          await fetchUsersAndMessages();
-        } catch (error) {
-          console.error('Error initializing chat:', error);
-        }
-      };
       initializeChat();
     });
     return unsubscribe;
   }, [dispatch]);
+
+  const onRefresh = useCallback(() => {
+    initializeChat();
+  }, []);
 
   const dynamicNav = (screenName, screenData) =>
     navigate(screenName, screenData);
@@ -126,6 +124,8 @@ const useMessageScreen = ({navigate, addListener}) => {
     messageList: data?.data ?? [],
     dynamicNav,
     users,
+    userData,
+    onRefresh,
   };
 };
 

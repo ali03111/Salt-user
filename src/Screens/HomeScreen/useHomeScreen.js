@@ -11,9 +11,11 @@ export default function useHomeScreen({navigate}) {
     queryFn: () => API.get(homeContentUrl),
   });
 
-  const {getState, dispatch} = useReduxStore();
+  const {getState} = useReduxStore();
 
   const {userData} = getState('Auth');
+
+  console.log('oissdsdvsdbvdsvbsdlkvbsdlkbvlsdbvsd', userData);
 
   const dynamicNav = (route, item) => navigate(route, item);
 

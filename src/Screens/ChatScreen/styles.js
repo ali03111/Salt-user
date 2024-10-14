@@ -124,4 +124,13 @@ export const styles = StyleSheet.create({
     paddingVertical: hp('1.3'),
     // paddingHorizontal: wp('3'),
   },
+  upperButton: {
+    width: wp('100'),
+    alignItems: 'center',
+    paddingHorizontal: wp('5'),
+    flexDirection: 'row',
+    borderBottomWidth: 1.5,
+    borderBottomColor: Colors.lightBlack,
+    justifyContent: 'space-between',
+  },
 });

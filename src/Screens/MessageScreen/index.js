@@ -12,7 +12,8 @@ import {MessageViewComp} from '../../Components/MessageViewComp';
 import useMessageScreen from './useMessageScreen';
 
 const MessageScreen = ({navigation}) => {
-  const {messageList, users, dynamicNav} = useMessageScreen(navigation);
+  const {messageList, users, userData, dynamicNav, onRefresh} =
+    useMessageScreen(navigation);
 
   console.log('jlsbdvkbsldibklsjdbvladsbilkvbasdlads', users);
 
@@ -33,11 +34,20 @@ const MessageScreen = ({navigation}) => {
       </View>
       <AniFlatOneByOne
         data={users}
+        flatListProps={{
+          onRefresh: () => onRefresh(),
+        }}
         InnerCompnonet={item => (
           <MessageViewComp
             data={item}
             viewStyle={{marginVertical: hp('1')}}
-            onPress={() => navigation.navigate('ChatScreen')}
+            userData={userData}
+            onPress={() =>
+              navigation.navigate('ChatScreen', {
+                app_id: item?.id,
+                userId: item?.professional?.id,
+              })
+            }
           />
         )}
         flatViewStyle={{marginTop: hp('2'), paddingBottom: hp('20')}}
